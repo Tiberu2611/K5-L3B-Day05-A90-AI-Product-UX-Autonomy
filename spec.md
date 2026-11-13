@@ -93,7 +93,7 @@ Track cho phép nhóm thêm hoặc tách tool, miễn là ghi rõ lý do. Bộ t
 ### 1.7 Giả định của nhóm (dữ liệu dựng)
 
 - **Thời hạn trả hàng: 7 ngày kể từ khi nhận hàng.** Track chỉ nói chính sách dựng khác 15 ngày của sản phẩm thật, không cho con số; **7 ngày là nhóm tự đặt** để dựng K1 và K9. **[CẦN XÁC NHẬN]** với track: nếu track có cho con số thì trích nguyên văn và tính lại ngày trong K1, K9. Prototype đọc con số này từ một hằng số duy nhất (`RETURN_WINDOW_DAYS`), nên đổi chính sách chỉ cần sửa một chỗ.
-- **Người bán có 24 giờ để phản hồi, tính từ khi hệ thống xác nhận gửi yêu cầu bằng chứng thành công; trưởng nhóm quyết trong 24 giờ kể từ khi nhận hồ sơ.** Hai con số này nhóm tự đặt để dựng kịch bản, không lấy từ sản phẩm thật (§3.1 dùng cùng mốc).
+- **Người bán có 48 giờ để phản hồi, tính từ khi hệ thống xác nhận gửi yêu cầu bằng chứng thành công; trưởng nhóm quyết trong 24 giờ kể từ khi nhận hồ sơ.** Hai con số này nhóm tự đặt để dựng kịch bản, không lấy từ sản phẩm thật (§3.1 dùng cùng mốc).
 - "Hôm nay" trong mọi kịch bản là **13/11/2026**.
 - Ảnh trong bài là ảnh giả lập (mô tả bằng chữ). AI chỉ đọc được nội dung ảnh, không giám định được hàng thật hay giả.
 
