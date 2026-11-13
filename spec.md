@@ -6,14 +6,27 @@
 
 **Nhóm:** A90 · **Track:** T4 · **Prototype:** `prototype/index.html`
 
+## Thành viên nhóm
+
+Bài nộp cần **danh sách thành viên** và **mỗi người làm gì**. Nhóm tự chia việc, không bắt buộc theo vai trò cố định. Ví dụ một cách chia (không bắt buộc): dựng prototype, viết câu chữ AI, giữ bảng kịch bản và kịch bản demo.
+
+**Lớp:** L3B · **Bàn / zone:** E · **Track:** 4 - Ecommerece
+
+| Họ và Tên | Mã Học Viên | Việc đã làm |
+|---|---|---|
+|Nguyễn Lê Trọng Mạnh|2A202603857|Bài toán và vì sao chọn hai ca khó , kiểm dữ liệu và lập luận · thử kịch bản trên prototype|
+|Vũ Văn Chủ|2A202603873|Người dùng thấy gì khi AI không chắc hoặc sai, làm checklist UX , kiểm câu chữ và HAX|
+|Vũ Duy Khánh|2A202603865|AI làm được gì , ai duyệt và vì sao, kiểm quyền duyệt trên prototype|
+|Chu Quang Linh|2A202603809|Bấm prototype , chỉ vị trí nguyên tắc trên màn hình , làm prototype|
+
 ### Phân công (R7)
 
 | Thành viên | Phần có tên mình | Trình bày ở demo |
 |---|---|---|
-| [TV1] | §1, §2, §7 · kiểm dữ liệu và lập luận · thử kịch bản trên prototype | Bài toán, và vì sao chọn hai ca khó (K3, K4) |
-| [TV2] | §3 · kiểm câu chữ và HAX | Người dùng thấy gì khi AI không chắc hoặc sai |
-| [TV3] | §4 · kiểm quyền duyệt trên prototype | AI được làm gì, ai duyệt, và vì sao |
-| [TV4] | §5 · `prototype/` | Bấm prototype, chỉ vị trí từng nguyên tắc trên màn hình |
+| Nguyễn Lê Trọng Mạnh | §1, §2, §7 · kiểm dữ liệu và lập luận · thử kịch bản trên prototype | Bài toán, và vì sao chọn hai ca khó (K3, K4) |
+| Vũ Văn Chủ | §3 · kiểm câu chữ và HAX | Người dùng thấy gì khi AI không chắc hoặc sai |
+| Vũ Duy Khánh | §4 · kiểm quyền duyệt trên prototype | AI được làm gì, ai duyệt, và vì sao |
+| Chu Quang Linh | §5 · `prototype/` | Bấm prototype, chỉ vị trí từng nguyên tắc trên màn hình |
 | Cả nhóm | §6 (chấm Pass/Fail phút 200–210) · quyết định về **hoàn tiền, từ chối khiếu nại, xử phạt shop** | — |
 
 ### Bộ mã dùng chung (mọi mục trỏ theo mã này)
@@ -189,6 +202,7 @@ Track cho phép nhóm thêm hoặc tách tool, miễn là ghi rõ lý do. Bộ t
 ---
 ## §3 · Khi AI sai
 
+
 ### 3.1 Quy ước câu chữ, bằng chứng và thời gian
 
 - Đầu hội thoại hiện **[1] “Trợ lý AI hỗ trợ khiếu nại — giúp đối chiếu thông tin và chuẩn bị yêu cầu; quyết định hoàn tiền hoặc từ chối cần người có thẩm quyền duyệt.”**
@@ -196,8 +210,8 @@ Track cho phép nhóm thêm hoặc tách tool, miễn là ghi rõ lý do. Bộ t
 - Thẻ **[3]** tách “Nguồn đã đối chiếu”, “Thông tin một bên cung cấp” và “Điều chưa xác minh”. Mỗi nguồn có loại tài liệu, thời điểm và nút xem; ảnh do một bên gửi không tự thành kết luận đã xác minh.
 - Checklist **[4]** chỉ hỏi đúng bằng chứng còn thiếu, nêu lý do và cho chọn “Tôi không có bằng chứng này”. Không yêu cầu gửi lại tài liệu đã đọc được, không buộc người dùng tự làm phép thử nguy hiểm hoặc phá hỏng sản phẩm.
 - **Mốc dựng để demo:** người bán có 48 giờ phản hồi kể từ khi hệ thống xác nhận gửi yêu cầu bằng chứng thành công (cùng mốc với §1.7). UI hiện cả giờ hết hạn cụ thể và thời gian còn lại. Đây là quy tắc prototype, **không phải chính sách Shopee**; cách xử lý quá hạn chốt ở §4.3.
-- Hạn phản hồi 48 giờ và hạn gửi yêu cầu trả hàng là **hai mốc khác nhau**. Đề không cấp số ngày trả hàng cho T4; mốc 7 ngày ở N4 chưa được xác nhận. Khi chưa có fixture chính sách đã chốt, UI ghi “Chưa xác định hạn trả hàng — cần nhân viên kiểm tra”, không tự tính hoặc nói khách chắc chắn còn hạn.
-- Chỉ nói “đã gửi”, “đã chuyển” hoặc “đã ghi nhận trong hạn” sau phản hồi thành công tương ứng. Bản nháp và tin nhắn chat không phải biên nhận yêu cầu trả hàng. Bộ tool hiện chưa mô tả bước ghi nhận yêu cầu trong hạn: TV3/TV4 cần định nghĩa bước này trước khi dùng lời hứa bảo lưu quyền ở K9.
+- Hạn trả hàng **7 ngày**, hạn phản hồi người bán **48 giờ**, hạn bổ sung người mua **48 giờ** và dự kiến nhân viên **24 giờ** là các mốc riêng. Prototype hiển thị theo các giả định dựng ở §1.7/§4.3; TV2 kiểm việc hiển thị, không tự chốt chính sách thay nhóm. Hạn người mua bắt đầu khi chọn đơn và nhận câu hỏi; hạn người bán chỉ bắt đầu khi gửi bằng chứng thành công. Đơn thiếu ngày nhận/chính sách phải hiện “Chưa xác định hạn trả hàng — cần nhân viên kiểm tra”; fixture hiện tại chưa có biến thể đó.
+- Chỉ nói “đã gửi”, “đã chuyển” hoặc “đã ghi nhận trong hạn” sau phản hồi thành công tương ứng. Bản nháp và tin nhắn chat không phải biên nhận yêu cầu trả hàng. Bước **người mua tự bấm Gửi yêu cầu → hệ thống trả biên nhận** đã được định nghĩa ở §4.7 và triển khai. Đã kiểm nháp chưa gửi, gửi lỗi/thử lại và biên nhận ngày cuối (UX12, UX23). Khi chuyển người thành công, thông báo nêu dự kiến 24 giờ; quá hạn báo quản lý ca, AI không quyết thay.
 
 ### 3.2 K3 — Nồi chiên: dung tích tổng 6L, giỏ chiên 5L, có lời doạ
 
@@ -205,11 +219,11 @@ Track cho phép nhóm thêm hoặc tách tool, miễn là ghi rõ lý do. Bộ t
 
 **Câu AI nói với người mua — nguyên văn khi bản mô tả và ảnh tem đều đọc được:**
 
-> Mình hiểu bạn đang lo sản phẩm nhận được không đúng quảng cáo. Bản mô tả lúc bạn đặt ghi “dung tích tổng 6L”; ảnh tem ghi “tổng 6.0L / giỏ chiên 5.0L”. Dung tích tổng và dung tích giỏ chiên là hai thông số khác nhau, nên con số bạn đo được chưa đủ để kết luận shop giao sai.
+> Mình hiểu bạn đang lo sản phẩm nhận được không đúng quảng cáo. Bản mô tả lúc bạn đặt (03/11/2026) ghi “dung tích tổng 6L”; ảnh tem ghi “Tổng 6.0L · Giỏ chiên 5.0L”. Dung tích tổng và dung tích giỏ chiên là hai thông số khác nhau, nên con số bạn đo được chưa đủ để kết luận shop giao sai.
 >
 > Bạn đo phần giỏ chiên hay toàn bộ khoang nồi? Bạn có thể chọn bên dưới, sửa thông tin mình đọc sai hoặc yêu cầu nhân viên xem xét. Mình chưa quyết định hoàn tiền hay từ chối khiếu nại.
 
-Nếu ảnh tem chưa rõ, thay câu “ảnh tem ghi…” bằng **“Ảnh tem hiện chưa đọc rõ được thông số; bạn có thể gửi ảnh rõ phần dung tích hoặc chọn nhờ nhân viên hỗ trợ.”** Không trích số từ ảnh chưa đọc được.
+**Nhánh tem mờ đã kiểm:** bật “K3: ảnh tem mờ” trước khi chọn đơn. AI nói “Ảnh tem hiện chưa đọc rõ được thông số; mình chưa thể trích dung tích từ ảnh này”, không trích số từ ảnh mờ. [4] có bổ sung nhãn mẫu, “Tôi không có bằng chứng này” và [6]; ô sửa [5] để trống khi chưa đọc được. **UX05 Pass**, [ảnh tem mờ](prototype/ux-evidence/02-k3-tem-mo.png). Không có OCR/ảnh thật.
 
 **Người mua thấy và làm tiếp:**
 
@@ -218,7 +232,7 @@ Nếu ảnh tem chưa rõ, thay câu “ảnh tem ghi…” bằng **“Ảnh te
 | [2] | “Chưa đủ căn cứ kết luận — cần làm rõ phần được đo” | Không có nhãn “shop gian lận” hoặc “khiếu nại sai” |
 | [3] | Mô tả lúc đặt; ảnh tem; lời khai phép đo 5L, ghi rõ do người mua cung cấp | Mở từng nguồn; không trộn số đo với thông số đã đối chiếu |
 | [4] | Một câu hỏi với lựa chọn “Giỏ chiên” / “Toàn bộ khoang” / “Không rõ”; chỉ xin ảnh tem nếu còn thiếu hoặc mờ | Trả lời một lần để cập nhật hồ sơ; không bắt đo lại bằng cách đổ nước vào thiết bị |
-| [5] | “Sửa thông tin AI đọc sai” | Chọn trường sai, nhập sửa hoặc thay ảnh; giữ nguyên các tài liệu khác |
+| [5] | “Sửa thông tin AI đọc sai” | Sửa chữ đọc từ ảnh tại chỗ, giữ nguồn và lịch sử; prototype chưa hỗ trợ thay file ảnh thật |
 | [6] | “Nhờ nhân viên xem xét” | Chuyển hồ sơ kèm căn cứ và phần còn bất đồng; chỉ hiện thành công khi chuyển xong |
 | [7] | Hạn gửi yêu cầu trả hàng và hạn phản hồi người bán, trình bày riêng theo §3.1 | Biết mốc nào cần hành động; không suy diễn 48 giờ là thời hạn trả hàng |
 
@@ -231,7 +245,7 @@ Lời doạ không thay đổi nhánh xử lý và không được đánh dấu 
 **Ai được báo, lúc nào, khi không ai thao tác:**
 
 - Người mua thấy câu hỏi và trạng thái ngay sau khi đối chiếu xong.
-- Gửi người bán mẫu xin bằng chứng qua `yeu_cau_bang_chung` khi đã xác định đúng đơn và đúng phần còn thiếu. Hạn phản hồi chỉ bắt đầu sau khi gửi thành công; gửi thất bại hiện “Chưa gửi được”, cho thử lại hoặc chuyển người.
+- Hỏi người mua trước theo C5 (§4.5): chọn “Giỏ chiên” thì không tự gửi shop. “Toàn bộ khoang”/“Không rõ” thì chỉ gửi `yeu_cau_bang_chung` sau khi người mua gửi yêu cầu và có biên nhận. Người bán thấy câu hỏi đúng đơn; hạn 48 giờ chỉ bắt đầu khi gửi thành công. Gửi lỗi không bắt đầu hạn, có “Thử lại”. **UX03, UX04, UX14, UX15 Pass**.
 - Nếu người mua không rõ cách đo, không có thêm ảnh hoặc vẫn bất đồng, gọi `chuyen_truong_nhom(loai_ca=thuong)` ngay khi chọn hỗ trợ. Nhân viên nhận bản tóm tắt, nguồn đã có và câu hỏi chưa giải quyết; không bắt khách kể lại.
 - Hết 48 giờ mà người bán chưa trả lời thì chuyển trưởng nhóm tại mốc hết hạn, không mặc định người bán thua. Nếu chuyển lỗi, hiện “Chưa chuyển được”, giữ hồ sơ và nút thử lại.
 - Nếu người mua không trả lời, giữ trạng thái chờ bổ sung, hiện mốc còn lại khi có dữ liệu hợp lệ; AI không tự đóng hoặc tự hoàn tiền. Nếu chưa có biên nhận yêu cầu, nhắc rõ bản chat chưa xác nhận việc gửi yêu cầu trả hàng.
@@ -249,17 +263,17 @@ Lời doạ không thay đổi nhánh xử lý và không được đánh dấu 
 
 **Câu AI nói với người mua — nguyên văn khi lấy được bản chụp lúc đặt:**
 
-> Bản mô tả lúc bạn đặt ghi “100% cotton”, còn trang hiện tại ghi “cotton pha polyester 65/35” và được cập nhật sau thời điểm đặt hàng. Mình sẽ dùng bản mô tả lúc đặt để đối chiếu khiếu nại này.
+> Bản mô tả lúc bạn đặt (02/11/2026) ghi “100% cotton”, còn trang hiện tại ghi “cotton pha polyester 65/35” và được cập nhật ngày 07/11/2026, sau thời điểm đặt hàng. Mình sẽ dùng bản mô tả lúc đặt để đối chiếu khiếu nại này.
 >
 > Mình chưa xác minh được thành phần của chiếc áo bạn nhận chỉ từ cảm giác khi mặc. Bạn có ảnh nhãn thành phần trên áo không? Nếu không có hoặc nhãn không đọc được, bạn vẫn có thể nhờ nhân viên xem xét. Mình có thể soạn nháp yêu cầu để bạn kiểm tra; việc này chưa gửi yêu cầu và chưa quyết định hoàn tiền.
 
 **Người mua thấy và làm tiếp:**
 
 - **[2]** hiện “Mô tả đã thay đổi sau khi đặt — chưa xác minh chất liệu hàng nhận”.
-- **[3]** đặt hai phiên bản cạnh nhau: “Lúc đặt: 100% cotton” và “Hiện tại: cotton pha polyester 65/35”, kèm thời điểm lấy từ dữ liệu dựng của `xem_mo_ta_luc_dat`. Đánh dấu bản lúc đặt là căn cứ so sánh; không tự bịa ngày khi fixture chưa có.
-- **[4]** ghi “Đã có: bản mô tả lúc đặt. Còn thiếu: ảnh nhãn thành phần của áo nhận được — giúp đối chiếu chất liệu ghi trên hàng”. Có nút “Bổ sung ảnh nhãn” và “Tôi không có nhãn”. Không yêu cầu thử đốt vải.
+- **[3]** hiện hai phiên bản trong cùng thẻ nguồn, theo thứ tự bản lúc đặt rồi trang hiện tại: “Lúc đặt: 100% cotton” và “Hiện tại: cotton pha polyester 65/35”, kèm thời điểm lấy từ dữ liệu dựng của `xem_mo_ta_luc_dat`. Đánh dấu bản lúc đặt là căn cứ so sánh; không tự bịa ngày khi fixture chưa có.
+- **[4]** ghi “Đã có: bản mô tả lúc đặt. Còn thiếu: ảnh nhãn thành phần của áo nhận được — giúp đối chiếu chất liệu ghi trên hàng”. Nút trên bản triển khai là “Bổ sung ảnh nhãn mẫu” và “Tôi không có bằng chứng này”. Đã có nhãn thì không xin lại. Không yêu cầu thử đốt vải.
 - **[5]** cho sửa phần chữ AI đọc từ ảnh. Nếu ảnh nhãn được đọc là “65% cotton / 35% polyester”, ghi rõ đó là nội dung đọc từ ảnh; không gọi là kết quả kiểm định chất liệu.
-- Sau khi người mua chọn chuẩn bị yêu cầu, `soan_hoan_tien` theo định nghĩa đã tách ở §1.3 tạo **bản nháp**, hiện nút “Xem / sửa bản nháp”. Chỉ chuyển sang bước gửi khi giao diện có thao tác và kết quả xác nhận tương ứng; không gọi `thuc_hien_hoan_tien`.
+- Sau khi người mua chọn chuẩn bị yêu cầu, `soan_hoan_tien` theo định nghĩa đã tách ở §1.4 tạo **bản nháp**, hiện nút “Xem / sửa bản nháp”. Chỉ chuyển sang bước gửi khi giao diện có thao tác và kết quả xác nhận tương ứng; không gọi `thuc_hien_hoan_tien`.
 - **[6]** luôn có “Nhờ nhân viên xem xét”; **[7]** hiện riêng các thời hạn theo §3.1.
 
 **Người bán được hỏi gì — nguyên văn:**
@@ -294,27 +308,27 @@ Lời doạ không thay đổi nhánh xử lý và không được đánh dấu 
 | K3: AI đọc sai chữ trên tem | **Hệ thống:** nhận dạng ảnh hoặc trích thông tin sai | “Mình xin lỗi, mình đã đọc sai thông số trên ảnh.” Hiện [5] sửa trường sai và đối chiếu lại; huỷ hiệu lực kết luận dựa trên chữ đọc sai |
 | K4: dùng mô tả hiện tại thay bản lúc đặt | **Hệ thống:** chọn sai phiên bản nguồn so với yêu cầu nghiệp vụ | Nhận lỗi cụ thể, đánh dấu đính chính, quay về bản lúc đặt; nếu đã đóng hồ sơ thì chuyển người, không hứa tự mở |
 | K4: chỉ dựa vào cảm giác mặc nóng | **Ngữ cảnh:** cảm giác trải nghiệm không tương đương bằng chứng thành phần | Công nhận phản ánh, xin ảnh nhãn hoặc chuyển người; không khẳng định khách sai |
-| Người dùng chọn nhầm đơn hoặc tải nhầm ảnh, tự xác nhận sau khi xem lại | **Người dùng:** dữ liệu đầu vào nhầm đã được xác nhận; không gán loại lỗi này chỉ vì thiếu bằng chứng | “Bạn có thể đổi đơn hoặc thay ảnh tại đây.” Giữ phần nội dung còn dùng được; chặn gửi cho shop trước khi xác định lại đúng đơn |
+| Người dùng xác nhận nhập nhầm chữ trên nhãn | **Người dùng:** đầu vào nhầm đã được xác nhận; không gán lỗi này chỉ vì thiếu bằng chứng | Sửa chữ tại [5], giữ nguồn và lịch sử; nháp cũ bị khóa tới khi soạn lại. Đổi đơn/thay file mà giữ nháp chưa được triển khai |
 
-**Luồng correction chung:** bấm [5] → xem nguồn và thông tin AI đã trích → sửa / thay ảnh → bấm “Cập nhật và đối chiếu lại” → hiện thay đổi và trạng thái mới. Bản nháp phụ thuộc thông tin cũ được đánh dấu “Cần kiểm tra lại” trước khi gửi. Nếu thông tin sai đã được gửi cho bên kia, gửi bản đính chính sau khi xác nhận thành công; không gọi đây là thu hồi tin đã gửi.
+**Luồng correction chung:** bấm [5] → xem nguồn và thông tin AI đã trích → sửa chữ nhãn → bấm “Cập nhật và đối chiếu lại” → hiện thay đổi và trạng thái mới. Bản nháp phụ thuộc thông tin cũ được đánh dấu “Cần kiểm tra lại” trước khi gửi. Nếu thông tin sai đã được gửi cho bên kia, gửi bản đính chính sau khi xác nhận thành công; không gọi đây là thu hồi tin đã gửi.
 
-### 3.5 Ba nguyên tắc HAX và vị trí bàn giao prototype
+### 3.5 Ba nguyên tắc HAX đã kiểm trên prototype
 
-| Nguyên tắc được chọn | Vị trí cụ thể cần dựng ở §5 | Vì sao chọn cách này; phương án đã loại |
+| Nguyên tắc được chọn | Vị trí đã kiểm và bằng chứng | Vì sao chọn cách này; phương án đã loại |
 |---|---|---|
-| **G10 — Thu hẹp phạm vi khi nghi ngờ** | [2] trạng thái chưa kết luận; [4] câu hỏi “Bạn đo phần giỏ chiên hay toàn bộ khoang nồi?” của K3; [6] chuyển người khi thiếu bản lúc đặt ở K4 | Chỉ làm phần có căn cứ, tiếp tục hỗ trợ phần còn thiếu. Loại “AI không chắc, vui lòng thử lại” vì không chỉ được bước tiếp |
-| **G11 — Giải thích vì sao** | [3] thẻ nguồn: 6L tổng / 5L giỏ ở K3; hai phiên bản mô tả có thời điểm ở K4 | Người dùng tự kiểm được điểm AI dựa vào. Loại thanh “tin cậy 90%” vì không giải thích nguồn, không được hiệu chuẩn |
-| **G9 — Sửa dễ dàng** | [5] sửa thông tin AI đọc sai, thay ảnh hoặc đổi đơn; xem trước nội dung cập nhật và đối chiếu lại | Sửa đúng chỗ sai, giữ bằng chứng còn đúng. Loại bắt mở hội thoại mới / tải lại toàn bộ vì làm mất ngữ cảnh và tăng công |
+| **G10 — Thu hẹp phạm vi khi nghi ngờ** | [2] trạng thái chưa kết luận; [4] câu hỏi “Bạn đo phần giỏ chiên hay toàn bộ khoang nồi?” của K3; [6] chuyển người khi thiếu nguồn K4. **UX02, UX05, UX08**; [UX-A1](prototype/ux-evidence/01-k3-g10-g11-desktop.png) | Chỉ làm phần có căn cứ, tiếp tục hỗ trợ phần còn thiếu. Loại “AI không chắc, vui lòng thử lại” vì không chỉ được bước tiếp |
+| **G11 — Giải thích vì sao** | [3] thẻ nguồn: 6L tổng / 5L giỏ ở K3; hai phiên bản có thời điểm ở K4; mở được nguồn. **UX02, UX06**; [nguồn K4](prototype/ux-evidence/03-k4-nguon-va-bang-chung.png) | Người dùng tự kiểm được điểm AI dựa vào. Loại thanh “tin cậy 90%” vì không giải thích nguồn, không được hiệu chuẩn |
+| **G9 — Sửa dễ dàng** | [5] sửa chữ đọc từ ảnh, lưu đính chính và khóa nháp cũ tới khi chuẩn bị lại. **UX09–UX10**; [UX-A2](prototype/ux-evidence/05-g9-sua-tai-cho.png) | Sửa đúng chỗ sai, giữ bằng chứng còn đúng. Loại bắt mở hội thoại mới / tải lại toàn bộ vì làm mất ngữ cảnh và tăng công |
 
-**Bố trí đủ bộ mã [1]–[8]:** [1] giới thiệu AI và giới hạn; [2] trạng thái; [3] nguồn đối chiếu; [4] bằng chứng thiếu; [5] sửa; [6] chuyển người; [7] thời hạn; [8] khu vực nhân viên xem căn cứ và xác nhận quyết định. TV3 chốt quyền ở [8]; TV4 triển khai và chụp ảnh có số. Ảnh và kết quả bấm thử được bổ sung ở §5 sau khi dựng, không đánh dấu đã đạt ở thời điểm viết §3.
+**Bố trí đủ bộ mã [1]–[8]:** [1] giới thiệu AI và giới hạn; [2] trạng thái; [3] nguồn đối chiếu; [4] bằng chứng thiếu; [5] sửa; [6] chuyển người; [7] thời hạn; [8] khu vực nhân viên xem căn cứ và xác nhận quyết định. TV2 đã kiểm các nhãn trên bản TV4 triển khai, chụp hai ảnh chính UX-A1/UX-A2 ở §5.4 và các ảnh nhánh phụ tại §3.8. [8] có khóa kèm lý do và hộp xác nhận (UX15, UX17). Việc kiểm UX không thay thế nghiệm thu toàn bộ quyền của TV3.
 
 ### 3.6 Lỗi mà sửa câu chữ không cứu được
 
-1. **K3: câu “chưa đủ căn cứ” nhưng phía sau vẫn tự chuyển tiền.** Thêm cảnh báo không chặn mất tiền người bán. Thiết kế phải tách nháp khỏi thực hiện như §1.3, chặn đường gọi chuyển tiền của AI và buộc người có thẩm quyền xem căn cứ trước khi xác nhận ở [8]. Tương tự, không cho AI tự gọi đóng khiếu nại.
+1. **K3: câu “chưa đủ căn cứ” nhưng phía sau vẫn tự chuyển tiền.** Thêm cảnh báo không chặn mất tiền người bán. Thiết kế phải tách nháp khỏi thực hiện như §1.4, chặn đường gọi chuyển tiền của AI và buộc người có thẩm quyền xem căn cứ trước khi xác nhận ở [8]. Tương tự, không cho AI tự gọi đóng khiếu nại.
 2. **K4: câu trả lời có dẫn nguồn nhưng nguồn là phiên bản sau khi mua.** Câu chữ lịch sự hoặc đường link sản phẩm không sửa được sai nguồn. Luồng phải lấy bản lúc đặt, hiển thị thời điểm ở [3], và dừng kết luận khi không có bản đó.
 3. **Hai ca: nói “đã chuyển nhân viên” khi chuyển lỗi, hoặc “đã giữ quyền” khi mới có nháp.** Nút và thông báo phải phụ thuộc kết quả thao tác, có trạng thái thất bại / thử lại. Tin đã gửi không giả vờ hoàn tác; tiền đã chuyển không hứa lấy lại bằng nút sửa.
 
-### 3.7 Bốn đường đi và kiểm câu chữ trước khi giao TV4
+### 3.7 Bốn đường đi và checklist UX đã kiểm
 
 | Đường đi | Ca / điều kiện | Trạng thái và bước tiếp theo cần có |
 |---|---|---|
@@ -323,15 +337,40 @@ Lời doạ không thay đổi nhánh xử lý và không được đánh dấu 
 | Thất bại / thiếu căn cứ (failure) | K4: không lấy được bản mô tả lúc đặt | Nói thiếu nguồn gì, không thay bằng trang hiện tại để kết luận; có chuyển người và trạng thái chuyển thất bại |
 | Sửa sai (correction) | K3 đọc nhầm tem hoặc K4 dùng sai phiên bản | Nhận lỗi nếu do hệ thống, cho sửa tại chỗ, đối chiếu lại; giữ đính chính và chuyển người nếu quyết định đã thực hiện |
 
-**Checklist bàn giao UX; chưa phải kết quả kiểm thử prototype:**
+**Checklist UX — đã kiểm trên prototype ngày 13/11/2026 (TV2):**
 
-- [ ] K3 không hứa hoàn tiền vì 6 khác 5 hoặc vì lời doạ; không tự kết luận người bán đúng chỉ từ tem.
-- [ ] K4 dùng bản lúc đặt; thiếu bản thì dừng kết luận; sửa mô tả không tự bị coi là gian lận.
-- [ ] Hai bên biết bằng chứng nào còn thiếu, thời hạn phản hồi; nhân viên nhận sẵn nguồn và phần còn bất đồng.
-- [ ] Thử “Tôi không có ảnh/nhãn”, “AI đọc sai”, “Gặp nhân viên”, lỗi gửi và lỗi chuyển; đều có bước tiếp theo.
-- [ ] Không lộ số điện thoại, địa chỉ giữa hai bên; không có lời hứa phạt shop.
-- [ ] Phân biệt nháp / đã gửi / chờ phản hồi / chờ nhân viên / đã có quyết định; không hứa bảo lưu hạn nếu chưa có biên nhận.
-- [ ] Chỉ được đúng G10 tại [4], G11 tại [3], G9 tại [5] trên ảnh đánh số và khi bấm demo.
+- [x] K3 không hứa hoàn vì 6 khác 5 hoặc lời doạ, không kết luận người bán đúng chỉ từ tem. **UX02–UX05**.
+- [x] K4 dùng bản lúc đặt; thiếu nguồn thì dừng kết luận; sửa mô tả không tự thành gian lận. **UX06, UX08, UX11**.
+- [x] Hai bên biết bằng chứng thiếu và thời hạn; nhân viên nhận nguồn, phản hồi, phần chưa xác minh. **UX06, UX15–UX16**.
+- [x] Thử “Tôi không có”, sửa chữ, gặp nhân viên, lỗi gửi/xin bằng chứng/chuyển; có bước tiếp và thử lại. **UX07, UX09–UX14**.
+- [x] Không lộ liên hệ riêng, không có nút phạt; xin liên hệ được chỉ kênh có lưu vết và thời gian dự kiến. **UX19–UX20**.
+- [x] Phân biệt nháp / đã gửi / chờ phản hồi / chờ nhân viên / đã có quyết định; chưa có biên nhận thì không hứa bảo lưu hạn. **UX12–UX13, UX16–UX18, UX23**.
+- [x] Chỉ được G10 tại [4], G11 tại [3], G9 tại [5] trên ảnh UX-A1/UX-A2 và thao tác Chrome; đã kiểm mobile 390px. **UX02, UX06, UX09, UX24**.
+
+### 3.8 Bằng chứng kiểm tra và giới hạn (TV2)
+
+**Ngày 13/11/2026:** kiểm bằng **Chrome/157.0.8103.52**, desktop **1440×1000**, mobile **390×844**. Script bấm nút/form trên DOM thật, chọn fixture bằng điều khiển demo, đọc hội thoại/nút/log; không gán thẳng trạng thái nghiệp vụ để vượt bước. Font mạng bị chặn để kiểm font dự phòng. Đã xem ảnh các nhánh trọng tâm và mobile.
+
+**Kết quả: 24/24 lượt UX Pass; 0 lỗi JavaScript runtime. 22/22 kiểm thử model Pass** (17 có sẵn + 5 hồi quy UX). Báo cáo: [từng lượt](prototype/ux-evidence/README.md), [log, trạng thái, SHA-256 của mã đã kiểm](prototype/ux-evidence/results.json), [cách xem ảnh và chạy lại](prototype/ux-evidence/guide.md).
+
+| Lượt | Thao tác kiểm | Kết quả / ảnh |
+|---|---|---|
+| UX01–UX04 | Chưa chọn đơn; K3 hỏi phần đo; đo giỏ không tự gửi shop; chạy có/không lời doạ | Pass; log hai lượt lời doạ giống nhau; [UX-A1](prototype/ux-evidence/01-k3-g10-g11-desktop.png) |
+| UX05 | K3 bật tem mờ; ô sửa chưa có chữ; bổ sung ảnh mẫu | Pass; không trích số chưa đọc; [tem mờ](prototype/ux-evidence/02-k3-tem-mo.png) |
+| UX06–UX08 | K4 so bản 02/11 với trang 07/11; chọn không có nhãn; bật thiếu bản lúc đặt | Pass; có bước tiếp, thiếu nguồn không mở quyết định; [hai nguồn](prototype/ux-evidence/03-k4-nguon-va-bang-chung.png), [thiếu nguồn](prototype/ux-evidence/04-k4-thieu-nguon-khoa-duyet.png) |
+| UX09–UX11 | Sửa trước gửi → nháp cũ khóa → chuẩn bị lại; sửa sau gửi; demo AI dùng sai nguồn | Pass; giữ nguồn/biên nhận/tin cũ, đính chính rõ; [UX-A2](prototype/ux-evidence/05-g9-sua-tai-cho.png), [sai nguồn](prototype/ux-evidence/06-k4-dinh-chinh-sai-nguon.png) |
+| UX12–UX14 | Bật lỗi trước khi gửi/chuyển/xin bằng chứng shop; thử lại | Pass; không báo thành công giả, không bắt đầu hạn khi gửi lỗi; [lỗi gửi](prototype/ux-evidence/07-gui-loi-va-thu-lai.png) |
+| UX15–UX16 | Xem vai người bán/trưởng nhóm; +48h rồi +24h | Pass; câu hỏi đúng đơn, khóa kèm lý do, quá hạn chuyển/báo chậm, không tự quyết; [nhãn 8](prototype/ux-evidence/08-truong-nhom-khoa-duyet.png) |
+| UX17–UX18 | K1 người bán duyệt qua hộp xác nhận; sau đó người mua yêu cầu kiểm tra lại | Pass; chưa tích xác nhận thì chưa quyết; sau đóng chỉ chuyển đề nghị, không tự mở/lấy tiền |
+| UX19 | Gõ K7 trước và sau khi gửi thành công | Pass; có kênh và thời gian dự kiến đúng trạng thái; [K7](prototype/ux-evidence/09-k7-kenh-va-thoi-gian.png) |
+| UX20–UX22 | Gõ tin K6/K8/K10 trên đơn dựng gần nhất | Pass trong phạm vi xấp xỉ; đúng thứ tự tin, vẫn xử lý đơn, xin đúng bằng chứng, không nhầm đổi địa chỉ với xin liên hệ |
+| UX23–UX24 | K9 so nháp với biên nhận; thử K3/K4 và hộp sửa ở mobile | Pass; không tràn ngang; [biên nhận](prototype/ux-evidence/10-k9-bien-nhan.png), [mobile](prototype/ux-evidence/11-k3-mobile-390.png), [G9 mobile](prototype/ux-evidence/12-g9-mobile-390.png) |
+
+**Câu K7 bổ sung:** “Mình không chia sẻ số điện thoại hoặc địa chỉ của bên kia để bảo vệ thông tin và giữ bằng chứng trao đổi; bạn có thể dùng kênh chat chính thức có lưu vết.” Sau câu này:
+- Chưa gửi thành công: nói rõ hạn người bán **chưa bắt đầu**; 48 giờ chỉ tính từ khi gửi thành công; nhân viên dự kiến 24 giờ sau khi nhận hồ sơ.
+- Đã gửi: nêu giờ hết hạn thực tế của phiên và số giờ còn lại; không đặt lại 48 giờ từ lúc người dùng hỏi. Các mốc đều dựng.
+
+**Giới hạn:** ảnh nhãn mô phỏng bằng chữ, không chứng minh chất lượng OCR/AI thật. K6–K8/K10 thử trên đơn dựng gần nhất; chưa có fixture riêng K5 với hai ảnh toàn cảnh hay K9 có sẵn biên nhận. [5] chỉ sửa chữ, chưa thay file ảnh/đổi đơn mà giữ nháp. Chưa kiểm điện thoại vật lý hoặc vận hành thật. Bộ ảnh cũ `prototype/anh-s7/` mà §7 dẫn không có trong checkout này; ảnh TV2 lưu riêng, không coi là đã khôi phục ảnh cũ. Không tính các ca chưa thử thành Pass.
 
 ---
 
@@ -484,7 +523,7 @@ Một trợ lý được tự hoàn tiền sẽ hứa: **"AI giải quyết khi�
 - Quy tắc thời gian triển khai theo phần TV3 chốt ở §4.3: người bán **48 giờ**, trưởng nhóm **24 giờ**, hạn trả hàng **7 ngày** (§4.7). §1.7, §3 và §4 dùng cùng các mốc này.
 - **Lệch cục bộ sau pull:** bản sửa TV4 chưa commit hiện vẫn dùng người bán **24 giờ** theo yêu cầu trước đó; code và kiểm thử 27 ca đã được giữ nguyên. Spec remote mới chốt **48 giờ**; chưa tự đổi lại logic trong thao tác pull này.
 
-### 5.4 Kiểm tra và bằng chứng còn thiếu
+### 5.4 Kiểm tra và bằng chứng đã bổ sung (TV2)
 
 - Chạy node prototype/model.test.cjs: **27/27 kiểm thử đạt** tại thời điểm triển khai, bao gồm quyền duyệt, lời doạ không đổi nhánh, điều kiện hai bên, lỗi gửi/chuyển, đính chính, hạn K9, dữ liệu ảnh mờ, K5 không hỏi lặp, K7 có thời gian phản hồi và K10 tách yêu cầu.
 - Kiểm tra cú pháp JavaScript và git diff --check.
@@ -618,3 +657,16 @@ Nhóm gọi là "ca lạ" những tin nhắn hoặc thao tác **không nằm tro
 - **Nếu có thêm thời gian, nhóm sẽ thêm kịch bản nào vào §2:** một ca **từ ngữ trùng nhưng ý khác**, gộp L1, L5, L8, L9: người mua nhắc "địa chỉ", "số điện thoại", "chưa nhận" theo nghĩa khác với nghĩa luật đang bắt. Ca này không đổi lựa chọn K3/K4 ở §2.4, vì mức hại tối đa là 2 và tool tài chính không bị chạm. Nhưng bốn ca lạ cùng một gốc cho thấy bộ định tuyến từ khoá vừa bắt nhầm (L5, L8) vừa bỏ sót (L2, L9). Lỗi kiểu này AI "trông như đang làm đúng" (từ chối lịch sự, xin bằng chứng hợp lý), nên khó bị phát hiện hơn mức nhóm đã chấm cho K7, K10 ở §2.4.
 - **Phần giữ được:** hai ca đắt nhất K3, K4 đạt 4/4 lượt đã thử; lời doạ không đổi nhánh; không lượt nào AI gọi `thuc_hien_hoan_tien` hay `tu_choi_khieu_nai`; năm đường lỗi ở §3.7 đều có bước tiếp theo.
 - **Nếu có thêm thời gian, nhóm sẽ thêm kịch bản nào vào §2**: một ca **từ ngữ trùng nhưng ý khác** như L1 (người mua nhắc "địa chỉ", "số điện thoại" của chính mình). Ca này không đổi lựa chọn K3/K4 ở §2.4, vì mức hại chỉ 1 và tool tài chính không bị chạm; nhưng nó cho thấy bộ định tuyến dựa trên từ khoá có khả năng lọt cao hơn nhóm chấm.
+
+### 7.4 Cập nhật sau lượt kiểm UX của TV2 (13/11/2026)
+
+| Điểm TV1/lead nêu | Thay đổi và kiểm lại | Bằng chứng hiện tại |
+|---|---|---|
+| K3 không có tem mờ | Thêm điều khiển tem mờ; không trích số chưa đọc, ô sửa trống, có bổ sung/chuyển người | **UX05 Pass**, ảnh 02 trong bộ TV2 |
+| K7 thiếu dự kiến phản hồi | Bổ sung câu chỉ kênh chính thức, phân biệt chưa bắt đầu hạn với giờ hết hạn đã có, dự kiến nhân viên 24 giờ | **UX19 Pass**, ảnh 09 |
+| K6 thiếu hướng dẫn tiếp, thứ tự tin sai (L3) | Tin người mua trước, câu trả lời tiếp, rồi mới thông báo chuyển; đơn của người mua vẫn được xử lý | **UX20 Pass** |
+| Lời doạ “đăng lên báo” bị bỏ sót (L2) | Nhận diện và lưu ngữ cảnh, không đổi nhánh hoặc thành căn cứ | **UX20 Pass** |
+| K8 chỉ ghi nhận, thiếu món cần bổ sung | Hỏi đúng ảnh nhãn và lý do cho đơn đang xét, không dựa tiếng xấu shop | **UX21 Pass, xấp xỉ trên K4** |
+| K10 nhầm đổi địa chỉ với xin liên hệ (L1) | Chỉ từ chối khi xin liên hệ bên kia; đổi địa chỉ được tách ra kênh khác, khiếu nại vẫn tiếp tục | **UX22 Pass, xấp xỉ trên K9** |
+
+Đây là **kết quả kiểm lại UX**, không phải bổ sung ca lạ nhận từ người xem trong demo. K5 với hai ảnh toàn cảnh, K9 có biên nhận sẵn từ trước, việc chốt giả định chính sách và bằng chứng demo thật vẫn cần người phụ trách tương ứng hoàn thiện. Checklist TV2 đã hoàn tất tại §3.7.

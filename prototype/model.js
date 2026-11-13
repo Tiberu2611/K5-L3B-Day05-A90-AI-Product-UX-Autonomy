@@ -58,7 +58,7 @@
   }
   function transfer(s, type) {
     if (!s.chosen || s.escalatedAt !== null) return;
-    op(s, 'transfer', 'chuyen_truong_nhom', 'AI', 'Chuyển hồ sơ cùng nguồn, đính chính và phần bất đồng. Loại ca: ' + (type || s.type), function () { s.escalatedAt = s.now; s.type = type || s.type; say(s, 'Đã chuyển hồ sơ — chờ nhân viên. Nhân viên nhận nguồn đã có và phần chưa xác minh; chưa hoàn tiền hoặc từ chối.', 'system'); });
+    op(s, 'transfer', 'chuyen_truong_nhom', 'AI', 'Chuyển hồ sơ cùng nguồn, đính chính và phần bất đồng. Loại ca: ' + (type || s.type), function () { s.escalatedAt = s.now; s.type = type || s.type; say(s, 'Đã chuyển hồ sơ — chờ nhân viên. Nhân viên nhận nguồn đã có và phần chưa xác minh; chưa hoàn tiền hoặc từ chối. Dự kiến xử lý trong 24 giờ kể từ lúc chuyển thành công theo quy tắc dựng; nếu chậm, hệ thống báo quản lý ca, AI không quyết thay.', 'system'); });
   }
   function choose(s) {
     if (s.chosen) return;

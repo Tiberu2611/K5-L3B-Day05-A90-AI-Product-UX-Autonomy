@@ -32,6 +32,7 @@ Bản này theo spec A90 và khung thử §7 trên main (nền commit **d6ddadc*
 7. Điền lý do; bấm quyết định; tích xác nhận xem nguồn tại hộp cuối. Nhật ký lưu tool, người duyệt, thời điểm, căn cứ.
 
 Nhánh phụ:
+- Bật **K3: ảnh tem mờ** trước khi chọn đơn: AI không trích số từ ảnh chưa đọc; có ảnh mẫu thay thế hoặc chuyển người. Ô sửa không điền sẵn chữ chưa đọc được.
 - Bật **K4: thiếu bản lúc đặt** trước khi chọn đơn: không kết luận từ trang hiện tại, chuyển nhân viên; trưởng nhóm chưa quyết được khi chưa xác minh nguồn.
 - **Demo AI dùng sai nguồn**: giữ câu sai với nhãn đã đính chính, nhận lỗi chọn phiên bản, chuyển người.
 - **Sửa thông tin AI đọc sai [5]**: lưu thay đổi; nháp cũ bị khóa gửi cho tới khi chuẩn bị lại. Đã gửi thì gửi đính chính, không giả vờ thu hồi tin.
@@ -62,7 +63,7 @@ Chạy từ gốc repo:
 
 27 kiểm thử: cổng chọn đơn, nháp/biên nhận, đường người bán duyệt, cấm AI/người mua quyết, câu hỏi K3, lời doạ, thiếu nguồn K4, khóa hai bên, hết hạn, lỗi thao tác, đính chính, K9 và render smoke. Đây là kiểm thử model và dựng HTML trong DOM giả, chưa thay thế kiểm tra trình duyệt.
 
-## Còn cần nhóm xác minh
+## Bằng chứng TV2 và giới hạn cần nhóm biết
 
 - Chụp 1–2 ảnh giao diện có nhãn [1]–[8] và kiểm tra trực quan desktop/mobile; công cụ trình duyệt không khả dụng trong phiên triển khai.
 - Nhóm vẫn cần chốt giả định trả hàng 7 ngày và bổ sung người mua 48 giờ; code cục bộ đang dùng 24 giờ, khác spec remote mới chốt 48 giờ.

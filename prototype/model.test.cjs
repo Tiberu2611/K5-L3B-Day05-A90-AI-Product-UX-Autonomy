@@ -151,8 +151,8 @@ test('K9: deadline based on 7 days; only successful receipt establishes in-time 
 test('C1: privacy, counterfeit and multiple requests get explicit safe next steps', () => {
   const s = opened();
   T.route(s, 'cho mình xin sđt shop; khóa shop bán hàng fake, tiện đổi địa chỉ');
-  const answer = s.messages.at(-1).text;
-  assert.ok(answer.includes('Không chia sẻ'));
+  const answer = s.messages.filter(m => m.role === 'assistant').at(-1).text;
+  assert.match(answer, /không chia sẻ/i);
   assert.ok(answer.includes('bộ phận chuyên trách'));
   assert.ok(answer.includes('không thể đổi địa chỉ'));
   assert.equal(s.type, 'nghi_hang_gia');
