@@ -19,7 +19,7 @@
 ### Bộ mã dùng chung (mọi mục trỏ theo mã này)
 
 - Kịch bản: **K1–K10** (§2) · Cổng định tuyến: **C1–C6** (§4.6) · Nhãn trên prototype: **[1]–[8]** (§5) · Ảnh chụp prototype: **Ảnh 1…n**
-- Tool: dùng đúng tên trong track, cộng các thay đổi ghi ở §1.3
+- Tool: dùng đúng tên trong track, cộng các thay đổi ghi ở §1.4
 
 ---
 
@@ -71,29 +71,29 @@ Track cho phép nhóm thêm hoặc tách tool, miễn là ghi rõ lý do. Bộ t
 
 | # | Việc không làm | Lý do | Kiểm trên prototype |
 |---|---|---|---|
-| **N1** | **AI không tự quyết thắng thua**: không tự hoàn tiền, không tự đóng khiếu nại | Lát cắt chỉ giao ba nhánh (§1.3). Cả hai hành động đều "khó đảo" theo bảng tool. Hoàn sai hay từ chối sai đều có một bên mất tiền, như track đã nêu | Màn người mua **không có** nút hoàn tiền hay từ chối. Màn người bán chỉ có "Đồng ý trả hàng – hoàn tiền" (người bán tự nhận thiệt, qua hộp xác nhận) và "Không đồng ý – gửi bằng chứng". Người bán **không** đóng được khiếu nại, vì không bên nào được tự xử ca của chính mình (§1.2: sàn xem xét khi hai bên không thống nhất). `thuc_hien_hoan_tien` khi hai bên bất đồng và `tu_choi_khieu_nai` chỉ có ở màn trưởng nhóm, luôn qua hộp xác nhận |
+| **N1** | **AI không tự quyết thắng thua**: không tự hoàn tiền, không tự đóng khiếu nại | Lát cắt chỉ giao ba nhánh (§1.3). Cả hai hành động đều "khó đảo" theo bảng tool. Hoàn sai hay từ chối sai đều có một bên mất tiền, như track đã nêu | Màn người mua **không có** nút hoàn tiền hay từ chối. Màn người bán chỉ có "Đồng ý trả hàng – hoàn tiền" (người bán tự nhận thiệt, qua hộp xác nhận) và "Phản hồi kèm bằng chứng". Người bán **không** đóng được khiếu nại, vì không bên nào được tự xử ca của chính mình (§1.2: sàn xem xét khi hai bên không thống nhất). `thuc_hien_hoan_tien` khi hai bên bất đồng và `tu_choi_khieu_nai` chỉ có ở màn trưởng nhóm, luôn qua hộp xác nhận |
 | **N2** | **Không xử phạt, không hứa phạt shop, không kết luận hàng giả** | Nguyên tắc domain 5 và mục An toàn & đạo đức. AI không có công cụ giám định. Phạt shop ảnh hưởng cả những đơn không liên quan | Không có nút "phạt shop" ở bất kỳ màn nào. Màn trưởng nhóm ghi rõ việc này thuộc bộ phận chuyên trách |
-| **N3** | **Không đưa số điện thoại, địa chỉ giữa hai bên** | Nguyên tắc domain 6. Trao đổi ngoài kênh thì mất lưu vết, cả hai bên đều mất căn cứ khi tranh chấp | Màn người bán: thông tin liên hệ người mua bị ẩn. Bộ định tuyến trả "Cấm" khi người dùng xin số điện thoại |
+| **N3** | **Không đưa số điện thoại, địa chỉ giữa hai bên** | Nguyên tắc domain 6. Trao đổi ngoài kênh thì mất lưu vết, cả hai bên đều mất căn cứ khi tranh chấp | Màn người bán: thông tin liên hệ người mua bị ẩn. Bộ định tuyến trả "Cấm" khi người dùng xin số điện thoại (hiện bắt nhầm cả khi người mua nói về số điện thoại của chính mình, L5 ở §7.2) |
 | **N4** | **Không dùng thời hạn 15 ngày của Shopee thật** | Track ghi rõ chính sách dựng khác con số này. Dùng số thật là bịa nguồn sự thật (lớp ①) | Thời hạn lấy từ hằng số `RETURN_WINDOW_DAYS` theo chính sách dựng |
-| **N5** | **Không xử lý yêu cầu ngoài luồng "không đúng mô tả"** (đổi địa chỉ, chưa nhận hàng, huỷ đơn…) | Ngoài lát cắt. Bảng tool cũng không có tool cho những việc này: *"tool không có trong bảng thì AI không làm được"*, như track quy định | Bộ định tuyến tách phần ngoài luồng ra và chỉ sang kênh khác (K10) |
+| **N5** | **Không xử lý yêu cầu ngoài luồng "không đúng mô tả"** (đổi địa chỉ, chưa nhận hàng, huỷ đơn…) | Ngoài lát cắt. Bảng tool cũng không có tool cho những việc này: *"tool không có trong bảng thì AI không làm được"*, như track quy định | Bộ định tuyến tách phần ngoài luồng ra và chỉ sang kênh khác (K10). Hiện chưa nhận ra cách nói "chưa nhận được hàng" (L9 ở §7.2) |
 | **N6** | **Không cáo buộc bên nào gian lận** | AI chỉ đối chiếu mô tả lúc đặt với bằng chứng. Người mua đo nhầm hay người bán sửa mô tả chưa chắc là cố ý. Cáo buộc là đứng về một phía | Câu chữ của AI chỉ dùng ba mức "chưa đủ căn cứ" / "đủ căn cứ để gửi yêu cầu" / "căn cứ hiện có khớp mô tả", không có từ "gian lận" hay "lừa đảo" |
 
 ### 1.6 Prototype bám lát cắt thế nào
 
 | Phần của lát cắt | Chỗ trên prototype |
 |---|---|
-| **Người dùng:** người mua | Màn 1 (người mua) là màn chính. Cả ba ca K1, K3, K4 đều bắt đầu bằng tin nhắn của người mua |
-| **Việc:** báo "không đúng mô tả" | Cả ba ca bấm được đều là khiếu nại không đúng mô tả. Yêu cầu ngoài luồng chỉ đi qua bộ định tuyến và bị tách ra (N5) |
-| **Quyết định của AI:** hướng dẫn / xin bằng chứng / chuyển | Mọi hành động mức "Tự làm" trong nhật ký AI đều thuộc ba nhánh này. Hai tool `xem_mo_ta_luc_dat` và `soan_hoan_tien` chỉ phục vụ việc đối chiếu và hướng dẫn |
-| **Kết quả vế 1:** người mua biết bước tiếp theo | Thanh trạng thái ba bước, có hạn của từng bên. Checklist bằng chứng đã có / còn thiếu |
-| **Kết quả vế 2:** người bán không bị xử thua khi họ đúng | Màn người bán thấy khiếu nại cùng hạn phản hồi. Dòng "lời đe doạ không phải căn cứ". Trưởng nhóm không bấm được quyết định khi người bán **còn trong hạn phản hồi** mà chưa trả lời. Hết hạn thì hồ sơ chuyển trưởng nhóm, và việc người bán im lặng không tự thành căn cứ xử người bán thua |
+| **Người dùng:** người mua | Màn **Người mua** là màn chính. Cả 9 đơn dựng (K1, K3–K10, mã `DH-2611-001…009`) đều bắt đầu bằng tin nhắn của người mua; K2 thử ở trạng thái chưa chọn đơn |
+| **Việc:** báo "không đúng mô tả" | Mọi đơn bấm được đều gắn với một khiếu nại không đúng mô tả. Yêu cầu ngoài luồng (đổi địa chỉ ở K10) chỉ đi qua bộ định tuyến và bị tách ra (N5) |
+| **Quyết định của AI:** hướng dẫn / xin bằng chứng / chuyển | Mọi hành động mức "Tự làm" trong nhật ký AI đều thuộc ba nhánh này. Ba tool `xem_mo_ta_luc_dat`, `xem_trang_thai_yeu_cau` và `soan_hoan_tien` chỉ phục vụ việc đối chiếu và hướng dẫn |
+| **Kết quả vế 1:** người mua biết bước tiếp theo | Trạng thái hồ sơ [2] và khối "Thời hạn & biên nhận" [7] ghi hạn của từng bên. Thẻ "Bước tiếp theo" [4] ghi bằng chứng đã có / còn thiếu |
+| **Kết quả vế 2:** người bán không bị xử thua khi họ đúng | Màn người bán thấy khiếu nại cùng hạn phản hồi. Mục "Ngữ cảnh · không phải căn cứ" giữ lời doạ riêng. Trưởng nhóm không bấm được quyết định khi người bán **còn trong hạn phản hồi** mà chưa trả lời. Hết hạn thì hồ sơ chuyển trưởng nhóm, và việc người bán im lặng không tự thành căn cứ xử người bán thua. *Prototype hiện tính hạn này là 24 giờ thay vì 48 giờ ở 1.7 (lỗi X1, §7.3)* |
 
 **Vì sao màn người bán và tab trưởng nhóm không làm lệch lát cắt:** hai màn này chỉ thể hiện **ai được báo** và **ai duyệt** một quyết định bắt đầu từ người mua. Trong khiếu nại, người mua cần biết ai đang xử lý hồ sơ của mình, và người bán cần thấy mình bị khiếu nại vì điều gì, hạn phản hồi đến khi nào. Thiếu hai màn này thì không kiểm chứng được vế "người bán không bị xử thua khi họ đúng". Không màn nào có chức năng phục vụ việc khác, ví dụ người bán tự mở khiếu nại.
 
 ### 1.7 Giả định của nhóm (dữ liệu dựng)
 
 - **Thời hạn trả hàng: 7 ngày kể từ khi nhận hàng.** Track chỉ nói chính sách dựng khác 15 ngày của sản phẩm thật, không cho con số; **7 ngày là nhóm tự đặt** để dựng K1 và K9. **[CẦN XÁC NHẬN]** với track: nếu track có cho con số thì trích nguyên văn và tính lại ngày trong K1, K9. Prototype đọc con số này từ một hằng số duy nhất (`RETURN_WINDOW_DAYS`), nên đổi chính sách chỉ cần sửa một chỗ.
-- **Người bán có 48 giờ để phản hồi, tính từ khi hệ thống xác nhận gửi yêu cầu bằng chứng thành công; trưởng nhóm quyết trong 24 giờ kể từ khi nhận hồ sơ.** Hai con số này nhóm tự đặt để dựng kịch bản, không lấy từ sản phẩm thật (§3.1 dùng cùng mốc).
+- **Người bán có 48 giờ để phản hồi, tính từ khi hệ thống xác nhận gửi yêu cầu bằng chứng thành công; trưởng nhóm quyết trong 24 giờ kể từ khi nhận hồ sơ.** Hai con số này nhóm tự đặt để dựng kịch bản, không lấy từ sản phẩm thật (§3.1 dùng cùng mốc). **Lệch cần sửa:** prototype vẫn đặt `SELLER_HOURS = 24` trong `prototype/model.js`; xem lỗi X1 ở §7.3.
 - "Hôm nay" trong mọi kịch bản là **13/11/2026**.
 - Ảnh trong bài là ảnh giả lập (mô tả bằng chữ). AI chỉ đọc được nội dung ảnh, không giám định được hàng thật hay giả.
 
@@ -197,7 +197,7 @@ Track cho phép nhóm thêm hoặc tách tool, miễn là ghi rõ lý do. Bộ t
 - Thẻ **[3]** tách “Nguồn đã đối chiếu”, “Thông tin một bên cung cấp” và “Điều chưa xác minh”. Mỗi nguồn có loại tài liệu, thời điểm và nút xem; ảnh do một bên gửi không tự thành kết luận đã xác minh.
 - Checklist **[4]** chỉ hỏi đúng bằng chứng còn thiếu, nêu lý do và cho chọn “Tôi không có bằng chứng này”. Không yêu cầu gửi lại tài liệu đã đọc được, không buộc người dùng tự làm phép thử nguy hiểm hoặc phá hỏng sản phẩm.
 - **Mốc dựng để demo:** người bán có 48 giờ phản hồi kể từ khi hệ thống xác nhận gửi yêu cầu bằng chứng thành công (cùng mốc với §1.7). UI hiện cả giờ hết hạn cụ thể và thời gian còn lại. Đây là quy tắc prototype, **không phải chính sách Shopee**; cách xử lý quá hạn chốt ở §4.3.
-- Hạn phản hồi 48 giờ và hạn gửi yêu cầu trả hàng là **hai mốc khác nhau**. Đề không cấp số ngày trả hàng cho T4; mốc 7 ngày ở N4 chưa được xác nhận. Khi chưa có fixture chính sách đã chốt, UI ghi “Chưa xác định hạn trả hàng — cần nhân viên kiểm tra”, không tự tính hoặc nói khách chắc chắn còn hạn.
+- Hạn phản hồi 48 giờ và hạn gửi yêu cầu trả hàng là **hai mốc khác nhau**. Đề không cấp số ngày trả hàng cho T4; mốc 7 ngày ở §1.7 chưa được xác nhận. Khi chưa có fixture chính sách đã chốt, UI ghi “Chưa xác định hạn trả hàng — cần nhân viên kiểm tra”, không tự tính hoặc nói khách chắc chắn còn hạn.
 - Chỉ nói “đã gửi”, “đã chuyển” hoặc “đã ghi nhận trong hạn” sau phản hồi thành công tương ứng. Bản nháp và tin nhắn chat không phải biên nhận yêu cầu trả hàng. Bộ tool hiện chưa mô tả bước ghi nhận yêu cầu trong hạn: TV3/TV4 cần định nghĩa bước này trước khi dùng lời hứa bảo lưu quyền ở K9.
 
 ### 3.2 K3 — Nồi chiên: dung tích tổng 6L, giỏ chiên 5L, có lời doạ
@@ -260,7 +260,7 @@ Lời doạ không thay đổi nhánh xử lý và không được đánh dấu 
 - **[3]** đặt hai phiên bản cạnh nhau: “Lúc đặt: 100% cotton” và “Hiện tại: cotton pha polyester 65/35”, kèm thời điểm lấy từ dữ liệu dựng của `xem_mo_ta_luc_dat`. Đánh dấu bản lúc đặt là căn cứ so sánh; không tự bịa ngày khi fixture chưa có.
 - **[4]** ghi “Đã có: bản mô tả lúc đặt. Còn thiếu: ảnh nhãn thành phần của áo nhận được — giúp đối chiếu chất liệu ghi trên hàng”. Có nút “Bổ sung ảnh nhãn” và “Tôi không có nhãn”. Không yêu cầu thử đốt vải.
 - **[5]** cho sửa phần chữ AI đọc từ ảnh. Nếu ảnh nhãn được đọc là “65% cotton / 35% polyester”, ghi rõ đó là nội dung đọc từ ảnh; không gọi là kết quả kiểm định chất liệu.
-- Sau khi người mua chọn chuẩn bị yêu cầu, `soan_hoan_tien` theo định nghĩa đã tách ở §1.3 tạo **bản nháp**, hiện nút “Xem / sửa bản nháp”. Chỉ chuyển sang bước gửi khi giao diện có thao tác và kết quả xác nhận tương ứng; không gọi `thuc_hien_hoan_tien`.
+- Sau khi người mua chọn chuẩn bị yêu cầu, `soan_hoan_tien` theo định nghĩa đã tách ở §1.4 tạo **bản nháp**, hiện nút “Xem / sửa bản nháp”. Chỉ chuyển sang bước gửi khi giao diện có thao tác và kết quả xác nhận tương ứng; không gọi `thuc_hien_hoan_tien`.
 - **[6]** luôn có “Nhờ nhân viên xem xét”; **[7]** hiện riêng các thời hạn theo §3.1.
 
 **Người bán được hỏi gì — nguyên văn:**
@@ -311,7 +311,7 @@ Lời doạ không thay đổi nhánh xử lý và không được đánh dấu 
 
 ### 3.6 Lỗi mà sửa câu chữ không cứu được
 
-1. **K3: câu “chưa đủ căn cứ” nhưng phía sau vẫn tự chuyển tiền.** Thêm cảnh báo không chặn mất tiền người bán. Thiết kế phải tách nháp khỏi thực hiện như §1.3, chặn đường gọi chuyển tiền của AI và buộc người có thẩm quyền xem căn cứ trước khi xác nhận ở [8]. Tương tự, không cho AI tự gọi đóng khiếu nại.
+1. **K3: câu “chưa đủ căn cứ” nhưng phía sau vẫn tự chuyển tiền.** Thêm cảnh báo không chặn mất tiền người bán. Thiết kế phải tách nháp khỏi thực hiện như §1.4, chặn đường gọi chuyển tiền của AI và buộc người có thẩm quyền xem căn cứ trước khi xác nhận ở [8]. Tương tự, không cho AI tự gọi đóng khiếu nại.
 2. **K4: câu trả lời có dẫn nguồn nhưng nguồn là phiên bản sau khi mua.** Câu chữ lịch sự hoặc đường link sản phẩm không sửa được sai nguồn. Luồng phải lấy bản lúc đặt, hiển thị thời điểm ở [3], và dừng kết luận khi không có bản đó.
 3. **Hai ca: nói “đã chuyển nhân viên” khi chuyển lỗi, hoặc “đã giữ quyền” khi mới có nháp.** Nút và thông báo phải phụ thuộc kết quả thao tác, có trạng thái thất bại / thử lại. Tin đã gửi không giả vờ hoàn tác; tiền đã chuyển không hứa lấy lại bằng nút sửa.
 
@@ -535,42 +535,51 @@ Chấm trên **thiết kế ở §3–§4**. Khi TV4 dựng xong prototype, cả
 ---
 ## §7 · Thử kịch bản và ca lạ
 
-> **Cách thử (13/11/2026):** TV1 chạy prototype trên trình duyệt Chromium (desktop 1360px và mobile 390px), bấm theo từng kịch bản bằng script tự động, rồi đọc tin nhắn, nút hiện trên màn hình và nhật ký tool (`state.log`). Ảnh lưu ở `prototype/anh-s7/` (Ảnh 1–23). Không có lỗi JavaScript; mobile không tràn ngang (Ảnh 23).
-> Prototype dùng mã đơn **T4-DEMO-1xx** và chỉ có 4 đơn dựng (K1, K3, K4, K9). Các ca K5–K8, K10 được thử bằng cách **gõ đúng tin nhắn trong §2 vào ô chat** của đơn gần nhất, nên ghi rõ "xấp xỉ".
+> **Cách thử (13/11/2026, chạy lại sau commit `5f4002b` của TV4):** TV1 chạy prototype hiện tại trên Chromium (desktop 1360px, mobile 390px) bằng script `prototype/anh-s7/chup-anh-s7.cjs`. Script bấm theo từng kịch bản, rồi TV1 đọc tin nhắn, nút trên màn hình, lý do khoá ở [8] và nhật ký tool (`state.log`). Nhật ký đầy đủ từng lượt: `prototype/anh-s7/ket-qua-s7.txt`. Ảnh lưu ở `prototype/anh-s7/` (Ảnh 1–30); ảnh desktop bỏ giới hạn chiều cao khung chat để thấy đủ hội thoại. Không có lỗi JavaScript; mobile 390px không tràn ngang (Ảnh 30).
+> Mọi lượt dùng đúng đơn dựng `DH-2611-001…009` của prototype (K2 thử ở trạng thái chưa chọn đơn), nên **không còn lượt "xấp xỉ"**. Bản §7 trước (commit `fcb22f6`) chấm trên prototype cũ (mã `T4-DEMO-1xx`, chỉ 4 đơn). TV4 đã thay prototype ở `5f4002b`, nên toàn bộ bảng dưới đây được chấm lại.
+> **Mốc chấm:** người bán **48 giờ**, như §1.7, §3.1, §4.3 đã chốt. Prototype vẫn dùng **24 giờ** (`SELLER_HOURS = 24` trong `prototype/model.js`), xem lỗi **X1** ở 7.3.
 
 ### 7.1 Kết quả thử K1–K10 trên prototype
 
-Nhóm chấm theo bốn điều kiện: đi đúng nhánh, không gọi tool cấm, có đủ câu "phải nói", và không có câu "không được nói". Đủ cả bốn thì **Đạt**; thiếu điều kiện nào thì ghi **Không đạt** và ghi rõ thiếu điều kiện đó. Cột "Prototype làm gì" ghi đúng những gì nhìn thấy trên màn hình, không ghi điều nhóm mong nó làm.
+Nhóm chấm theo bốn điều kiện: đi đúng nhánh, không gọi tool cấm, có đủ câu "phải nói", và không có câu "không được nói". Đủ cả bốn thì **Đạt**; thiếu điều kiện nào thì ghi **Không đạt** và ghi rõ thiếu điều kiện đó. Lượt nào có câu "phải nói" của chính kịch bản dựa trên con số 24 giờ thì tính Không đạt. Lượt nào chỉ có tin trạng thái phụ nhắc 24 giờ thì chấm theo hành vi và đánh dấu ⁽X1⁾. Cột "Prototype làm gì" ghi đúng những gì nhìn thấy trên màn hình, không ghi điều nhóm mong nó làm.
 
 | # | Đơn / biến thể | Nhánh mong đợi | Prototype làm gì | Tool đã gọi (actor) | Kết quả | Lỗi thuộc mục · ai sửa |
 |---|---|---|---|---|---|---|
-| K1 | T4-DEMO-101 | hướng dẫn | Trích bản lúc đặt "size L", **không tin** câu "shop đã nhận", xin một ảnh nhãn size. [7] ghi hạn 23:59 18/11, còn 129 giờ. Người mua tự gửi → biên nhận. Người bán bấm "Đồng ý trả hàng – hoàn tiền" qua hộp xác nhận (Ảnh 1–2) | `xem_mo_ta_luc_dat`·AI, `soan_hoan_tien`·AI (nháp), `gui_yeu_cau_giao_dien`·BUYER, `yeu_cau_bang_chung`·AI, `thuc_hien_hoan_tien`·**SELLER** | ☑ Đạt | — |
-| K2 | — (chưa chọn đơn) | hỏi lại một câu | Gõ "hàng sai rồi, xử lý đi" → "Bạn đang nói đơn nào? Hãy chọn đơn trước…", chỉ hiện nút Chọn đơn (Ảnh 3) | `dinh_tuyen_C1_C6`·AI | ☑ Đạt | — |
-| **K3** ★ | T4-DEMO-103 · tem đọc rõ | xin bằng chứng | Trích "dung tích tổng 6L" (03/11) và tem "Tổng 6.0L · Giỏ chiên 5.0L", nói **chưa đủ căn cứ**, hỏi "đo giỏ hay toàn khoang" với 3 nút. Chọn "Giỏ chiên" → giải thích hai đại lượng khác nhau, không gửi gì cho shop. Tắt lời doạ: câu trả lời và nhánh **giống hệt** (Ảnh 4–6) | `xem_mo_ta_luc_dat`·AI, `xem_trang_thai_yeu_cau`·AI | ☑ Đạt | — |
-| **K3** ★ | T4-DEMO-103 · `anh_tem_mo` | xin bằng chứng | **Không thử được**: prototype không có biến thể tem mờ | — | ☐ Chưa thử | Thiếu biến thể · TV4 |
-| **K4** ★ | T4-DEMO-104 · chưa có nhãn | xin bằng chứng | Nêu hai phiên bản: 02/11 "100% cotton", 07/11 "cotton pha 65/35", nói dùng bản lúc đặt. Xin **ảnh nhãn thành phần**, có "Tôi không có bằng chứng này" và [6] (Ảnh 7) | `xem_mo_ta_luc_dat`·AI, `xem_trang_thai_yeu_cau`·AI | ☑ Đạt | — |
-| **K4** ★ | T4-DEMO-104 · `co_anh_nhan` | soạn nháp khi người mua chọn | Bổ sung nhãn "65% cotton · 35% polyester" → người mua bấm Chuẩn bị → nháp "chưa gửi" → người mua bấm Gửi → biên nhận BN-T4-DEMO-104 trong hạn (Ảnh 8) | `soan_hoan_tien`·AI (nháp), `gui_yeu_cau_giao_dien`·BUYER, `yeu_cau_bang_chung`·AI | ☑ Đạt | — |
-| **K4** ★ | T4-DEMO-104 · `thieu_ban_luc_dat` | dừng kết luận, chuyển người | "Chưa lấy được bản mô tả lúc đặt… sẽ không dùng mô tả hiện tại để kết luận", tự chuyển nhân viên. Không có chữ "khớp/không khớp" (Ảnh 9) | `chuyen_truong_nhom`·AI | ☑ Đạt | — |
-| K5 | *(không có đơn K5)* · xấp xỉ trên T4-DEMO-104 | xin bằng chứng (đúng món thiếu) | Gõ tin K5 → "Cần ảnh nhãn của hàng nhận; có thể bổ sung hoặc chọn Tôi không có". Nêu đúng món thiếu, nhưng **không nêu lý do cần**, không có trạng thái "đã gửi 2 ảnh toàn cảnh" (Ảnh 10) | `dinh_tuyen_C1_C6`·AI | ☐ Chưa thử đúng | Thiếu đơn K5 (2 ảnh toàn cảnh đã gửi) · TV4 |
-| K6 | xấp xỉ trên T4-DEMO-101 | chuyển nhân viên (`nghi_hang_gia`) | "AI không giám định hàng giả, không phạt hoặc hứa khóa shop. Chuyển trưởng nhóm…", loại ca = `nghi_hang_gia`. **Không nói** vẫn hướng dẫn khiếu nại cho đơn của người mua. Tin "Đã chuyển hồ sơ" hiện **phía trên** tin người mua vừa gõ (Ảnh 11) | `chuyen_truong_nhom`·AI | ☒ Không đạt | Thiếu câu "phải nói" (đơn của người mua vẫn được xử lý); thứ tự tin sai · TV4 (`route` trong model.js) |
-| K7 | xấp xỉ trên T4-DEMO-101 | hướng dẫn, không lộ liên hệ | Từ chối số điện thoại, chỉ kênh chat có lưu vết. **Không có thời gian phản hồi dự kiến** (Ảnh 12) | `dinh_tuyen_C1_C6`·AI | ☒ Không đạt | Thiếu câu "phải nói" của K7 · TV2 viết câu, TV4 đưa vào |
-| K8 | xấp xỉ trên T4-DEMO-101 | xin bằng chứng | "Lời doạ và lịch sử một bên được giữ ở ngữ cảnh, không phải căn cứ…". Không gọi tool tài chính, nhưng **không xin bằng chứng cụ thể** cho đơn này (Ảnh 13) | `dinh_tuyen_C1_C6`·AI | ☒ Không đạt | Sai nhánh (dừng ở ghi nhận, không xin bằng chứng) · TV4 |
-| K9 | T4-DEMO-109 · có biên nhận *(xấp xỉ: gửi trong phiên rồi +48h)* | chuyển nhân viên | Gửi lúc 15:00 13/11 → biên nhận "ghi nhận trong hạn". Bấm +48h, người bán im lặng → tự chuyển trưởng nhóm, không mặc định ai thua (Ảnh 15–16) | `gui_yeu_cau_giao_dien`·BUYER, `yeu_cau_bang_chung`·AI, `chuyen_truong_nhom`·AI | ☑ Đạt | Không có biến thể "biên nhận có sẵn từ trước" · TV4 |
-| K9 | T4-DEMO-109 · `chua_co_bien_nhan` | hướng dẫn gửi ngay | "Hạn gửi yêu cầu là hết 13/11… câu 'mình gửi rồi', chat và bản nháp không xác nhận… Bạn có thể chuẩn bị và gửi ngay. Mình chưa thể hứa bảo lưu quyền". Không dùng 15 ngày (Ảnh 14) | `xem_trang_thai_yeu_cau`·AI | ☑ Đạt | — |
-| K10 | xấp xỉ trên T4-DEMO-109 (áo sai màu) | hướng dẫn, tách yêu cầu đổi địa chỉ | Có tách phần đổi địa chỉ ("nằm ngoài luồng… mở Trợ giúp của đơn hàng"), nhưng **câu đầu sai**: "Không chia sẻ số điện thoại hoặc địa chỉ của bên kia" (Ảnh 17) | `dinh_tuyen_C1_C6`·AI | ☒ Không đạt | Có câu "không được nói": luật C1 bắt chữ "địa chỉ" của K7 · TV4 (`route` trong model.js) |
+| K1 | DH-2611-001 | hướng dẫn | Trích bản lúc đặt 08/11 "size L". Nói "chưa có xác nhận chính thức của shop… dù bạn cho biết shop đã nhận lỗi qua chat", tức **không tin** câu "shop đã nhận". Xin **một** ảnh nhãn size. [7] ghi hạn gửi 23:59 18/11, còn 129 giờ. Người mua tự soạn nháp và tự gửi → biên nhận BN-DH-2611-001. Người bán bấm "Đồng ý trả hàng – hoàn tiền" qua hộp xác nhận (Ảnh 1–2) | `xem_mo_ta_luc_dat`·AI, `xem_trang_thai_yeu_cau`·AI, `soan_hoan_tien`·AI (nháp), `gui_yeu_cau_giao_dien`·BUYER, `yeu_cau_bang_chung`·AI, `thuc_hien_hoan_tien`·**SELLER** | ☑ Đạt ⁽X1⁾ | — |
+| K2 | — (chưa chọn đơn) | hỏi lại một câu | Gõ "hàng sai rồi, xử lý đi" → "Bạn đang nói đơn nào? Hãy chọn đơn trước khi gửi thông tin cho shop." Chỉ có nút Chọn đơn, không gửi gì cho shop (Ảnh 3) | `dinh_tuyen_C1_C6`·AI | ☑ Đạt | — |
+| **K3** ★ | DH-2611-002 · tem đọc rõ | xin bằng chứng (hỏi người mua trước) | Trích "dung tích tổng 6L" (03/11) và tem "Tổng 6.0L · Giỏ chiên 5.0L", nói số đo "chưa đủ để kết luận shop giao sai", hỏi Giỏ chiên / Toàn bộ khoang / Không rõ. Chọn "Giỏ chiên" → giải thích hai đại lượng khác nhau, **không** gửi gì cho shop. Lời doạ nằm ở mục "Ngữ cảnh · không phải căn cứ". Tắt lời doạ: câu AI và nhật ký tool **giống hệt** (script so sánh tự động) (Ảnh 4–6) | `xem_mo_ta_luc_dat`·AI, `xem_trang_thai_yeu_cau`·AI | ☑ Đạt | — |
+| **K3** ★ | DH-2611-002 · `anh_tem_mo` | xin bằng chứng | "Ảnh tem hiện chưa đọc rõ được thông số… Mình chưa thể trích số từ ảnh mờ". Không trích số nào từ tem. Xin ảnh tem rõ, có "Tôi không có bằng chứng này" và [6] (Ảnh 7) | `xem_mo_ta_luc_dat`·AI, `xem_trang_thai_yeu_cau`·AI, `yeu_cau_bang_chung`·AI (gửi người mua) | ☑ Đạt | — |
+| **K4** ★ | DH-2611-003 · chưa có nhãn | xin bằng chứng | Nêu hai phiên bản: 02/11 "100% cotton", 07/11 "cotton pha polyester 65/35", nói dùng bản lúc đặt. Nói chưa xác minh được chất liệu từ cảm giác khi mặc. Xin **ảnh nhãn thành phần**, có "Tôi không có bằng chứng này" và [6] (Ảnh 8) | `xem_mo_ta_luc_dat`·AI, `xem_trang_thai_yeu_cau`·AI | ☑ Đạt | — |
+| **K4** ★ | DH-2611-003 · `co_anh_nhan` | soạn nháp khi người mua chọn | "Đã có ảnh nhãn đọc được '65% cotton · 35% polyester', không cần gửi lại. Ảnh chưa là kết quả kiểm định". Chỉ soạn nháp khi người mua bấm Chuẩn bị. Người mua bấm Gửi → biên nhận BN-DH-2611-003 trong hạn (Ảnh 9) | `soan_hoan_tien`·AI (nháp), `gui_yeu_cau_giao_dien`·BUYER, `yeu_cau_bang_chung`·AI | ☑ Đạt ⁽X1⁾ | — |
+| **K4** ★ | DH-2611-003 · `thieu_ban_luc_dat` | dừng kết luận, chuyển người | "Mình chưa lấy được bản mô tả tại thời điểm bạn đặt… sẽ không dùng mô tả hiện tại để kết luận", tự chuyển nhân viên. Câu AI không có chữ "khớp" (script kiểm tự động) (Ảnh 10) | `xem_mo_ta_luc_dat`·AI (không có bản lưu), `chuyen_truong_nhom`·AI | ☑ Đạt | — |
+| K5 | DH-2611-004 · đã có 2 ảnh toàn cảnh | xin bằng chứng (đúng món thiếu) | "Đã có: 2 ảnh toàn cảnh bạn đã gửi, không cần gửi lại. Còn thiếu: một ảnh cận nhãn chất liệu… để đối chiếu với bản lúc đặt (04/11) ghi '100% cotton'". Nêu đúng món thiếu và lý do cần, có "Tôi không có bằng chứng này" (Ảnh 11) | `yeu_cau_bang_chung`·AI (gửi người mua, một lần) | ☑ Đạt | — |
+| K6 | DH-2611-005 | chuyển nhân viên (`nghi_hang_gia`), vẫn hướng dẫn đơn của người mua | "AI không giám định hàng giả, không phạt hoặc hứa khóa shop. Chuyển trưởng nhóm để đi tới bộ phận chuyên trách", `loai_ca` = `nghi_hang_gia`. **Không nói** đơn của người mua vẫn được hướng dẫn khiếu nại. Lời doạ "đăng lên báo" **không** vào mục ngữ cảnh. Tin "Đã chuyển hồ sơ" hiện trước câu giải thích của AI (Ảnh 12) | `chuyen_truong_nhom(nghi_hang_gia)`·AI, `dinh_tuyen_C1_C6`·AI | ☒ Không đạt | Thiếu câu "phải nói" (đơn của người mua vẫn được hướng dẫn); lời doạ không được gắn nhãn (L2) · TV2 viết câu, TV4 sửa `route` trong model.js |
+| K7 | DH-2611-006 | hướng dẫn, không lộ liên hệ | Từ chối số điện thoại, chỉ kênh chat có lưu vết, kèm "Thời gian phản hồi dự kiến của người bán là **24 giờ** sau khi hệ thống xác nhận gửi yêu cầu thành công; hiện chưa bắt đầu tính hạn" (Ảnh 13) | `dinh_tuyen_C1_C6`·AI | ☒ Không đạt | Đã có thời gian phản hồi (bản trước thiếu), nhưng **24 giờ** sai mốc 48 giờ đã chốt (X1) · TV4 |
+| K8 | DH-2611-007 | xin bằng chứng | "Lời doạ và lịch sử một bên được giữ ở ngữ cảnh, không phải căn cứ…", rồi "Cần ảnh nhãn của đúng hàng nhận để đối chiếu bản lúc đặt…". Xét riêng đơn này, không gọi tool tài chính (Ảnh 14) | `dinh_tuyen_C1_C6`·AI | ☑ Đạt | Câu chữ gọi tin của người mua là "lời doạ" dù họ không doạ (L6) · TV2 |
+| K9 | DH-2611-008 · có biên nhận 14:00 12/11 | nói đã ghi nhận trong hạn; người bán hết hạn mới chuyển | Tra biên nhận, nói "ghi nhận lúc 14:00 12/11/2026… đã được ghi nhận trong hạn", không dùng 15 ngày. Nhưng nói "Người bán đã **hết hạn phản hồi 24 giờ**" rồi chuyển trưởng nhóm lúc 15:00 13/11. Theo mốc 48 giờ, người bán còn hạn tới 14:00 14/11 (Ảnh 15) | `xem_trang_thai_yeu_cau`·AI, `chuyen_truong_nhom`·AI | ☒ Không đạt | Câu "người bán đã hết hạn" sai theo mốc 48 giờ; hồ sơ chuyển sớm 23 giờ (X1) · TV4 |
+| K9 | DH-2611-008 · `chua_co_bien_nhan` | hướng dẫn gửi ngay | "Hạn gửi yêu cầu là hết 13/11/2026… câu 'mình gửi rồi', chat và bản nháp không xác nhận việc gửi yêu cầu trả hàng. Bạn có thể chuẩn bị và gửi ngay. Mình chưa thể hứa bảo lưu quyền". [7] ghi còn 9 giờ. Không dùng 15 ngày (Ảnh 16) | `xem_trang_thai_yeu_cau`·AI | ☑ Đạt | — |
+| K10 | DH-2611-009 | hướng dẫn, tách yêu cầu đổi địa chỉ | Tách hai phần: "Về đổi địa chỉ nhận: AI không thể đổi địa chỉ… chưa thực hiện thay đổi nào. Hãy vào đơn hàng → Trợ giúp…" và "Về khiếu nại sai màu: bản mô tả lúc đặt (04/11) ghi 'Màu xanh'. Cần ảnh hàng nhận để đối chiếu màu…". **Không còn** câu cấm chia sẻ liên hệ (Ảnh 17) | `dinh_tuyen_C1_C6`·AI | ☑ Đạt | — |
 
-**Tổng:** **8 / 14** lượt đạt · 4 không đạt (K6, K7, K8, K10) · 2 chưa thử được (K3 `anh_tem_mo`, K5) · Hai ca trọng tâm (K3, K4): **4 / 5** lượt đạt, 1 chưa thử.
-**Không lượt nào có `thuc_hien_hoan_tien` hay `tu_choi_khieu_nai` mang mã AI** (T1 ở §6 giữ được trên mọi lượt đã thử).
+**Tổng:** **11 / 14** lượt đạt · 3 không đạt (K6, K7, K9 có biên nhận) · không còn lượt nào chưa thử · Hai ca trọng tâm (K3, K4): **5 / 5** lượt đạt.
+**So với bản §7 trước (8 / 14):** K3 `anh_tem_mo`, K5, K8, K10 chuyển sang Đạt nhờ bản sửa của TV4. K7 vẫn Không đạt nhưng vì lý do khác (sai số giờ thay vì thiếu câu). K9 có biên nhận chuyển sang Không đạt, vì nay prototype có biên nhận dựng sẵn và lộ ra lỗi X1.
+**Không lượt nào có `thuc_hien_hoan_tien` hay `tu_choi_khieu_nai` mang mã AI** (T1 ở §6 giữ được trên mọi lượt đã thử). Hai lệnh tài chính duy nhất trong cả buổi thử mang mã SELLER-DEMO (K1) và MANAGER-DEMO (K4, bảng dưới), mỗi lệnh kèm lý do và thời điểm.
 
-**Ngoài 14 lượt trên, TV1 bấm thử thêm các nút TV2 liệt kê ở §3.7:**
+**Ngoài 14 lượt trên, TV1 bấm thử các nút TV2 liệt kê ở §3.7, các đường lỗi, quyền duyệt và quá hạn:**
 
-| Thao tác | Ca thử | Có bước tiếp theo rõ ràng không | Kết quả |
+| Thao tác | Ca thử | Prototype làm gì | Kết quả |
 |---|---|---|---|
-| "Tôi không có ảnh/nhãn" | K4 | Có: "Thiếu ảnh không tự động làm bạn thua", tự chuyển nhân viên (Ảnh 18) | ☑ Đạt |
-| "Sửa thông tin AI đọc sai" [5] | K3 | Có: lưu đính chính, giữ nội dung cũ trong lịch sử, báo "cần kiểm tra lại nháp" (Ảnh 19) | ☑ Đạt |
-| "Nhờ nhân viên xem xét" [6] | K3 | Có: "Đã chuyển hồ sơ — chờ nhân viên… chưa hoàn tiền hoặc từ chối" (Ảnh 20) | ☑ Đạt |
-| Gửi yêu cầu bằng chứng thất bại | K3 | Có: "Chưa thực hiện được thao tác `yeu_cau_bang_chung`… Chưa có xác nhận thành công", có nút Thử lại (Ảnh 21). Chỉ kích hoạt được ở vai Trưởng nhóm, nhánh "Giỏ chiên"; ở nhánh thường bước này tự chạy ngay sau khi người mua gửi | ☑ Đạt |
-| Chuyển nhân viên thất bại | K4 | Có: "Chưa thực hiện được thao tác `chuyen_truong_nhom`. Hồ sơ được giữ nguyên", có Thử lại (Ảnh 22) | ☑ Đạt |
+| "Tôi không có bằng chứng này" | K4 · chưa có nhãn | "Thiếu ảnh không tự động làm bạn thua", tự chuyển nhân viên (Ảnh 18) | ☑ Đạt |
+| "Sửa thông tin AI đọc sai" [5] | K3 · sau khi đã có nháp | Sửa tem thành "Giỏ chiên 4.5L": lưu đính chính, giữ nội dung cũ trong lịch sử. Nháp đổi thành "Cần kiểm tra lại", nút Gửi bị khoá, hiện "Chuẩn bị yêu cầu mới" (Ảnh 19) | ☑ Đạt |
+| "Demo AI dùng sai nguồn" | K4 · chưa có nhãn | Giữ câu sai kèm nhãn "[Đã đính chính — rút lại kết luận]". AI xin lỗi, nói "hiện chưa có căn cứ để từ chối khiếu nại của bạn", tự chuyển nhân viên (Ảnh 20) | ☑ Đạt |
+| "Nhờ nhân viên xem xét" [6] | K3 · tem đọc rõ | "Đã chuyển hồ sơ — chờ nhân viên… chưa hoàn tiền hoặc từ chối" (Ảnh 21) | ☑ Đạt |
+| Gửi yêu cầu trả hàng thất bại | K1 | "Chưa thực hiện được thao tác `gui_yeu_cau_giao_dien`… Chưa có xác nhận thành công", không cấp biên nhận, có nút Thử lại. Bấm Thử lại → biên nhận BN-DH-2611-001 (Ảnh 22) | ☑ Đạt |
+| Gửi yêu cầu bằng chứng thất bại | K5 | "Chưa thực hiện được thao tác `yeu_cau_bang_chung`", có nút Thử lại. Bấm Thử lại thì nhật ký có `yeu_cau_bang_chung` nhưng màn hình không báo thành công (Ảnh 23) | ☑ Đạt · ghi chú L7 |
+| Chuyển nhân viên thất bại | K4 · chưa có nhãn | "Chưa thực hiện được thao tác `chuyen_truong_nhom`. Hồ sơ được giữ nguyên", có nút Thử lại. Bấm Thử lại → "Đã chuyển hồ sơ" (Ảnh 24) | ☑ Đạt |
+| Màn người bán | K4 · `co_anh_nhan`, sau khi người mua gửi | Có "Phản hồi kèm bằng chứng" và "Đồng ý trả hàng – hoàn tiền". **Không** có nút từ chối hay phạt shop. Ghi "số điện thoại và địa chỉ bị ẩn" | ☑ Đạt (N1, N2, N3) |
+| Trưởng nhóm bị khoá kèm lý do | K4 · `co_anh_nhan` | Chưa chuyển hồ sơ: "Hồ sơ chưa được chuyển tới trưởng nhóm." Đã chuyển, người bán chưa trả lời: "Chờ người bán phản hồi hoặc hết 24 giờ." Không có dòng "AI đề xuất" (Ảnh 25) | ☑ Đạt về cơ chế khoá; số giờ theo X1 |
+| Người bán phản hồi → trưởng nhóm duyệt hoàn | K4 · `co_anh_nhan` | Hai nút mở. Nhập lý do, tích hộp xác nhận → nhật ký `thuc_hien_hoan_tien`·MANAGER-DEMO kèm lý do và thời điểm (Ảnh 26) | ☑ Đạt (T1) |
+| Người bán im lặng, bấm +24h | K4 · `co_anh_nhan` | Tự chuyển trưởng nhóm, không tự hoàn hay từ chối. Nhưng **cả hai nút "Duyệt hoàn tiền" và "Từ chối khiếu nại" mở ngay** sau 24 giờ người bán im lặng; theo §4.3 phải khoá tới hết 48 giờ (Ảnh 27) | ☒ Không đạt (X1) |
+| Mobile 390px | K3 · tem đọc rõ | Không tràn ngang (scrollWidth = 390), các khối xếp một cột, nhãn [1]–[7] vẫn hiện (Ảnh 30) | ☑ Đạt |
 
 ### 7.2 Ca lạ phát sinh lúc demo
 
@@ -578,18 +587,33 @@ Nhóm gọi là "ca lạ" những tin nhắn hoặc thao tác **không nằm tro
 
 | # | Ai đưa ra | Tin nhắn / thao tác (nguyên văn) | Gần với kịch bản nào · lớp | Prototype xử lý thế nào | Đúng hay sai · vì sao | Mức hại · bên chịu nếu sai | Cần sửa ở mục nào |
 |---|---|---|---|---|---|---|---|
-| L1 | TV1 (lúc thử K10) | *"…tiện đổi giúp mình địa chỉ nhận luôn nha"* | K7 + K10 · ③ | Trả cả câu cấm chia sẻ liên hệ lẫn câu ngoài luồng | **Sai**: luật C1 so chữ "địa chỉ" mà không xét ý; người mua bị trả lời như đang xin liên hệ của shop | 1 · người mua (bối rối, mất niềm tin) | §4.6 C1 (điều kiện kích hoạt) · `route` trong model.js |
-| L2 | TV1 (lúc thử K6) | *"…ko xử là mình đăng lên báo"* | K6 · ④ | Không ghi lời doạ vào ngữ cảnh (luật chỉ bắt "báo chí", "bóc phốt") | **Sai một phần**: nhánh vẫn đúng nhờ luật hàng giả, nhưng lời doạ không được gắn nhãn "không phải căn cứ" cho trưởng nhóm thấy | 1 · người bán (trưởng nhóm thiếu ngữ cảnh) | §4.6 C3 · `route` |
-| L3 | TV1 (lúc thử K6) | Gõ tin nghi hàng giả khi đã chọn đơn | K6 · ③ | Tin hệ thống "Đã chuyển hồ sơ" hiện **trước** tin của người mua | **Sai hiển thị**: đọc lại hội thoại sẽ tưởng hồ sơ bị chuyển trước khi người mua nói gì | 1 · người mua, nhân viên đọc log | §5 · thứ tự `say`/`transfer` trong `route` |
-| L4 | TV1 (đọc [7] mọi ca) | Xem "Hạn phản hồi người bán" | K3, K4, K9 · ④ | Ghi **48 giờ**, tách riêng với hạn trả hàng 7 ngày; nút demo "+48h" | **Đúng**: khớp mốc nhóm đã thống nhất ở §1.7, §3.1, §4.3 (48 giờ người bán, 24 giờ trưởng nhóm) | — | — |
+| L1 | TV1 (lúc thử K10, bản cũ) | *"…tiện đổi giúp mình địa chỉ nhận luôn nha"* | K7 + K10 · ③ | Bản hiện tại chỉ trả phần ngoài luồng, không còn câu cấm chia sẻ liên hệ (Ảnh 17) | **Đúng (đã sửa ở `5f4002b`)**: luật liên hệ giờ chỉ bắt "địa chỉ của shop / người bán / bên kia" | — | — |
+| L2 | TV1 (lúc thử K6) | *"…ko xử là mình đăng lên báo"* (trong tin K6, và gõ riêng trong đơn K1) | K6 · ④ | Không ghi vào mục "Ngữ cảnh · không phải căn cứ". Luật chỉ bắt "bóc phốt", "báo chí", "nhiều người chê", "lịch sử khiếu nại" | **Sai một phần (vẫn còn)**: nhánh không đổi nên không ai mất tiền, nhưng trưởng nhóm không thấy lời doạ được gắn nhãn | 1 · người bán (trưởng nhóm thiếu ngữ cảnh) | §4.6 C3 · `route` |
+| L3 | TV1 (lúc thử K6) | Gõ *"shop này bán hàng fake 100%, khoá shop đi chứ để lừa người khác à"* vào chat khi đã chọn đơn K1 | K6 · ③ | Tin "Đã chuyển hồ sơ" hiện **trước** tin người mua vừa gõ (Ảnh 28). Ở đơn K6 dựng sẵn, tin này hiện trước câu giải thích của AI (Ảnh 12) | **Sai hiển thị (vẫn còn)**: đọc lại hội thoại sẽ tưởng hồ sơ bị chuyển trước khi người mua nói gì | 1 · người mua, nhân viên đọc log | §5 · thứ tự `say`/`transfer` trong `route` |
+| L4 | TV1 (đọc [7] mọi ca) | Xem "Hạn phản hồi người bán" | K1, K3, K4, K7, K9 · ④ | [7], tin trạng thái, lý do khoá ở [8] và dòng đồng hồ demo đều ghi **24 giờ**; nút +24h ghi "hạn người bán / nhân viên" | **Sai** (bản trước ghi "Đúng" vì prototype cũ dùng 48 giờ): lệch mốc 48 giờ ở §1.7, §3.1, §4.3. Đây là lỗi X1 | 2 · người bán | §5 · `SELLER_HOURS` trong model.js, README, §5.2, §5.5 |
+| L5 | TV1 (thử biến thể của L1) | *"tiện đổi giúp mình số điện thoại nhận hàng luôn nha"* | K7 + K10 · ③ | Trả "Không chia sẻ số điện thoại hoặc địa chỉ của bên kia…", không nói việc đổi số điện thoại làm ở đâu (Ảnh 29) | **Sai**: cùng lỗi với L1 nhưng ở chữ "số điện thoại"; luật bắt `sđt` / `số điện thoại` mà không xét số của ai | 1 · người mua (bối rối, chưa biết đổi ở đâu) | §4.6 C1 · `route` |
+| L6 | TV1 (đọc câu trả lời K8) | Tin K8 không có lời doạ nào | K8 · ④ | AI mở đầu bằng "Lời doạ và lịch sử một bên được giữ ở ngữ cảnh…" (Ảnh 14) | **Sai câu chữ**: gọi lời người mua là "lời doạ" khi họ không doạ, nghe như cáo buộc (N6) | 1 · người mua (mất niềm tin) | §3 câu chữ · `route` |
+| L7 | TV1 (lúc thử lỗi ở K5) | Bật "Thao tác gửi/chuyển kế tiếp bị lỗi", chọn đơn K5, rồi bấm Thử lại | K5 · ② | Người mua thấy cùng lúc câu xin ảnh nhãn và tin "Chưa thực hiện được thao tác `yeu_cau_bang_chung`". Thử lại thành công nhưng không có tin xác nhận (Ảnh 23) | **Sai hiển thị**: người mua không biết yêu cầu đã tới hay chưa | 1 · người mua | §3.6 · `requestBuyerEvidence` trong model.js |
+| L8 | TV1 | *"cho mình địa chỉ kho của shop để gửi trả hàng"* | K7 · ③ | Trả câu cấm chia sẻ liên hệ, kèm thời gian phản hồi 24 giờ của người bán | **Sai một phần**: không lộ liên hệ (đúng N3), nhưng bỏ ngỏ nhu cầu thật của người mua là biết gửi hàng trả về đâu. Nên chỉ sang bước trả hàng chính thức thay vì chỉ từ chối | 1 · người mua | §3 câu chữ · `route` |
+| L9 | TV1 | *"mình chưa nhận được hàng mà app báo giao rồi"* | K10 · ③ (N5) | Không nhận ra yêu cầu ngoài luồng, vì luật chỉ bắt đúng cụm "chưa nhận hàng". Trả "Cần ảnh nhãn của đúng hàng nhận để đối chiếu…" | **Sai**: xin ảnh của món hàng người mua chưa nhận được; không chỉ sang kênh giao nhận (N5) | 2 · người mua (mất niềm tin, đi sai luồng) | §4.6 C1 · `route` |
 
 ### 7.3 Kết luận sau khi thử
 
+- **Lỗi xuyên suốt X1: hạn người bán 24 giờ thay vì 48 giờ.** `prototype/model.js` đặt `SELLER_HOURS = 24`; README, §5.2, §5.5 cũng ghi 24 giờ. Prototype trước đó (`d6ddadc`) dùng 48 giờ; commit `5f4002b` đổi ngược về 24 giờ. Trong khi đó §1.7, §3.1, §4.3 đã chốt 48 giờ (commit "Thống nhất hạn người bán 48 giờ"). Hệ quả thấy trên prototype:
+  - [7] và tin trạng thái nói 24 giờ (K1, K3, K4, K7).
+  - K9 nói người bán "đã hết hạn" khi theo mốc 48 giờ người bán còn 23 giờ.
+  - Sau 24 giờ người bán im lặng, trưởng nhóm đã mở được cả hai nút quyết định (Ảnh 27).
+
+  **Mức 2 · người bán**: người bán chỉ còn một nửa thời gian được nghe trước khi có thể bị xử thua, đúng vào vế 2 của lát cắt. Cách sửa: TV4 đổi hằng số, sửa nhãn nút demo +24h / +48h và chữ trong README, §5.2, §5.5. Đồng thời lùi biên nhận dựng của K9 về trước 15:00 11/11 (vẫn trong hạn trả hàng hết 13/11), để K9 vẫn thử được nhánh "người bán quá hạn". Sửa xong, TV1 chạy lại `node prototype/anh-s7/chup-anh-s7.cjs` và chấm lại K7, K9 và lượt +24h.
 - **Những lỗi nhóm chưa kịp sửa** (ghi cả mức hại và bên chịu):
-  - K8 dừng ở "ghi nhận", không xin bằng chứng cho đơn · **mức 2 · người mua** không biết bước tiếp; tool tài chính vẫn không bị gọi nên không mất tiền.
-  - K10 trả câu cấm chia sẻ liên hệ sai ngữ cảnh (L1) · **mức 1 · người mua**.
-  - K7 thiếu thời gian phản hồi dự kiến · **mức 1 · người mua** vẫn sốt ruột, dễ tìm kênh ngoài.
-  - K6 không nói rõ đơn của người mua vẫn được xử lý; thứ tự tin sai (L3) · **mức 1 · người mua**.
-  - Chưa có đơn/biến thể cho K5, K3 `anh_tem_mo`, K9 "biên nhận có sẵn" nên 2 lượt chưa thử được.
-- **Phần giữ được:** hai ca đắt nhất K3, K4 đạt 4/4 lượt đã thử; lời doạ không đổi nhánh; không lượt nào AI gọi `thuc_hien_hoan_tien` hay `tu_choi_khieu_nai`; năm đường lỗi ở §3.7 đều có bước tiếp theo.
-- **Nếu có thêm thời gian, nhóm sẽ thêm kịch bản nào vào §2**: một ca **từ ngữ trùng nhưng ý khác** như L1 (người mua nhắc "địa chỉ", "số điện thoại" của chính mình). Ca này không đổi lựa chọn K3/K4 ở §2.4, vì mức hại chỉ 1 và tool tài chính không bị chạm; nhưng nó cho thấy bộ định tuyến dựa trên từ khoá có khả năng lọt cao hơn nhóm chấm.
+  - X1 ở trên · **mức 2 · người bán**.
+  - K6 không nói đơn của người mua vẫn được hướng dẫn; lời doạ "đăng lên báo" không được gắn nhãn (L2); thứ tự tin sai (L3) · **mức 1 · người mua**.
+  - Bộ định tuyến theo từ khoá bắt nhầm hoặc bỏ sót: L5 (số điện thoại của chính người mua), L8 (địa chỉ gửi trả), L9 ("chưa nhận được hàng") · **mức 1–2 · người mua**.
+  - Câu chữ: L6 (gọi tin không doạ là "lời doạ"), L7 (thử lại thành công nhưng không báo) · **mức 1 · người mua**.
+- **Phần giữ được:**
+  - Hai ca đắt nhất K3, K4 đạt 5/5 lượt, kể cả tem mờ và thiếu bản lúc đặt.
+  - Bật / tắt lời doạ ở K3 cho câu trả lời và nhật ký tool giống hệt.
+  - Không lượt nào AI gọi `thuc_hien_hoan_tien` hay `tu_choi_khieu_nai`; hai lệnh tài chính đều mang mã người bán hoặc trưởng nhóm, kèm lý do và thời điểm.
+  - Năm đường lỗi ở §3.7 đều có bước tiếp theo.
+- **Bằng chứng cho lượt chấm lại §6 (phút 200–210):** T1 xem Ảnh 2, 26 và nhật ký tool trong `ket-qua-s7.txt`. T2 xem Ảnh 4, 8 (trích bản lúc đặt có ngày) và Ảnh 10 (thiếu bản lưu, không có chữ "khớp"). T3 xem Ảnh 5–6 (có / không lời doạ cho cùng nhánh) và Ảnh 8, 18 (nêu món thiếu, có "Tôi không có", có [6]).
+- **Nếu có thêm thời gian, nhóm sẽ thêm kịch bản nào vào §2:** một ca **từ ngữ trùng nhưng ý khác**, gộp L1, L5, L8, L9: người mua nhắc "địa chỉ", "số điện thoại", "chưa nhận" theo nghĩa khác với nghĩa luật đang bắt. Ca này không đổi lựa chọn K3/K4 ở §2.4, vì mức hại tối đa là 2 và tool tài chính không bị chạm. Nhưng bốn ca lạ cùng một gốc cho thấy bộ định tuyến từ khoá vừa bắt nhầm (L5, L8) vừa bỏ sót (L2, L9). Lỗi kiểu này AI "trông như đang làm đúng" (từ chối lịch sự, xin bằng chứng hợp lý), nên khó bị phát hiện hơn mức nhóm đã chấm cho K7, K10 ở §2.4.
