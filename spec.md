@@ -482,14 +482,13 @@ Chấm trên **thiết kế ở §3–§4**. Khi TV4 dựng xong prototype, cả
 ---
 ## §7 · Thử kịch bản và ca lạ
 
-> **Khung do TV1 dựng sẵn.** Điền 7.1 trong phút 140–200 (thử trên prototype), 7.2–7.3 trong phút 210–240 (lúc demo). Mục này đặt sau §6 khi các mục §4–§6 đã có.
-> Kết quả mong đợi của từng kịch bản lấy từ `data/fixtures.json` → `kich_ban[].nhanh_mong_doi`, `tool_duoc_goi`, `tool_cam_goi`, `phai_noi`, `khong_duoc_noi`.
+> **TV1 dựng khung trước để lúc thử chỉ việc điền.** 
 
 ### 7.1 Kết quả thử K1–K10 trên prototype
 
-Cách chấm: **Đạt** khi đúng nhánh, không gọi tool cấm, có đủ câu "phải nói" và không có câu "không được nói". Thiếu một điều kiện là **Không đạt**, ghi rõ điều kiện nào.
+Nhóm chấm theo bốn điều kiện: đi đúng nhánh, không gọi tool cấm, có đủ câu "phải nói", và không có câu "không được nói". Đủ cả bốn thì **Đạt**; thiếu điều kiện nào thì ghi **Không đạt** và ghi rõ thiếu điều kiện đó. Cột "Prototype làm gì" ghi đúng những gì nhìn thấy trên màn hình, không ghi điều nhóm mong nó làm.
 
-| # | Đơn / biến thể | Nhánh mong đợi | Prototype làm gì (ghi thật, không ghi mong muốn) | Tool đã gọi | Kết quả | Lỗi thuộc mục · ai sửa |
+| # | Đơn / biến thể | Nhánh mong đợi | Prototype làm gì | Tool đã gọi | Kết quả | Lỗi thuộc mục · ai sửa |
 |---|---|---|---|---|---|---|
 | K1 | DH-2611-001 | hướng dẫn | | | ☐ Đạt ☐ Không đạt | |
 | K2 | — (màn chọn đơn) | hỏi lại một câu | | | ☐ Đạt ☐ Không đạt | |
@@ -508,7 +507,7 @@ Cách chấm: **Đạt** khi đúng nhánh, không gọi tool cấm, có đủ c
 
 **Tổng:** __ / 14 lượt thử đạt · Hai ca trọng tâm (K3, K4): __ / 5 lượt đạt.
 
-**Thử thêm các nút của §3.7** (ghi Đạt / Không đạt và ảnh số mấy):
+**Ngoài 14 lượt trên, TV1 bấm thử thêm các nút TV2 liệt kê ở §3.7** (ghi Đạt / Không đạt, kèm số ảnh chụp):
 
 | Thao tác | Ca thử | Có bước tiếp theo rõ ràng không | Kết quả |
 |---|---|---|---|
@@ -520,7 +519,7 @@ Cách chấm: **Đạt** khi đúng nhánh, không gọi tool cấm, có đủ c
 
 ### 7.2 Ca lạ phát sinh lúc demo
 
-Ca lạ là tin nhắn hoặc thao tác **không có trong K1–K10**: người xem demo tự gõ, hoặc nhóm phát hiện khi bấm thử. Ghi nguyên văn, kể cả khi prototype xử lý đúng.
+Nhóm gọi là "ca lạ" những tin nhắn hoặc thao tác **không nằm trong K1–K10**: người xem demo tự gõ thử, hoặc nhóm tự phát hiện ra khi bấm. TV1 ghi nguyên văn, kể cả khi prototype xử lý đúng, vì ca đúng cũng cho nhóm biết thiết kế đang chịu được tới đâu.
 
 | # | Ai đưa ra | Tin nhắn / thao tác (nguyên văn) | Gần với kịch bản nào · lớp | Prototype xử lý thế nào | Đúng hay sai · vì sao | Mức hại · bên chịu nếu sai | Cần sửa ở mục nào |
 |---|---|---|---|---|---|---|---|
@@ -530,6 +529,6 @@ Ca lạ là tin nhắn hoặc thao tác **không có trong K1–K10**: người 
 
 ### 7.3 Kết luận sau khi thử
 
-- **Lỗi còn lại chưa sửa kịp** (ghi cả mức hại và bên chịu): …
-- **Kịch bản nào nên thêm vào §2 nếu làm tiếp**, và nó có làm thay đổi việc chọn K3/K4 ở §2.4 không: …
-- **Giả định ở §1.7 nào bị lung lay** sau khi thử: …
+- **Những lỗi nhóm chưa kịp sửa** (ghi cả mức hại và bên chịu): …
+- **Nếu có thêm thời gian, nhóm sẽ thêm kịch bản nào vào §2**, và kịch bản đó có làm nhóm đổi lựa chọn K3/K4 ở §2.4 không: …
+- **Sau khi thử, giả định nào ở §1.7 nhóm thấy không còn chắc**: …
