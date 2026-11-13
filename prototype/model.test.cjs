@@ -204,6 +204,17 @@ test('render smoke: buyer, seller, manager, all fixtures and untrusted text', ()
     if (variant === 'co_bien_nhan') assert.ok(markup.includes('BN-DH-2611-008'));
     if (variant === 'chua_co_bien_nhan') assert.ok(markup.includes('Chưa có biên nhận'));
   }
+  ids.get('scenario').value='K4';run('configureVariants();reset();perform("choose");perform("prepare");perform("submit");perform("transfer");');
+  assert.ok(ids.get('workspace').innerHTML.includes('Rút yêu cầu chuyển đang chờ'));
+  run('perform("withdraw")');assert.equal(run('state.escalatedAt'),null);
+  run('perform("transfer");view="staff";staffRole="manager";render();');
+  assert.ok(ids.get('workspace').innerHTML.includes('Trả hồ sơ về luồng bổ sung'));
+  run('perform("return-case")');assert.equal(run('state.escalatedAt'),null);
+  run('view="buyer";T4.route(state,"mình chưa nhận được hàng mà app báo giao rồi");render();');
+  const guidanceMarkup=ids.get('workspace').innerHTML;
+  assert.ok(guidanceMarkup.includes('Tiếp tục khiếu nại của đơn đã chọn'));
+  assert.ok(!guidanceMarkup.includes('data-action="prepare"'));
+  run('perform("resume")');assert.equal(run('state.guidanceOnly'),false);
   run('T4.route(state, "<img src=x onerror=alert(1)>");render();');
   assert.ok(ids.get('workspace').innerHTML.includes('&lt;img src=x onerror=alert(1)&gt;'));
   assert.ok(!ids.get('workspace').innerHTML.includes('<img src=x'));
@@ -284,7 +295,7 @@ test('K7 gives a conditional 48-hour response estimate, then an actual due time 
   assert.ok(answer.includes('Không chia sẻ')); assert.ok(answer.includes('kênh chat chính thức'));
   assert.ok(answer.includes('Thời gian phản hồi')); assert.ok(answer.includes('48 giờ'));
   assert.ok(answer.includes('chưa bắt đầu')); assert.equal(s.askedAt, null);
-  T.prepare(s); T.submit(s); T.route(s, 'cho mình xin số điện thoại shop');
+  T.resumeComplaint(s); T.prepare(s); T.submit(s); T.route(s, 'cho mình xin số điện thoại shop');
   answer = s.messages.at(-1).text;
   assert.ok(answer.includes('15/11/2026')); assert.ok(answer.includes('Thời gian phản hồi'));
   T.transfer(s); T.advance(s, 24); T.route(s, 'cho mình xin sđt shop');
@@ -294,4 +305,66 @@ test('initial fixtures for K6 and K8 route to special handling without financial
   const s = opened('K6'); assert.equal(s.type, 'nghi_hang_gia'); assert.equal(s.escalatedAt, s.now);
   const k8 = opened('K8'); assert.ok(k8.messages.at(-1).text.includes('Cần ảnh nhãn'));
   assert.ok(!s.log.some(e => e.tool === 'phat_shop')); assert.equal(k8.decision, null);
+});
+
+test('final: unreceived variants route only to delivery support, never ask for a label', () => {
+ for(const input of ['mình chưa nhận hàng','mình chưa nhận được hàng mà app báo giao rồi','tôi không nhận được sản phẩm','minh chua nhan duoc hang','MÌNH CHƯA NHẬN ĐƯỢC HÀNG']) {
+  const s=opened('K4'); T.route(s,input); const reply=s.messages.at(-1).text;
+  assert.ok(reply.includes('Giao nhận')); assert.ok(!reply.includes('Cần ảnh nhãn')); assert.equal(s.guidanceOnly,true);
+  T.prepare(s); assert.equal(s.draft,null); assert.equal(s.decision,null);
+ }
+});
+test('final: changing own recipient phone is separate from requesting shop contact', () => {
+ const s=opened(); T.route(s,'tiện đổi giúp mình số điện thoại nhận hàng luôn nha');
+ const reply=s.messages.at(-1).text; assert.ok(reply.includes('đổi số điện thoại')); assert.ok(reply.includes('Trợ giúp'));
+ assert.ok(!reply.includes('Không chia sẻ')); assert.ok(!reply.includes('Cần ảnh nhãn')); assert.equal(s.guidanceOnly,true);
+ T.resumeComplaint(s); assert.equal(s.guidanceOnly,false); T.prepare(s); assert.ok(s.draft);
+});
+test('final: multi-intent message handles personal phone and shop contact independently', () => {
+ const s=opened('K10'); T.route(s,'áo sai màu, đổi số điện thoại nhận hàng của mình và cho xin sđt shop');
+ const reply=s.messages.at(-1).text; assert.ok(reply.includes('Không chia sẻ')); assert.ok(reply.includes('đổi số điện thoại'));
+ assert.ok(reply.includes('khiếu nại sai màu')); assert.equal(s.guidanceOnly,false);
+});
+test('final: return warehouse question gives official return steps without unrelated evidence request', () => {
+ const s=opened(); T.route(s,'cho mình địa chỉ kho của shop để gửi trả hàng'); const reply=s.messages.at(-1).text;
+ assert.ok(reply.includes('hướng dẫn gửi trả chính thức')); assert.ok(!reply.includes('Cần ảnh nhãn')); assert.ok(!reply.includes('Không chia sẻ'));
+});
+test('final: K8 history is not called a threat when no threat is present', () => {
+ const s=opened('K8'); const reply=s.messages.at(-1).text;
+ assert.ok(reply.includes('Lịch sử')); assert.ok(!reply.includes('Lời doạ')); assert.ok(reply.includes('ảnh nhãn'));
+});
+test('final: buyer evidence failure never claims success, retry confirms success exactly once', () => {
+ const s=T.create('K5');s.failNext=true;T.choose(s);
+ assert.equal(s.buyerEvidenceAsked,false);assert.equal(s.buyerDue,null);
+ assert.ok(!s.messages.some(m=>m.text.includes('Đã gửi thành công')));
+ T.requestBuyerEvidence(s); assert.equal(s.error,null); assert.equal(s.buyerEvidenceAsked,true);assert.equal(s.buyerDue,s.now+48*T.HOUR);
+ const count=s.messages.filter(m=>m.text.includes('Đã gửi thành công yêu cầu bổ sung')).length;assert.equal(count,1);
+ T.requestBuyerEvidence(s);assert.equal(s.messages.filter(m=>m.text.includes('Đã gửi thành công yêu cầu bổ sung')).length,1);
+});
+test('final: withdrawing a voluntary transfer preserves receipt, sources, deadlines and history', () => {
+ const s=sent();const receipt=s.receipt, askedAt=s.askedAt,buyerDue=s.buyerDue;T.transfer(s);const before=s.log.length;
+ assert.equal(T.transferUndoBlock(s,'BUYER-DEMO'),'');assert.equal(T.undoTransfer(s,'BUYER-DEMO'),true);
+ assert.equal(s.escalatedAt,null);assert.equal(s.receipt,receipt);assert.equal(s.askedAt,askedAt);assert.equal(s.buyerDue,buyerDue);
+ assert.equal(s.log.length,before+1);assert.ok(s.messages.some(m=>m.text.includes('Đã chuyển hồ sơ')));
+ assert.match(T.gate(s,'refund','MANAGER-DEMO'),/chưa được chuyển/);
+ T.transfer(s);assert.equal(s.escalatedAt,s.now);
+});
+test('final: manager can return voluntary transfer, wrong roles cannot', () => {
+ const s=sent();T.transfer(s);assert.equal(T.undoTransfer(s,'AI'),false);assert.equal(T.undoTransfer(s,'SELLER-DEMO'),false);
+ assert.equal(T.undoTransfer(s,'MANAGER-DEMO'),true);assert.equal(s.log.at(-1).actor,'MANAGER-DEMO');
+});
+test('final: mandatory reviews and resolved financial decisions cannot be withdrawn', () => {
+ const missing=opened('K4',{missingSource:true}),special=opened('K6'),expired=opened('K9');
+ for(const s of [missing,special,expired]) {assert.equal(T.undoTransfer(s,'BUYER-DEMO'),false);assert.equal(T.undoTransfer(s,'MANAGER-DEMO'),false);}
+ const closed=sent('K1');T.transfer(closed);T.decide(closed,'refund','SELLER-DEMO',reason,true);assert.equal(T.undoTransfer(closed,'BUYER-DEMO'),false);
+});
+test('final: failed withdrawal preserves waiting state and can be retried', () => {
+ const s=sent();T.transfer(s);const at=s.escalatedAt;s.failNext=true;
+ assert.equal(T.undoTransfer(s,'BUYER-DEMO'),false);assert.equal(s.escalatedAt,at);assert.equal(s.error.retry,'undoTransfer');
+ assert.equal(T.undoTransfer(s,'BUYER-DEMO'),true);assert.equal(s.escalatedAt,null);
+});
+test('final: threat wording is isolated, correct order is kept, and AI does not decide money', () => {
+ const s=opened('K1');const n=s.messages.length;T.route(s,'shop bán hàng fake, ko xử là mình đăng lên báo');
+ const added=s.messages.slice(n);assert.equal(added[0].role,'user');assert.equal(added[1].role,'assistant');assert.equal(added.at(-1).role,'system');
+ assert.ok(s.context.some(x=>x.includes('đăng lên báo')));assert.equal(s.type,'nghi_hang_gia');assert.equal(s.decision,null);
 });

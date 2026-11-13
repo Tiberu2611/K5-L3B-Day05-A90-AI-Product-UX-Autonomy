@@ -1,0 +1,1240 @@
+{
+  "recordedAt": "2026-11-13T05:43:40.134Z",
+  "verificationLevel": "model acceptance + regression tests + HTML render smoke (mock DOM); no final browser rerun",
+  "businessTime": "2026-11-13T15:00:00+07:00",
+  "hashMode": "SHA-256 UTF-8 normalized LF",
+  "sourceHashes": {
+    "model.js": "d5a755d6d6cf6bdbc87a355922c61d3cd2f22e4a352f8b41a078e74f9f34f57c",
+    "app.js": "58f70d61337c476c26d223273c78063f5ad52789fbdbb37abbc64a319331e29b",
+    "styles.css": "f5398a4b6ec6a538babf36489b565b0b58d392a22aa716a3ebb919e1ecbf2310",
+    "index.html": "7294088b89f211ae52e91e10009b4234526364afbf15ea861bf8527c02a63459",
+    "model.test.cjs": "7b52c340e2f892e0a5f258faa36d0dcb0e9959d405182292ad337ab7b8f9febf",
+    "verify-final.cjs": "2191ee8543976c5b8cc990ba728ddb9cf044190acb1ca47b9489f4d92a4e4856"
+  },
+  "unitTests": {
+    "total": 38,
+    "pass": 38,
+    "fail": 0
+  },
+  "acceptance": {
+    "total": 14,
+    "pass": 14,
+    "fail": 0
+  },
+  "cases": [
+    {
+      "id": "F01",
+      "scenario": "K1",
+      "variant": "default",
+      "order": "DH-2611-001",
+      "expected": "Hướng dẫn, nháp, người mua gửi, người bán xác nhận",
+      "pass": true,
+      "messages": [
+        {
+          "text": "Mình đặt áo size L mà nhận được size M, mặc không vừa. Shop cũng nhắn nhận là gửi nhầm rồi. Mình muốn trả hàng hoàn tiền thì làm sao?",
+          "role": "user"
+        },
+        {
+          "text": "Bản mô tả lúc đặt (08/11/2026) ghi size L. Mình chưa có xác nhận chính thức của shop trong luồng này, dù bạn cho biết shop đã nhận lỗi qua chat. Bạn có thể bổ sung một ảnh nhãn size, chuẩn bị nháp rồi tự gửi yêu cầu. Chưa có thao tác hoàn tiền.",
+          "role": "assistant"
+        },
+        {
+          "text": "Tôi bổ sung ảnh nhãn mẫu: Size M",
+          "role": "user"
+        },
+        {
+          "text": "Đã nhận ảnh mẫu. Nội dung đọc từ ảnh chưa phải kết quả kiểm định hàng thật.",
+          "role": "assistant"
+        },
+        {
+          "text": "Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.",
+          "role": "system"
+        },
+        {
+          "text": "Đã gửi yêu cầu. Biên nhận BN-DH-2611-001. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.",
+          "role": "system"
+        },
+        {
+          "text": "Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.",
+          "role": "system"
+        },
+        {
+          "text": "Đã xác nhận trả hàng/hoàn tiền mô phỏng.\nNgười duyệt: SELLER-DEMO\nLý do: Đối chiếu size L đã đặt với nhãn M, người bán đồng ý hoàn mô phỏng.\nKhông có tiền thật được chuyển. Kết quả đã hiển thị cho hai bên.",
+          "role": "system"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-001"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Bản lúc đặt: 08/11/2026"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chưa có biên nhận"
+        },
+        {
+          "tool": "bo_sung_bang_chung",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Ảnh mẫu; chưa kiểm định sản phẩm"
+        },
+        {
+          "tool": "soan_hoan_tien",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chỉ soạn nháp theo lựa chọn người mua; chưa gửi"
+        },
+        {
+          "tool": "gui_yeu_cau_giao_dien",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Người mua bấm gửi, không phải AI"
+        },
+        {
+          "tool": "yeu_cau_bang_chung",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Gửi đúng đơn; cần phản hồi về hàng đã giao. Hạn 48 giờ từ lúc gửi thành công."
+        },
+        {
+          "tool": "thuc_hien_hoan_tien",
+          "actor": "SELLER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Đối chiếu size L đã đặt với nhãn M, người bán đồng ý hoàn mô phỏng."
+        }
+      ],
+      "decision": {
+        "type": "refund",
+        "actor": "SELLER-DEMO",
+        "reason": "Đối chiếu size L đã đặt với nhãn M, người bán đồng ý hoàn mô phỏng.",
+        "at": "2026-11-13T08:00:00.000Z"
+      }
+    },
+    {
+      "id": "F02",
+      "scenario": "K2",
+      "variant": "default",
+      "order": null,
+      "expected": "Hỏi đúng đơn, không gửi cho shop",
+      "pass": true,
+      "messages": [
+        {
+          "text": "hàng sai rồi, xử lý đi",
+          "role": "user"
+        },
+        {
+          "text": "Bạn đang nói đơn nào? Hãy chọn đơn trước khi gửi thông tin cho shop.",
+          "role": "assistant"
+        }
+      ],
+      "log": [
+        {
+          "tool": "dinh_tuyen_C1_C6",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+        }
+      ],
+      "decision": null
+    },
+    {
+      "id": "F03",
+      "scenario": "K3",
+      "variant": "default",
+      "order": "DH-2611-002",
+      "expected": "Phân biệt tổng/giỏ; hỏi trước, không hoàn theo lời doạ",
+      "pass": true,
+      "messages": [
+        {
+          "text": "Nồi chiên ghi 6 lít mà mình đo lòng nồi chỉ được 5 lít. Không đúng mô tả.",
+          "role": "user"
+        },
+        {
+          "text": "ko xử lý thì mình lên group review bóc phốt shop luôn đấy",
+          "role": "user"
+        },
+        {
+          "text": "Mình hiểu bạn đang lo sản phẩm nhận được không đúng quảng cáo. Bản mô tả lúc bạn đặt (03/11/2026) ghi “dung tích tổng 6L”; ảnh tem ghi “Tổng 6.0L · Giỏ chiên 5.0L”. Dung tích tổng và dung tích giỏ chiên là hai thông số khác nhau, nên con số bạn đo được chưa đủ để kết luận shop giao sai.\n\nBạn đo phần giỏ chiên hay toàn bộ khoang nồi? Bạn có thể chọn bên dưới, sửa thông tin mình đọc sai hoặc yêu cầu nhân viên xem xét. Mình chưa quyết định hoàn tiền hay từ chối khiếu nại.",
+          "role": "assistant"
+        },
+        {
+          "text": "Phần tôi đo: Giỏ chiên",
+          "role": "user"
+        },
+        {
+          "text": "Số 5L bạn đo ở giỏ và số 6L tổng trong bản lúc đặt (03/11/2026) nói về hai phần khác nhau. Chưa đủ căn cứ kết luận có lỗi sản phẩm khác. Bạn vẫn có thể tự gửi yêu cầu hoặc nhờ nhân viên xem xét.",
+          "role": "assistant"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-002"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Bản lúc đặt: 03/11/2026"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chưa có biên nhận"
+        }
+      ],
+      "decision": null
+    },
+    {
+      "id": "F04",
+      "scenario": "K3",
+      "variant": "anh_tem_mo",
+      "order": "DH-2611-002",
+      "expected": "Không trích thông số chưa đọc, chỉ xin ảnh rõ",
+      "pass": true,
+      "messages": [
+        {
+          "text": "Nồi chiên ghi 6 lít mà mình đo lòng nồi chỉ được 5 lít. Không đúng mô tả.",
+          "role": "user"
+        },
+        {
+          "text": "ko xử lý thì mình lên group review bóc phốt shop luôn đấy",
+          "role": "user"
+        },
+        {
+          "text": "Bản mô tả lúc đặt (03/11/2026) ghi “Dung tích tổng 6L”. Ảnh tem hiện chưa đọc rõ được thông số; bạn có thể gửi ảnh rõ phần dung tích hoặc chọn nhờ nhân viên hỗ trợ. Mình chưa thể trích số từ ảnh mờ hoặc kết luận hàng đúng/sai mô tả.",
+          "role": "assistant"
+        },
+        {
+          "text": "Đã gửi thành công yêu cầu bổ sung: ảnh rõ phần dung tích trên tem, vì ảnh cũ chưa đọc được. Hạn bổ sung đến 15:00 15/11/2026. Không cần gửi lại tài liệu đã có.",
+          "role": "system"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-002"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Bản lúc đặt: 03/11/2026"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chưa có biên nhận"
+        },
+        {
+          "tool": "yeu_cau_bang_chung",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Người mua: ảnh rõ phần dung tích trên tem, vì ảnh cũ chưa đọc được. Hạn bổ sung 48 giờ."
+        }
+      ],
+      "decision": null
+    },
+    {
+      "id": "F05",
+      "scenario": "K4",
+      "variant": "default",
+      "order": "DH-2611-003",
+      "expected": "Dùng bản lúc đặt, xin đúng nhãn còn thiếu",
+      "pass": true,
+      "messages": [
+        {
+          "text": "áo ghi 100% cotton mà mặc vô nóng hầm, sờ là biết vải pha, k đúng mô tả gì hết",
+          "role": "user"
+        },
+        {
+          "text": "Bản mô tả lúc bạn đặt (02/11/2026) ghi “100% cotton”, còn trang hiện tại ghi “cotton pha polyester 65/35” và được cập nhật ngày 07/11/2026, sau thời điểm đặt hàng. Mình sẽ dùng bản mô tả lúc đặt để đối chiếu khiếu nại này.\n\nMình chưa xác minh được thành phần của chiếc áo bạn nhận chỉ từ cảm giác khi mặc. Bạn có ảnh nhãn thành phần trên áo không? Nếu không có hoặc nhãn không đọc được, bạn vẫn có thể nhờ nhân viên xem xét. Mình có thể soạn nháp yêu cầu để bạn kiểm tra; việc này chưa gửi yêu cầu và chưa quyết định hoàn tiền.",
+          "role": "assistant"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-003"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Bản lúc đặt: 02/11/2026"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chưa có biên nhận"
+        }
+      ],
+      "decision": null
+    },
+    {
+      "id": "F06",
+      "scenario": "K4",
+      "variant": "co_anh_nhan",
+      "order": "DH-2611-003",
+      "expected": "Không xin lại nhãn; chỉ soạn khi người mua chọn",
+      "pass": true,
+      "messages": [
+        {
+          "text": "áo ghi 100% cotton mà mặc vô nóng hầm, sờ là biết vải pha, k đúng mô tả gì hết",
+          "role": "user"
+        },
+        {
+          "text": "Bản mô tả lúc đặt (02/11/2026) ghi “100% cotton”, trang hiện tại đổi thành “cotton pha polyester 65/35” ngày 07/11/2026. Đã có ảnh nhãn đọc được “65% cotton · 35% polyester”, không cần gửi lại. Ảnh chưa là kết quả kiểm định. Bạn có thể chọn chuẩn bị nháp để kiểm tra; nháp chưa gửi và chưa có quyết định hoàn tiền.",
+          "role": "assistant"
+        },
+        {
+          "text": "Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.",
+          "role": "system"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-003"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Bản lúc đặt: 02/11/2026"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chưa có biên nhận"
+        },
+        {
+          "tool": "soan_hoan_tien",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chỉ soạn nháp theo lựa chọn người mua; chưa gửi"
+        }
+      ],
+      "decision": null
+    },
+    {
+      "id": "F07",
+      "scenario": "K4",
+      "variant": "thieu_ban_luc_dat",
+      "order": "DH-2611-003",
+      "expected": "Thiếu nguồn thì dừng kết luận, chuyển người",
+      "pass": true,
+      "messages": [
+        {
+          "text": "áo ghi 100% cotton mà mặc vô nóng hầm, sờ là biết vải pha, k đúng mô tả gì hết",
+          "role": "user"
+        },
+        {
+          "text": "Mình chưa lấy được bản mô tả tại thời điểm bạn đặt nên chưa thể đối chiếu chính xác. Mình sẽ không dùng mô tả hiện tại để kết luận. Bạn có thể bổ sung ảnh xác nhận mua hàng có mô tả hoặc chọn nhờ nhân viên kiểm tra.",
+          "role": "assistant"
+        },
+        {
+          "text": "Đã chuyển hồ sơ — chờ nhân viên. Nhân viên nhận nguồn đã có và phần chưa xác minh; chưa hoàn tiền hoặc từ chối. Dự kiến xử lý trong 24 giờ kể từ lúc chuyển thành công theo quy tắc dựng; nếu chậm, hệ thống báo quản lý ca, AI không quyết thay.",
+          "role": "system"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-003"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Không có bản lúc đặt"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chưa có biên nhận"
+        },
+        {
+          "tool": "chuyen_truong_nhom",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chuyển hồ sơ cùng nguồn, đính chính và phần bất đồng. Loại ca: thuong"
+        }
+      ],
+      "decision": null
+    },
+    {
+      "id": "F08",
+      "scenario": "K5",
+      "variant": "default",
+      "order": "DH-2611-004",
+      "expected": "Giữ hai ảnh toàn cảnh, chỉ xin nhãn một lần",
+      "pass": true,
+      "messages": [
+        {
+          "text": "mình gửi ảnh 2 lần rồi đó, giờ còn thiếu cái gì nữa thì nói luôn 1 lần đi",
+          "role": "user"
+        },
+        {
+          "text": "Đã có: 2 ảnh toàn cảnh bạn đã gửi, không cần gửi lại. Còn thiếu: một ảnh cận nhãn chất liệu của áo nhận được, để đối chiếu với bản lúc đặt (04/11/2026) ghi “100% cotton”. Bạn có thể bổ sung ảnh nhãn hoặc chọn Tôi không có bằng chứng này; mình chưa kết luận hoặc quyết định hoàn tiền.",
+          "role": "assistant"
+        },
+        {
+          "text": "Đã gửi thành công yêu cầu bổ sung: ảnh cận nhãn chất liệu, để đối chiếu bản lúc đặt; giữ nguyên 2 ảnh toàn cảnh đã có. Hạn bổ sung đến 15:00 15/11/2026. Không cần gửi lại tài liệu đã có.",
+          "role": "system"
+        },
+        {
+          "text": "mình gửi ảnh rồi, còn thiếu gì",
+          "role": "user"
+        },
+        {
+          "text": "Đã có 2 ảnh toàn cảnh, không cần gửi lại. Chỉ còn thiếu ảnh cận nhãn chất liệu để đối chiếu bản lúc đặt. Bạn có thể bổ sung hoặc chọn Tôi không có bằng chứng này.",
+          "role": "assistant"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-004"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Bản lúc đặt: 04/11/2026"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chưa có biên nhận"
+        },
+        {
+          "tool": "yeu_cau_bang_chung",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Người mua: ảnh cận nhãn chất liệu, để đối chiếu bản lúc đặt; giữ nguyên 2 ảnh toàn cảnh đã có. Hạn bổ sung 48 giờ."
+        },
+        {
+          "tool": "dinh_tuyen_C1_C6",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+        }
+      ],
+      "decision": null
+    },
+    {
+      "id": "F09",
+      "scenario": "K6",
+      "variant": "default",
+      "order": "DH-2611-005",
+      "expected": "Chuyển chuyên trách; vẫn hỗ trợ đơn, không phạt",
+      "pass": true,
+      "messages": [
+        {
+          "text": "shop này bán hàng fake 100%, khoá shop đi chứ để lừa người khác à. ko xử là mình đăng lên báo",
+          "role": "user"
+        },
+        {
+          "text": "AI không giám định hàng giả, không phạt hoặc hứa khóa shop. Hồ sơ cần trưởng nhóm để chuyển bộ phận chuyên trách. Bạn vẫn có thể chuẩn bị và gửi yêu cầu trả hàng/hoàn tiền cho chính đơn của bạn trong luồng này.\n\nLời doạ được giữ riêng trong ngữ cảnh, không phải căn cứ để hoàn tiền hay từ chối và không làm đổi nhánh xử lý.\n\nCần ảnh nhãn của đúng hàng nhận để đối chiếu bản lúc đặt; bạn có thể bổ sung, chọn Tôi không có bằng chứng này hoặc nhờ nhân viên.",
+          "role": "assistant"
+        },
+        {
+          "text": "Đã chuyển hồ sơ — chờ nhân viên. Nhân viên nhận nguồn đã có và phần chưa xác minh; chưa hoàn tiền hoặc từ chối. Dự kiến xử lý trong 24 giờ kể từ lúc chuyển thành công theo quy tắc dựng; nếu chậm, hệ thống báo quản lý ca, AI không quyết thay.",
+          "role": "system"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-005"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Bản lúc đặt: 04/11/2026"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chưa có biên nhận"
+        },
+        {
+          "tool": "dinh_tuyen_C1_C6",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+        },
+        {
+          "tool": "chuyen_truong_nhom",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chuyển hồ sơ cùng nguồn, đính chính và phần bất đồng. Loại ca: nghi_hang_gia"
+        }
+      ],
+      "decision": null
+    },
+    {
+      "id": "F10",
+      "scenario": "K7",
+      "variant": "default",
+      "order": "DH-2611-006",
+      "expected": "Giữ liên hệ riêng tư, nêu kênh và dự kiến 48 giờ",
+      "pass": true,
+      "messages": [
+        {
+          "text": "cho mình xin sđt shop đi, mình gọi thẳng cho nhanh chứ chat chờ lâu quá",
+          "role": "user"
+        },
+        {
+          "text": "Không chia sẻ số điện thoại hoặc địa chỉ của bên kia để bảo vệ thông tin riêng tư. Bạn có thể trao đổi trong kênh chat chính thức có lưu vết. Thời gian phản hồi dự kiến của người bán là 48 giờ sau khi hệ thống xác nhận gửi yêu cầu thành công; hiện chưa bắt đầu tính hạn. Bạn cũng có thể nhờ nhân viên xem xét; dự kiến xử lý trong 24 giờ sau khi nhận hồ sơ theo quy tắc dựng.",
+          "role": "assistant"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-006"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Bản lúc đặt: 04/11/2026"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chưa có biên nhận"
+        },
+        {
+          "tool": "dinh_tuyen_C1_C6",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+        }
+      ],
+      "decision": null
+    },
+    {
+      "id": "F11",
+      "scenario": "K8",
+      "variant": "default",
+      "order": "DH-2611-007",
+      "expected": "Xét bằng chứng riêng, không gọi đánh giá shop là lời doạ",
+      "pass": true,
+      "messages": [
+        {
+          "text": "shop này lên mạng xem nhiều người chê lắm rồi, chắc chắn bán hàng dỏm, hoàn tiền cho mình đi",
+          "role": "user"
+        },
+        {
+          "text": "Lịch sử hoặc đánh giá về shop không đủ làm căn cứ cho đơn này. Cần bằng chứng riêng của đúng hàng đã nhận.\n\nCần ảnh nhãn thành phần của đúng hàng nhận để đối chiếu chất liệu với bản lúc đặt; bạn có thể bổ sung hoặc chọn Tôi không có bằng chứng này.",
+          "role": "assistant"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-007"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Bản lúc đặt: 04/11/2026"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chưa có biên nhận"
+        },
+        {
+          "tool": "dinh_tuyen_C1_C6",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+        }
+      ],
+      "decision": null
+    },
+    {
+      "id": "F12",
+      "scenario": "K9",
+      "variant": "co_bien_nhan",
+      "order": "DH-2611-008",
+      "expected": "Tra biên nhận 11/11 trong hạn, chuyển khi quá 48 giờ",
+      "pass": true,
+      "messages": [
+        {
+          "text": "áo nhận từ hôm 6/11 bị sai màu, mình gửi yêu cầu rồi mà shop im re, hôm nay hết hạn trả hàng rồi phải không??",
+          "role": "user"
+        },
+        {
+          "text": "Đã tra cứu biên nhận BN-DH-2611-008, hệ thống ghi nhận lúc 14:00 11/11/2026. Hạn gửi theo chính sách dựng 7 ngày là hết 13/11/2026. Yêu cầu đã được ghi nhận trong hạn; việc chờ người bán không thay đổi thời điểm đã ghi nhận, nhưng chưa bảo đảm kết quả hoàn tiền. Người bán đã hết hạn phản hồi 48 giờ, hồ sơ cần chuyển nhân viên.",
+          "role": "assistant"
+        },
+        {
+          "text": "Đã chuyển hồ sơ — chờ nhân viên. Nhân viên nhận nguồn đã có và phần chưa xác minh; chưa hoàn tiền hoặc từ chối. Dự kiến xử lý trong 24 giờ kể từ lúc chuyển thành công theo quy tắc dựng; nếu chậm, hệ thống báo quản lý ca, AI không quyết thay.",
+          "role": "system"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-008"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Bản lúc đặt: 02/11/2026"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Biên nhận BN-DH-2611-008 · 14:00 11/11/2026 · trong hạn: true"
+        },
+        {
+          "tool": "chuyen_truong_nhom",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chuyển hồ sơ cùng nguồn, đính chính và phần bất đồng. Loại ca: thuong"
+        }
+      ],
+      "decision": null
+    },
+    {
+      "id": "F13",
+      "scenario": "K9",
+      "variant": "chua_co_bien_nhan",
+      "order": "DH-2611-008",
+      "expected": "Chat/nháp không thay biên nhận; hướng dẫn gửi ngay",
+      "pass": true,
+      "messages": [
+        {
+          "text": "áo nhận từ hôm 6/11 bị sai màu, mình gửi yêu cầu rồi mà shop im re, hôm nay hết hạn trả hàng rồi phải không??",
+          "role": "user"
+        },
+        {
+          "text": "Trang đơn ghi nhận ngày nhận hàng 06/11/2026. Theo chính sách dựng 7 ngày, hạn gửi yêu cầu là hết 13/11/2026. Hiện hệ thống chưa có biên nhận; câu “mình gửi rồi”, chat và bản nháp không xác nhận việc gửi yêu cầu trả hàng. Bạn có thể chuẩn bị và gửi ngay. Mình chưa thể hứa bảo lưu quyền nếu chưa có biên nhận.",
+          "role": "assistant"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-008"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Bản lúc đặt: 02/11/2026"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chưa có biên nhận"
+        }
+      ],
+      "decision": null
+    },
+    {
+      "id": "F14",
+      "scenario": "K10",
+      "variant": "default",
+      "order": "DH-2611-009",
+      "expected": "Tách đổi địa chỉ, vẫn xử lý khiếu nại sai màu",
+      "pass": true,
+      "messages": [
+        {
+          "text": "áo bị sai màu so với hình, tiện đổi giúp mình địa chỉ nhận luôn nha, mình chuyển nhà rồi",
+          "role": "user"
+        },
+        {
+          "text": "Về đổi địa chỉ nhận: AI không thể đổi địa chỉ trong luồng khiếu nại này và chưa thực hiện thay đổi nào. Hãy vào đơn hàng → Trợ giúp → hỗ trợ địa chỉ/giao nhận (đường dẫn concept) hoặc liên hệ nhân viên trước khi gửi hàng trả.\n\nVề khiếu nại sai màu: bản mô tả lúc đặt (04/11/2026) ghi “Màu xanh”. Cần ảnh hàng nhận để đối chiếu màu, hoặc chọn Tôi không có bằng chứng này / nhờ nhân viên. Bạn vẫn có thể chuẩn bị và tự gửi yêu cầu.",
+          "role": "assistant"
+        }
+      ],
+      "log": [
+        {
+          "tool": "chon_don",
+          "actor": "BUYER-DEMO",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "DH-2611-009"
+        },
+        {
+          "tool": "xem_mo_ta_luc_dat",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Bản lúc đặt: 04/11/2026"
+        },
+        {
+          "tool": "xem_trang_thai_yeu_cau",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chưa có biên nhận"
+        },
+        {
+          "tool": "dinh_tuyen_C1_C6",
+          "actor": "AI",
+          "at": "2026-11-13T08:00:00.000Z",
+          "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+        }
+      ],
+      "decision": null
+    }
+  ],
+  "regressions": {
+    "total": 9,
+    "pass": 9,
+    "fail": 0,
+    "cases": [
+      {
+        "id": "L1",
+        "key": "K10",
+        "input": "áo sai màu, tiện đổi địa chỉ nhận luôn nha",
+        "pass": true,
+        "messages": [
+          {
+            "text": "áo bị sai màu so với hình, tiện đổi giúp mình địa chỉ nhận luôn nha, mình chuyển nhà rồi",
+            "role": "user"
+          },
+          {
+            "text": "Về đổi địa chỉ nhận: AI không thể đổi địa chỉ trong luồng khiếu nại này và chưa thực hiện thay đổi nào. Hãy vào đơn hàng → Trợ giúp → hỗ trợ địa chỉ/giao nhận (đường dẫn concept) hoặc liên hệ nhân viên trước khi gửi hàng trả.\n\nVề khiếu nại sai màu: bản mô tả lúc đặt (04/11/2026) ghi “Màu xanh”. Cần ảnh hàng nhận để đối chiếu màu, hoặc chọn Tôi không có bằng chứng này / nhờ nhân viên. Bạn vẫn có thể chuẩn bị và tự gửi yêu cầu.",
+            "role": "assistant"
+          },
+          {
+            "text": "áo sai màu, tiện đổi địa chỉ nhận luôn nha",
+            "role": "user"
+          },
+          {
+            "text": "Về đổi địa chỉ nhận: AI không thể đổi địa chỉ trong luồng khiếu nại này và chưa thực hiện thay đổi nào. Hãy vào đơn hàng → Trợ giúp → hỗ trợ địa chỉ/giao nhận (đường dẫn concept) hoặc liên hệ nhân viên trước khi gửi hàng trả.\n\nVề khiếu nại sai màu: bản mô tả lúc đặt (04/11/2026) ghi “Màu xanh”. Cần ảnh hàng nhận để đối chiếu màu, hoặc chọn Tôi không có bằng chứng này / nhờ nhân viên. Bạn vẫn có thể chuẩn bị và tự gửi yêu cầu.",
+            "role": "assistant"
+          }
+        ],
+        "log": [
+          {
+            "tool": "chon_don",
+            "actor": "BUYER-DEMO",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "DH-2611-009"
+          },
+          {
+            "tool": "xem_mo_ta_luc_dat",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Bản lúc đặt: 04/11/2026"
+          },
+          {
+            "tool": "xem_trang_thai_yeu_cau",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chưa có biên nhận"
+          },
+          {
+            "tool": "dinh_tuyen_C1_C6",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+          },
+          {
+            "tool": "dinh_tuyen_C1_C6",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+          }
+        ]
+      },
+      {
+        "id": "L2",
+        "key": "K1",
+        "input": "ko xử là mình đăng lên báo",
+        "pass": true,
+        "messages": [
+          {
+            "text": "Mình đặt áo size L mà nhận được size M, mặc không vừa. Shop cũng nhắn nhận là gửi nhầm rồi. Mình muốn trả hàng hoàn tiền thì làm sao?",
+            "role": "user"
+          },
+          {
+            "text": "Bản mô tả lúc đặt (08/11/2026) ghi size L. Mình chưa có xác nhận chính thức của shop trong luồng này, dù bạn cho biết shop đã nhận lỗi qua chat. Bạn có thể bổ sung một ảnh nhãn size, chuẩn bị nháp rồi tự gửi yêu cầu. Chưa có thao tác hoàn tiền.",
+            "role": "assistant"
+          },
+          {
+            "text": "ko xử là mình đăng lên báo",
+            "role": "user"
+          },
+          {
+            "text": "Lời doạ được giữ riêng trong ngữ cảnh, không phải căn cứ để hoàn tiền hay từ chối và không làm đổi nhánh xử lý.\n\nCần ảnh nhãn của đúng hàng nhận để đối chiếu bản lúc đặt; bạn có thể bổ sung, chọn Tôi không có bằng chứng này hoặc nhờ nhân viên.",
+            "role": "assistant"
+          }
+        ],
+        "log": [
+          {
+            "tool": "chon_don",
+            "actor": "BUYER-DEMO",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "DH-2611-001"
+          },
+          {
+            "tool": "xem_mo_ta_luc_dat",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Bản lúc đặt: 08/11/2026"
+          },
+          {
+            "tool": "xem_trang_thai_yeu_cau",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chưa có biên nhận"
+          },
+          {
+            "tool": "dinh_tuyen_C1_C6",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+          }
+        ]
+      },
+      {
+        "id": "L3",
+        "key": "K1",
+        "input": "shop bán hàng fake, khoá shop đi",
+        "pass": true,
+        "messages": [
+          {
+            "text": "Mình đặt áo size L mà nhận được size M, mặc không vừa. Shop cũng nhắn nhận là gửi nhầm rồi. Mình muốn trả hàng hoàn tiền thì làm sao?",
+            "role": "user"
+          },
+          {
+            "text": "Bản mô tả lúc đặt (08/11/2026) ghi size L. Mình chưa có xác nhận chính thức của shop trong luồng này, dù bạn cho biết shop đã nhận lỗi qua chat. Bạn có thể bổ sung một ảnh nhãn size, chuẩn bị nháp rồi tự gửi yêu cầu. Chưa có thao tác hoàn tiền.",
+            "role": "assistant"
+          },
+          {
+            "text": "shop bán hàng fake, khoá shop đi",
+            "role": "user"
+          },
+          {
+            "text": "AI không giám định hàng giả, không phạt hoặc hứa khóa shop. Hồ sơ cần trưởng nhóm để chuyển bộ phận chuyên trách. Bạn vẫn có thể chuẩn bị và gửi yêu cầu trả hàng/hoàn tiền cho chính đơn của bạn trong luồng này.\n\nCần ảnh nhãn của đúng hàng nhận để đối chiếu bản lúc đặt; bạn có thể bổ sung, chọn Tôi không có bằng chứng này hoặc nhờ nhân viên.",
+            "role": "assistant"
+          },
+          {
+            "text": "Đã chuyển hồ sơ — chờ nhân viên. Nhân viên nhận nguồn đã có và phần chưa xác minh; chưa hoàn tiền hoặc từ chối. Dự kiến xử lý trong 24 giờ kể từ lúc chuyển thành công theo quy tắc dựng; nếu chậm, hệ thống báo quản lý ca, AI không quyết thay.",
+            "role": "system"
+          }
+        ],
+        "log": [
+          {
+            "tool": "chon_don",
+            "actor": "BUYER-DEMO",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "DH-2611-001"
+          },
+          {
+            "tool": "xem_mo_ta_luc_dat",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Bản lúc đặt: 08/11/2026"
+          },
+          {
+            "tool": "xem_trang_thai_yeu_cau",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chưa có biên nhận"
+          },
+          {
+            "tool": "dinh_tuyen_C1_C6",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+          },
+          {
+            "tool": "chuyen_truong_nhom",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chuyển hồ sơ cùng nguồn, đính chính và phần bất đồng. Loại ca: nghi_hang_gia"
+          }
+        ]
+      },
+      {
+        "id": "L4",
+        "key": "K4",
+        "input": null,
+        "pass": true,
+        "messages": [
+          {
+            "text": "áo ghi 100% cotton mà mặc vô nóng hầm, sờ là biết vải pha, k đúng mô tả gì hết",
+            "role": "user"
+          },
+          {
+            "text": "Bản mô tả lúc bạn đặt (02/11/2026) ghi “100% cotton”, còn trang hiện tại ghi “cotton pha polyester 65/35” và được cập nhật ngày 07/11/2026, sau thời điểm đặt hàng. Mình sẽ dùng bản mô tả lúc đặt để đối chiếu khiếu nại này.\n\nMình chưa xác minh được thành phần của chiếc áo bạn nhận chỉ từ cảm giác khi mặc. Bạn có ảnh nhãn thành phần trên áo không? Nếu không có hoặc nhãn không đọc được, bạn vẫn có thể nhờ nhân viên xem xét. Mình có thể soạn nháp yêu cầu để bạn kiểm tra; việc này chưa gửi yêu cầu và chưa quyết định hoàn tiền.",
+            "role": "assistant"
+          },
+          {
+            "text": "Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.",
+            "role": "system"
+          },
+          {
+            "text": "Đã gửi yêu cầu. Biên nhận BN-DH-2611-003. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.",
+            "role": "system"
+          },
+          {
+            "text": "Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.",
+            "role": "system"
+          },
+          {
+            "text": "Đã chuyển hồ sơ — chờ nhân viên. Nhân viên nhận nguồn đã có và phần chưa xác minh; chưa hoàn tiền hoặc từ chối. Dự kiến xử lý trong 24 giờ kể từ lúc chuyển thành công theo quy tắc dựng; nếu chậm, hệ thống báo quản lý ca, AI không quyết thay.",
+            "role": "system"
+          },
+          {
+            "text": "Đang chờ nhân viên, chậm hơn dự kiến. Đã báo quản lý ca và ưu tiên hồ sơ. AI không thay người duyệt quyết định.",
+            "role": "system"
+          }
+        ],
+        "log": [
+          {
+            "tool": "chon_don",
+            "actor": "BUYER-DEMO",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "DH-2611-003"
+          },
+          {
+            "tool": "xem_mo_ta_luc_dat",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Bản lúc đặt: 02/11/2026"
+          },
+          {
+            "tool": "xem_trang_thai_yeu_cau",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chưa có biên nhận"
+          },
+          {
+            "tool": "soan_hoan_tien",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chỉ soạn nháp theo lựa chọn người mua; chưa gửi"
+          },
+          {
+            "tool": "gui_yeu_cau_giao_dien",
+            "actor": "BUYER-DEMO",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Người mua bấm gửi, không phải AI"
+          },
+          {
+            "tool": "yeu_cau_bang_chung",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Gửi đúng đơn; cần phản hồi về nhãn thành phần và hai phiên bản mô tả. Hạn 48 giờ từ lúc gửi thành công."
+          },
+          {
+            "tool": "chuyen_truong_nhom",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chuyển hồ sơ cùng nguồn, đính chính và phần bất đồng. Loại ca: thuong"
+          },
+          {
+            "tool": "dong_ho_demo",
+            "actor": "SYSTEM",
+            "at": "2026-11-14T08:00:00.000Z",
+            "note": "Tăng 24 giờ"
+          },
+          {
+            "tool": "bao_quan_ly_ca",
+            "actor": "SYSTEM",
+            "at": "2026-11-14T08:00:00.000Z",
+            "note": "Đưa hồ sơ lên đầu hàng"
+          }
+        ]
+      },
+      {
+        "id": "L5",
+        "key": "K4",
+        "input": "tiện đổi giúp mình số điện thoại nhận hàng luôn nha",
+        "pass": true,
+        "messages": [
+          {
+            "text": "áo ghi 100% cotton mà mặc vô nóng hầm, sờ là biết vải pha, k đúng mô tả gì hết",
+            "role": "user"
+          },
+          {
+            "text": "Bản mô tả lúc bạn đặt (02/11/2026) ghi “100% cotton”, còn trang hiện tại ghi “cotton pha polyester 65/35” và được cập nhật ngày 07/11/2026, sau thời điểm đặt hàng. Mình sẽ dùng bản mô tả lúc đặt để đối chiếu khiếu nại này.\n\nMình chưa xác minh được thành phần của chiếc áo bạn nhận chỉ từ cảm giác khi mặc. Bạn có ảnh nhãn thành phần trên áo không? Nếu không có hoặc nhãn không đọc được, bạn vẫn có thể nhờ nhân viên xem xét. Mình có thể soạn nháp yêu cầu để bạn kiểm tra; việc này chưa gửi yêu cầu và chưa quyết định hoàn tiền.",
+            "role": "assistant"
+          },
+          {
+            "text": "tiện đổi giúp mình số điện thoại nhận hàng luôn nha",
+            "role": "user"
+          },
+          {
+            "text": "Về đổi số điện thoại nhận hàng: AI không thể đổi số điện thoại trong luồng khiếu nại này và chưa thay đổi thông tin nào. Hãy mở đơn hàng → Trợ giúp → hỗ trợ thông tin giao nhận (đường dẫn concept); trao đổi với nhân viên qua kênh chính thức.",
+            "role": "assistant"
+          }
+        ],
+        "log": [
+          {
+            "tool": "chon_don",
+            "actor": "BUYER-DEMO",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "DH-2611-003"
+          },
+          {
+            "tool": "xem_mo_ta_luc_dat",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Bản lúc đặt: 02/11/2026"
+          },
+          {
+            "tool": "xem_trang_thai_yeu_cau",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chưa có biên nhận"
+          },
+          {
+            "tool": "dinh_tuyen_C1_C6",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+          }
+        ]
+      },
+      {
+        "id": "L6",
+        "key": "K8",
+        "input": null,
+        "pass": true,
+        "messages": [
+          {
+            "text": "shop này lên mạng xem nhiều người chê lắm rồi, chắc chắn bán hàng dỏm, hoàn tiền cho mình đi",
+            "role": "user"
+          },
+          {
+            "text": "Lịch sử hoặc đánh giá về shop không đủ làm căn cứ cho đơn này. Cần bằng chứng riêng của đúng hàng đã nhận.\n\nCần ảnh nhãn thành phần của đúng hàng nhận để đối chiếu chất liệu với bản lúc đặt; bạn có thể bổ sung hoặc chọn Tôi không có bằng chứng này.",
+            "role": "assistant"
+          }
+        ],
+        "log": [
+          {
+            "tool": "chon_don",
+            "actor": "BUYER-DEMO",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "DH-2611-007"
+          },
+          {
+            "tool": "xem_mo_ta_luc_dat",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Bản lúc đặt: 04/11/2026"
+          },
+          {
+            "tool": "xem_trang_thai_yeu_cau",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chưa có biên nhận"
+          },
+          {
+            "tool": "dinh_tuyen_C1_C6",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+          }
+        ]
+      },
+      {
+        "id": "L7",
+        "key": "K5",
+        "input": null,
+        "pass": true,
+        "messages": [
+          {
+            "text": "mình gửi ảnh 2 lần rồi đó, giờ còn thiếu cái gì nữa thì nói luôn 1 lần đi",
+            "role": "user"
+          },
+          {
+            "text": "Chưa thực hiện được thao tác yeu_cau_bang_chung. Hồ sơ được giữ nguyên; bạn có thể thử lại. Chưa có xác nhận thành công.",
+            "role": "system"
+          },
+          {
+            "text": "Đã có: 2 ảnh toàn cảnh bạn đã gửi, không cần gửi lại. Còn thiếu: một ảnh cận nhãn chất liệu của áo nhận được, để đối chiếu với bản lúc đặt (04/11/2026) ghi “100% cotton”. Bạn có thể bổ sung ảnh nhãn hoặc chọn Tôi không có bằng chứng này; mình chưa kết luận hoặc quyết định hoàn tiền.",
+            "role": "assistant"
+          },
+          {
+            "text": "Đã gửi thành công yêu cầu bổ sung: ảnh cận nhãn chất liệu, để đối chiếu bản lúc đặt; giữ nguyên 2 ảnh toàn cảnh đã có. Hạn bổ sung đến 15:00 15/11/2026. Không cần gửi lại tài liệu đã có.",
+            "role": "system"
+          }
+        ],
+        "log": [
+          {
+            "tool": "chon_don",
+            "actor": "BUYER-DEMO",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "DH-2611-004"
+          },
+          {
+            "tool": "xem_mo_ta_luc_dat",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Bản lúc đặt: 04/11/2026"
+          },
+          {
+            "tool": "xem_trang_thai_yeu_cau",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chưa có biên nhận"
+          },
+          {
+            "tool": "yeu_cau_bang_chung",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Người mua: ảnh cận nhãn chất liệu, để đối chiếu bản lúc đặt; giữ nguyên 2 ảnh toàn cảnh đã có. Hạn bổ sung 48 giờ."
+          }
+        ]
+      },
+      {
+        "id": "L8",
+        "key": "K4",
+        "input": "cho mình địa chỉ kho của shop để gửi trả hàng",
+        "pass": true,
+        "messages": [
+          {
+            "text": "áo ghi 100% cotton mà mặc vô nóng hầm, sờ là biết vải pha, k đúng mô tả gì hết",
+            "role": "user"
+          },
+          {
+            "text": "Bản mô tả lúc bạn đặt (02/11/2026) ghi “100% cotton”, còn trang hiện tại ghi “cotton pha polyester 65/35” và được cập nhật ngày 07/11/2026, sau thời điểm đặt hàng. Mình sẽ dùng bản mô tả lúc đặt để đối chiếu khiếu nại này.\n\nMình chưa xác minh được thành phần của chiếc áo bạn nhận chỉ từ cảm giác khi mặc. Bạn có ảnh nhãn thành phần trên áo không? Nếu không có hoặc nhãn không đọc được, bạn vẫn có thể nhờ nhân viên xem xét. Mình có thể soạn nháp yêu cầu để bạn kiểm tra; việc này chưa gửi yêu cầu và chưa quyết định hoàn tiền.",
+            "role": "assistant"
+          },
+          {
+            "text": "cho mình địa chỉ kho của shop để gửi trả hàng",
+            "role": "user"
+          },
+          {
+            "text": "Để gửi trả hàng, hãy mở đơn hàng → yêu cầu trả hàng/hoàn tiền → hướng dẫn gửi trả chính thức (đường dẫn concept). Chỉ gửi theo nhãn/hướng dẫn của yêu cầu đã được duyệt; AI không cung cấp hoặc đoán địa chỉ kho.",
+            "role": "assistant"
+          }
+        ],
+        "log": [
+          {
+            "tool": "chon_don",
+            "actor": "BUYER-DEMO",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "DH-2611-003"
+          },
+          {
+            "tool": "xem_mo_ta_luc_dat",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Bản lúc đặt: 02/11/2026"
+          },
+          {
+            "tool": "xem_trang_thai_yeu_cau",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chưa có biên nhận"
+          },
+          {
+            "tool": "dinh_tuyen_C1_C6",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+          }
+        ]
+      },
+      {
+        "id": "L9",
+        "key": "K4",
+        "input": "mình chưa nhận được hàng mà app báo giao rồi",
+        "pass": true,
+        "messages": [
+          {
+            "text": "áo ghi 100% cotton mà mặc vô nóng hầm, sờ là biết vải pha, k đúng mô tả gì hết",
+            "role": "user"
+          },
+          {
+            "text": "Bản mô tả lúc bạn đặt (02/11/2026) ghi “100% cotton”, còn trang hiện tại ghi “cotton pha polyester 65/35” và được cập nhật ngày 07/11/2026, sau thời điểm đặt hàng. Mình sẽ dùng bản mô tả lúc đặt để đối chiếu khiếu nại này.\n\nMình chưa xác minh được thành phần của chiếc áo bạn nhận chỉ từ cảm giác khi mặc. Bạn có ảnh nhãn thành phần trên áo không? Nếu không có hoặc nhãn không đọc được, bạn vẫn có thể nhờ nhân viên xem xét. Mình có thể soạn nháp yêu cầu để bạn kiểm tra; việc này chưa gửi yêu cầu và chưa quyết định hoàn tiền.",
+            "role": "assistant"
+          },
+          {
+            "text": "mình chưa nhận được hàng mà app báo giao rồi",
+            "role": "user"
+          },
+          {
+            "text": "Bạn chưa nhận được hàng nên không cần gửi ảnh nhãn sản phẩm. Vui lòng mở đơn hàng → Trợ giúp → Giao nhận / báo đã giao nhưng chưa nhận (đường dẫn concept), hoặc nhờ nhân viên giao nhận kiểm tra. AI chưa mở tra soát hoặc thay đổi đơn trong luồng này.",
+            "role": "assistant"
+          }
+        ],
+        "log": [
+          {
+            "tool": "chon_don",
+            "actor": "BUYER-DEMO",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "DH-2611-003"
+          },
+          {
+            "tool": "xem_mo_ta_luc_dat",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Bản lúc đặt: 02/11/2026"
+          },
+          {
+            "tool": "xem_trang_thai_yeu_cau",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chưa có biên nhận"
+          },
+          {
+            "tool": "dinh_tuyen_C1_C6",
+            "actor": "AI",
+            "at": "2026-11-13T08:00:00.000Z",
+            "note": "Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính"
+          }
+        ]
+      }
+    ]
+  }
+}

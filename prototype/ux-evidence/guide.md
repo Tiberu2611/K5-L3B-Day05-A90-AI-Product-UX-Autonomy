@@ -34,4 +34,9 @@ Cần Node.js 22+ và Chrome. Script mặc định dùng Chrome tại `C:/Progra
 [Bảng 26 lượt](README.md) và [results.json](results.json) lưu tin nhắn/trạng thái/log cùng SHA-256 của model.js, app.js, styles.css, index.html đã được kiểm. Ảnh được chụp trực tiếp bằng Chrome, không dựng lại.
 
 Giới hạn: mô phỏng ảnh bằng chữ, không OCR/AI thật hay upload; K6–K8/K10 chạy trên đơn dựng gần nhất. Đã kiểm fixture riêng K5 và K9 có biên nhận sẵn ở UX25–UX26. Chưa có đổi đơn/thay file mà vẫn giữ nháp. Viewport mobile không thay điện thoại vật lý. Đây là kiểm tra UX của TV2, không phải demo trước lớp hoặc xác nhận vận hành thật. Bộ ảnh `anh-s7` TV1 nhắc tới không có trong checkout; không gán các ảnh mới thành bộ ảnh cũ.
-\nẢnh bổ sung: [K5 giữ hai ảnh và chỉ xin nhãn](13-k5-khong-hoi-lap.png), [K9 biên nhận có sẵn từ 11/11](14-k9-bien-nhan-co-san.png). Hạn người bán 48 giờ, người mua bổ sung 48 giờ, trưởng nhóm 24 giờ.\n
+
+Ảnh bổ sung: [K5 giữ hai ảnh và chỉ xin nhãn](13-k5-khong-hoi-lap.png), [K9 biên nhận có sẵn từ 11/11](14-k9-bien-nhan-co-san.png). Hạn người bán 48 giờ, người mua bổ sung 48 giờ, trưởng nhóm 24 giờ.
+
+## Trạng thái sau final
+
+Đây là baseline Chrome trước lượt sửa final. Kết quả hiện tại và hash nguồn mới ở [final-evidence](../final-evidence/README.md). Chưa chạy lại Chrome trong phiên final; không dùng 26/26 cũ như kiểm chứng nguồn đã sửa.

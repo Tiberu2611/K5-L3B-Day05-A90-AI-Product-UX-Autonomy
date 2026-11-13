@@ -1,0 +1,200 @@
+﻿TAP version 13
+# Subtest: C2: no tools with external effects before explicit order choice
+ok 1 - C2: no tools with external effects before explicit order choice
+  ---
+  duration_ms: 2.8307
+  ...
+# Subtest: K1: draft and chat do not issue a receipt; seller can approve through fast path
+ok 2 - K1: draft and chat do not issue a receipt; seller can approve through fast path
+  ---
+  duration_ms: 1.0576
+  ...
+# Subtest: AI and buyer cannot approve; seller cannot reject
+ok 3 - AI and buyer cannot approve; seller cannot reject
+  ---
+  duration_ms: 0.2462
+  ...
+# Subtest: K3: basket question happens before messaging seller
+ok 4 - K3: basket question happens before messaging seller
+  ---
+  duration_ms: 0.2096
+  ...
+# Subtest: K3: whole chamber or unclear answer triggers request only after actual receipt
+ok 5 - K3: whole chamber or unclear answer triggers request only after actual receipt
+  ---
+  duration_ms: 0.2132
+  ...
+# Subtest: K3: threat does not change routing, tool actions or financial outcome
+ok 6 - K3: threat does not change routing, tool actions or financial outcome
+  ---
+  duration_ms: 1.1503
+  ...
+# Subtest: K4: missing source does not conclude from current page or enable manager decision
+ok 7 - K4: missing source does not conclude from current page or enable manager decision
+  ---
+  duration_ms: 0.3812
+  ...
+# Subtest: K4: refund waits for seller response; rejection also waits for buyer evidence
+ok 8 - K4: refund waits for seller response; rejection also waits for buyer evidence
+  ---
+  duration_ms: 0.8751
+  ...
+# Subtest: 48-hour seller expiry escalates without a decision; manager alerts after 24 more hours
+ok 9 - 48-hour seller expiry escalates without a decision; manager alerts after 24 more hours
+  ---
+  duration_ms: 0.5016
+  ...
+# Subtest: buyer silence escalates even before a formal return receipt, never closes
+ok 10 - buyer silence escalates even before a formal return receipt, never closes
+  ---
+  duration_ms: 0.4363
+  ...
+# Subtest: failure: send, request seller, transfer and decision mutate state only after success
+ok 11 - failure: send, request seller, transfer and decision mutate state only after success
+  ---
+  duration_ms: 0.278
+  ...
+# Subtest: correction invalidates old draft and keeps a trace instead of deleting source
+ok 12 - correction invalidates old draft and keeps a trace instead of deleting source
+  ---
+  duration_ms: 0.2081
+  ...
+# Subtest: correction of wrong source retracts conclusion and escalates, never rejects
+ok 13 - correction of wrong source retracts conclusion and escalates, never rejects
+  ---
+  duration_ms: 0.1893
+  ...
+# Subtest: K9: deadline based on 7 days; only successful receipt establishes in-time claim
+ok 14 - K9: deadline based on 7 days; only successful receipt establishes in-time claim
+  ---
+  duration_ms: 0.1513
+  ...
+# Subtest: C1: privacy, counterfeit and multiple requests get explicit safe next steps
+ok 15 - C1: privacy, counterfeit and multiple requests get explicit safe next steps
+  ---
+  duration_ms: 0.2855
+  ...
+# Subtest: closed decision stays closed when user requests a review
+ok 16 - closed decision stays closed when user requests a review
+  ---
+  duration_ms: 0.1557
+  ...
+# Subtest: render smoke: buyer, seller, manager, all fixtures and untrusted text
+ok 17 - render smoke: buyer, seller, manager, all fixtures and untrusted text
+  ---
+  duration_ms: 67.2585
+  ...
+# Subtest: seller expiry is 48 hours exactly, not 24; manager stays locked while seller is within deadline
+ok 18 - seller expiry is 48 hours exactly, not 24; manager stays locked while seller is within deadline
+  ---
+  duration_ms: 0.2836
+  ...
+# Subtest: K5 retains 2 overview images and asks only once for the missing material label
+ok 19 - K5 retains 2 overview images and asks only once for the missing material label
+  ---
+  duration_ms: 0.399
+  ...
+# Subtest: anh_tem_mo never quotes unreadable numbers; asks for a clear label then can continue
+ok 20 - anh_tem_mo never quotes unreadable numbers; asks for a clear label then can continue
+  ---
+  duration_ms: 0.3386
+  ...
+# Subtest: K4 co_anh_nhan does not ask to upload a label that already exists
+ok 21 - K4 co_anh_nhan does not ask to upload a label that already exists
+  ---
+  duration_ms: 0.1313
+  ...
+# Subtest: K9 has a verified, in-time pre-existing receipt and overdue seller, then transfers
+ok 22 - K9 has a verified, in-time pre-existing receipt and overdue seller, then transfers
+  ---
+  duration_ms: 0.4271
+  ...
+# Subtest: K9 without a receipt does not claim registration, initiate seller deadline or auto-transfer
+ok 23 - K9 without a receipt does not claim registration, initiate seller deadline or auto-transfer
+  ---
+  duration_ms: 0.1183
+  ...
+# Subtest: K10 address change is outside scope, not mistaken for disclosure, and complaint continues
+ok 24 - K10 address change is outside scope, not mistaken for disclosure, and complaint continues
+  ---
+  duration_ms: 0.2207
+  ...
+# Subtest: contact disclosure remains blocked, including when mixed with address change
+ok 25 - contact disclosure remains blocked, including when mixed with address change
+  ---
+  duration_ms: 0.2185
+  ...
+# Subtest: K7 gives a conditional 48-hour response estimate, then an actual due time when sent
+ok 26 - K7 gives a conditional 48-hour response estimate, then an actual due time when sent
+  ---
+  duration_ms: 0.3263
+  ...
+# Subtest: initial fixtures for K6 and K8 route to special handling without financial actions
+ok 27 - initial fixtures for K6 and K8 route to special handling without financial actions
+  ---
+  duration_ms: 0.1856
+  ...
+# Subtest: final: unreceived variants route only to delivery support, never ask for a label
+ok 28 - final: unreceived variants route only to delivery support, never ask for a label
+  ---
+  duration_ms: 0.2033
+  ...
+# Subtest: final: changing own recipient phone is separate from requesting shop contact
+ok 29 - final: changing own recipient phone is separate from requesting shop contact
+  ---
+  duration_ms: 0.1333
+  ...
+# Subtest: final: multi-intent message handles personal phone and shop contact independently
+ok 30 - final: multi-intent message handles personal phone and shop contact independently
+  ---
+  duration_ms: 0.19
+  ...
+# Subtest: final: return warehouse question gives official return steps without unrelated evidence request
+ok 31 - final: return warehouse question gives official return steps without unrelated evidence request
+  ---
+  duration_ms: 0.1286
+  ...
+# Subtest: final: K8 history is not called a threat when no threat is present
+ok 32 - final: K8 history is not called a threat when no threat is present
+  ---
+  duration_ms: 0.1189
+  ...
+# Subtest: final: buyer evidence failure never claims success, retry confirms success exactly once
+ok 33 - final: buyer evidence failure never claims success, retry confirms success exactly once
+  ---
+  duration_ms: 0.3488
+  ...
+# Subtest: final: withdrawing a voluntary transfer preserves receipt, sources, deadlines and history
+ok 34 - final: withdrawing a voluntary transfer preserves receipt, sources, deadlines and history
+  ---
+  duration_ms: 0.1712
+  ...
+# Subtest: final: manager can return voluntary transfer, wrong roles cannot
+ok 35 - final: manager can return voluntary transfer, wrong roles cannot
+  ---
+  duration_ms: 0.1162
+  ...
+# Subtest: final: mandatory reviews and resolved financial decisions cannot be withdrawn
+ok 36 - final: mandatory reviews and resolved financial decisions cannot be withdrawn
+  ---
+  duration_ms: 0.4362
+  ...
+# Subtest: final: failed withdrawal preserves waiting state and can be retried
+ok 37 - final: failed withdrawal preserves waiting state and can be retried
+  ---
+  duration_ms: 0.1375
+  ...
+# Subtest: final: threat wording is isolated, correct order is kept, and AI does not decide money
+ok 38 - final: threat wording is isolated, correct order is kept, and AI does not decide money
+  ---
+  duration_ms: 0.1538
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 101.4615

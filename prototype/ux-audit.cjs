@@ -217,7 +217,7 @@ async function test(id, description, run) {
   await test('UX19', 'K7: kênh chính thức + dự kiến khi chưa gửi và khi có hạn', async () => {
     await open(); await chat('cho mình xin sđt shop đi, mình gọi thẳng cho nhanh chứ chat chờ lâu quá');
     let s = await snapshot(); assert.match(s.messages.at(-1).text, /48 giờ.*chưa bắt đầu/s); assert.match(s.messages.at(-1).text, /24 giờ/);
-    await send(); await chat('cho mình xin sđt shop'); s = await snapshot();
+    await action('resume'); await send(); await chat('cho mình xin sđt shop'); s = await snapshot();
     assert.match(s.messages.at(-1).text, /Thời gian phản hồi của người bán:/); assert.match(s.messages.at(-1).text, /kênh chat chính thức/);
     await capture('09-k7-kenh-va-thoi-gian.png');
   });

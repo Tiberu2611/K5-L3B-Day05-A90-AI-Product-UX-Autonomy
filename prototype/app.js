@@ -12,6 +12,7 @@ function button(label, action, options) {
 function badge(text) { return '<span class="status-chip">' + esc(text) + '</span>'; }
 function notify(text) { $('toast').textContent = text; $('toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').hidden = true, 4000); }
 function status() {
+  if (state.guidanceOnly && !state.decision) return 'Hướng dẫn ngoài luồng — chưa thay đổi đơn';
   if (state.decision) return 'Đã có quyết định mô phỏng';
   if (state.error) return 'Thao tác chưa thành công — có thể thử lại';
   if (state.managerLate) return 'Đang chờ nhân viên, chậm hơn dự kiến';
@@ -48,6 +49,8 @@ function deadlines() {
 function needed() {
   if (!state.chosen) return '<p>Chọn đúng đơn trước khi yêu cầu bằng chứng.</p>';
   let text = '';
+  if (state.guidanceOnly) return '<p>' + esc(state.guidance) + '</p>' + button('Tiếp tục khiếu nại không đúng mô tả', 'resume');
+  if (state.error && state.error.retry === 'buyerEvidence') return '<p>Yêu cầu bổ sung chưa gửi thành công. Hồ sơ và tài liệu đã có được giữ nguyên; bấm Thử lại ở thông báo lỗi.</p>';
   if (!T4.source(state)) text += '<p>Thiếu bản mô tả lúc đặt — cần nhân viên kiểm tra nguồn. Bạn vẫn có thể gửi yêu cầu.</p>';
   if (state.key === 'K3' && !state.labelReadable && !state.noEvidence) {
     text += '<p>Ảnh tem hiện chưa đọc rõ. Cần ảnh rõ phần dung tích để đối chiếu, không trích số từ ảnh mờ.</p>' + button('＋ Bổ sung ảnh tem rõ mẫu', 'evidence');
@@ -69,7 +72,7 @@ function buyer() {
   let draft = '';
   if (state.draft && !state.receipt) draft = section('Bản nháp yêu cầu ' + badge(state.stale ? 'Cần kiểm tra lại' : 'Chưa gửi'), '<label for="draft-text" class="field-label">Xem và sửa trước khi gửi</label><textarea id="draft-text" rows="7" maxlength="3000">' + esc(state.draft) + '</textarea><p class="small muted">Gửi yêu cầu không đồng nghĩa với chuyển tiền.</p><div class="button-row">' + button('Gửi yêu cầu trả hàng', 'submit', { className: 'primary-button', disabled: state.stale }) + button('Hủy nháp', 'discard') + '</div>');
   return '<div class="buyer-grid"><div class="main-column"><section class="card conversation"><div class="card-header"><div class="assistant-icon">✦</div><div><h2>Trợ lý hỗ trợ khiếu nại ' + num(1) + '<span class="ai-badge">AI</span></h2><p>Giúp đối chiếu thông tin và chuẩn bị yêu cầu</p></div></div><div class="ai-intro">[1] Quyết định hoàn tiền hoặc từ chối cần người có thẩm quyền duyệt.</div><div class="case-status" role="status">' + num(2) + ' ' + esc(status()) + '</div><div class="messages" id="messages"><div class="day-divider">PHIÊN MÔ PHỎNG · ' + date(state.now) + '</div>' + (messages || '<div class="empty-state"><span>▤</span><h3>Bắt đầu từ đúng đơn hàng.</h3><p>AI không tự chọn đơn gần nhất và không gửi gì cho shop trước khi bạn chọn.</p></div>') + '</div><div class="quick-actions">' +
-    (!state.chosen ? button('Chọn đơn ' + esc(f.id), 'choose', { className: 'primary-button' }) : !state.decision ? (!state.receipt ? button('Chuẩn bị yêu cầu' + (state.stale ? ' mới' : ''), 'prepare') : '') + button('Sửa thông tin AI đọc sai [5]', 'correction') + button('Nhờ nhân viên xem xét [6]', 'transfer') + (state.key === 'K4' ? button('Demo AI dùng sai nguồn', 'wrong-source', { className: 'text-button' }) : '') : button('Yêu cầu kiểm tra lại quyết định [6]', 'reopen')) +
+    (!state.chosen ? button('Chọn đơn ' + esc(f.id), 'choose', { className: 'primary-button' }) : !state.decision ? (state.guidanceOnly ? button('Tiếp tục khiếu nại của đơn đã chọn', 'resume') : (!state.receipt ? button('Chuẩn bị yêu cầu' + (state.stale ? ' mới' : ''), 'prepare') : '') + button('Sửa thông tin AI đọc sai [5]', 'correction') + button('Nhờ nhân viên xem xét [6]', 'transfer') + (state.key === 'K4' ? button('Demo AI dùng sai nguồn', 'wrong-source', { className: 'text-button' }) : '')) + (state.escalatedAt !== null ? button('Rút yêu cầu chuyển đang chờ', 'withdraw', { disabled: !!T4.transferUndoBlock(state, 'BUYER-DEMO') }) : '') : button('Yêu cầu kiểm tra lại quyết định [6]', 'reopen')) +
     '</div><form id="chat-form" class="composer"><label class="sr-only" for="chat-input">Tin nhắn bổ sung</label><input id="chat-input" maxlength="1000" placeholder="Bổ sung thông tin, hỏi ngoài phạm vi hoặc thử ca lạ…"><button type="submit" aria-label="Gửi">↑</button></form><div class="composer-note">Không gửi thông tin riêng tư. Chat dùng bộ định tuyến mô phỏng, không gọi AI thật.</div></section>' +
     (state.chosen && !state.decision ? section('Bước tiếp theo ' + num(4), needed()) : '') + draft + '</div><div class="detail-column">' +
     section('Đơn hàng của bạn', '<div class="product-row"><div class="product-art">' + (state.key === 'K3' ? '▥' : '♧') + '</div><div><span class="small muted">Shop mẫu · dữ liệu dựng</span><h3>' + esc(f.name) + '</h3><p>' + money(f.price) + '</p></div></div><div class="order-meta"><span>Mã đơn<strong>' + esc(f.id) + '</strong></span><span>Đặt ngày<strong>' + esc(f.ordered) + '</strong></span></div><div class="order-footer">Ngày nhận <span>' + esc(f.received.split('-').reverse().join('/')) + '</span></div>') +
@@ -100,6 +103,8 @@ function staff() {
       '<p class="lock-reason">' + esc(refundBlock || 'Có thể duyệt — cần lý do và hộp xác nhận cuối.') + '</p>' +
       button('Từ chối khiếu nại mô phỏng', 'manager-reject', { disabled: !!rejectBlock }) +
       '<p class="lock-reason">' + esc(rejectBlock || 'Có thể từ chối — cần lý do và xác nhận đã xem bản lúc đặt.') + '</p>' +
+      button('Trả hồ sơ về luồng bổ sung', 'return-case', { disabled: !!T4.transferUndoBlock(state, 'MANAGER-DEMO') }) +
+      '<p class="lock-reason">' + esc(T4.transferUndoBlock(state, 'MANAGER-DEMO') || 'Chỉ trả lại trạng thái hàng chờ; giữ biên nhận và thời hạn.') + '</p>' +
       button('Yêu cầu người bán phản hồi', 'ask-seller', { disabled: !state.receipt || state.askedAt !== null || state.key === 'K3' && !state.answer || !!state.decision }) +
       '</div><div class="policy-note"><strong>Giới hạn</strong><p>Xử phạt thuộc bộ phận chuyên trách. Im lặng của một bên không tự thành bằng chứng. Thiếu nguồn lúc đặt: giữ hồ sơ để nhân viên xác minh.</p><p>Loại ca: ' + esc(state.type) + '</p></div>') + section('Thời hạn ' + num(7), deadlines());
   }
@@ -150,6 +155,9 @@ function perform(action, value) {
     case 'prepare': T4.prepare(state); break;
     case 'discard': state.draft = null; state.stale = false; break;
     case 'submit': T4.submit(state, draftBox ? draftBox.value : state.draft); break;
+    case 'resume': T4.resumeComplaint(state); break;
+    case 'withdraw': T4.undoTransfer(state, 'BUYER-DEMO'); break;
+    case 'return-case': T4.undoTransfer(state, 'MANAGER-DEMO'); break;
     case 'transfer': T4.transfer(state); break;
     case 'ask-seller': T4.askSeller(state); break;
     case 'seller-reply': T4.sellerReply(state, $('seller-text').value); break;
@@ -168,7 +176,8 @@ function perform(action, value) {
     case 'retry': {
       if (!state.error) return;
       const retry = state.error.retry;
-      if (retry === 'submit') T4.submit(state);
+      if (retry === 'undoTransfer') T4.undoTransfer(state, view === 'staff' ? 'MANAGER-DEMO' : 'BUYER-DEMO');
+      else if (retry === 'submit') T4.submit(state);
       else if (retry === 'buyerEvidence') T4.requestBuyerEvidence(state);
       else if (retry === 'askSeller') T4.askSeller(state);
       else if (retry === 'transfer') T4.transfer(state);
