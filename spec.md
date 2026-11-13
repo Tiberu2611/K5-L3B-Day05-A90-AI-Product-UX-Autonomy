@@ -457,7 +457,7 @@ Một trợ lý được tự hoàn tiền sẽ hứa: **"AI giải quyết khi�
 
 - Mở **[prototype/index.html](prototype/index.html)** trực tiếp bằng trình duyệt. Hướng dẫn: [prototype/README.md](prototype/README.md).
 - HTML/CSS/JavaScript thuần, không cần cài đặt; logic fixture và quyền duyệt nằm ở prototype/model.js.
-- Bản cập nhật theo spec commit 52d8c1b: K3 (dung tích tổng/giỏ), K4 (chất liệu sửa sau đặt), K1 (size), thêm K9 để thử biên nhận và hạn gửi.
+- Bản cập nhật đối chiếu khung §7 trên main: K1, K3–K10 có đúng mã DH-2611-001…009; K2 thử ở trạng thái chưa chọn đơn. Có biến thể K3 anh_tem_mo; K4 co_anh_nhan/thieu_ban_luc_dat; K9 có biên nhận/chua_co_bien_nhan.
 - Nhãn sản phẩm nền theo §1 là **Trò chuyện với Shopee**, thay nhãn LazResolve/Lazada của bản khung ban đầu. Đây là concept độc lập.
 - Hai màn chính: **Người mua** và **Xử lý hồ sơ**; màn xử lý đổi vai **Người bán / Trưởng nhóm**.
 - Toàn bộ dữ liệu, ảnh (mô tả bằng chữ), log và hành động là dựng; không có AI thật, backend, upload ảnh thật hoặc chuyển tiền. Đổi vai không phải cơ chế xác thực.
@@ -472,7 +472,7 @@ Một trợ lý được tự hoàn tiền sẽ hứa: **"AI giải quyết khi�
 | [4] | Thẻ bước tiếp theo | G10: K3 hỏi giỏ/toàn khoang/không rõ; K4 xin đúng nhãn còn thiếu, có lựa chọn không có |
 | [5] | Sửa thông tin AI đọc sai | G9: sửa tại chỗ, lưu đính chính; nháp cũ cần kiểm tra lại |
 | [6] | Nhờ nhân viên xem xét | Tự chuyển hồ sơ, chỉ báo thành công sau khi thao tác mô phỏng thành công |
-| [7] | Thời hạn & biên nhận | Hạn gửi 7 ngày tách hạn người bán 48 giờ; chat/nháp không có giá trị biên nhận |
+| [7] | Thời hạn & biên nhận | Hạn gửi 7 ngày tách hạn người bán 24 giờ, hạn bổ sung người mua 48 giờ; chat/nháp không có giá trị biên nhận |
 | [8] | Xử lý hồ sơ / Trưởng nhóm | Cần người duyệt; khóa theo §4.3, có lý do khóa, nhập căn cứ và xác nhận cuối |
 
 ### 5.3 Quyết định giao diện
@@ -483,14 +483,23 @@ Một trợ lý được tự hoàn tiền sẽ hứa: **"AI giải quyết khi�
 - Nút trưởng nhóm **khóa kèm lý do**, không ẩn: người demo biết đang thiếu phản hồi hoặc bằng chứng nào.
 - Có đồng hồ demo **+48h / +24h**, mô phỏng thiếu nguồn và lỗi thao tác để kiểm tra cả đường khó; không tự quyết khi ai đó im lặng.
 - Quy tắc thời gian triển khai theo phần TV3 chốt ở §4.3: người bán **48 giờ**, trưởng nhóm **24 giờ**, hạn trả hàng **7 ngày** (§4.7). §1.7, §3 và §4 dùng cùng các mốc này.
+- **Lệch cục bộ sau pull:** bản sửa TV4 chưa commit hiện vẫn dùng người bán **24 giờ** theo yêu cầu trước đó; code và kiểm thử 27 ca đã được giữ nguyên. Spec remote mới chốt **48 giờ**; chưa tự đổi lại logic trong thao tác pull này.
 
 ### 5.4 Kiểm tra và bằng chứng còn thiếu
 
-- Chạy node prototype/model.test.cjs: **17/17 kiểm thử đạt** tại thời điểm triển khai, bao gồm quyền duyệt, lời doạ không đổi nhánh, điều kiện hai bên, lỗi gửi/chuyển, đính chính và hạn K9.
+- Chạy node prototype/model.test.cjs: **27/27 kiểm thử đạt** tại thời điểm triển khai, bao gồm quyền duyệt, lời doạ không đổi nhánh, điều kiện hai bên, lỗi gửi/chuyển, đính chính, hạn K9, dữ liệu ảnh mờ, K5 không hỏi lặp, K7 có thời gian phản hồi và K10 tách yêu cầu.
 - Kiểm tra cú pháp JavaScript và git diff --check.
 - Có render smoke trong DOM giả; **chưa kiểm tra trực quan trên trình duyệt** vì công cụ browser không khả dụng.
 - **Ảnh 1–2 đánh số và kiểm tra desktop/mobile còn cần bổ sung**. Các nhãn [1]–[8] đã hiển thị trong giao diện, không coi ảnh chưa chụp là bằng chứng đã có.
 - Quy trình khôi phục nguồn lúc đặt hoặc điều tra sau đóng dừng ở chuyển hồ sơ; không hứa AI tự lấy lại tiền hay mở lại quyết định.
+
+### 5.5 Bốn lệch phục vụ §7 đã sửa
+
+- **24 giờ:** người bán hết hạn thì chuyển nhân viên, không tự hoàn hoặc từ chối; giữ riêng hạn bổ sung người mua 48 giờ.
+- **Fixture/biến thể:** K5 lưu 2 ảnh toàn cảnh và chỉ xin ảnh cận nhãn chất liệu; K3 anh_tem_mo không trích số chưa đọc; K9 có biên nhận hệ thống ngày 12/11 và người bán quá hạn, đối lập nhánh chưa có biên nhận.
+- **K10:** đổi địa chỉ nhận của khách là yêu cầu ngoài luồng, không nhầm thành xin thông tin riêng của shop; vẫn xử lý phần khiếu nại màu.
+- **K7:** từ chối cung cấp liên hệ, nêu kênh chính thức và thời gian phản hồi dự kiến; chỉ hiển thị hạn cụ thể khi có timestamp gửi thành công.
+- Hướng dẫn từng lựa chọn ở prototype/README.md. TV1 vẫn cần bấm thử và điền §7 theo những gì thấy thực tế; kiểm thử model/DOM giả không tự thay kết quả demo.
 
 ---
 

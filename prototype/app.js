@@ -3,7 +3,7 @@ const $ = id => document.getElementById(id);
 const esc = value => String(value == null ? '' : value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 let state, view = 'buyer', staffRole = 'seller', pending, toastTimer;
 const money = amount => amount.toLocaleString('vi-VN') + ' ₫';
-const date = value => new Intl.DateTimeFormat('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', dateStyle: 'short', timeStyle: 'short' }).format(new Date(value));
+const date = value => new Intl.DateTimeFormat('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).format(new Date(value));
 const num = n => '<span class="annotation">' + n + '</span>';
 function button(label, action, options) {
   options = options || {};
@@ -30,9 +30,9 @@ function evidence() {
   return '<div class="evidence-group"><p class="eyebrow">NGUỒN ĐÃ ĐỐI CHIẾU</p>' +
     (T4.source(state) ? '<strong>Bản lúc đặt · ' + esc(f.ordered) + '</strong><p>' + esc(f.original) + '</p>' + button('Xem bản lưu', 'source', { value: 'original', className: 'text-button' }) : '<p class="warning-text">Chưa lấy được bản lúc đặt. Không dùng trang hiện tại để kết luận.</p>') +
     '<p>Trang hiện tại · ' + esc(f.updated) + '</p><p>' + esc(f.current) + '</p>' + button('Xem trang hiện tại', 'source', { value: 'current', className: 'text-button' }) + '</div>' +
-    '<div class="evidence-group"><p class="eyebrow">THÔNG TIN MỘT BÊN CUNG CẤP</p><p>' + (state.label ? 'Ảnh nhãn mẫu: ' + esc(state.labelText) : 'Chưa có ảnh nhãn') + '</p>' +
+    '<div class="evidence-group"><p class="eyebrow">THÔNG TIN MỘT BÊN CUNG CẤP</p><p>' + (state.label ? state.labelReadable ? 'Ảnh nhãn mẫu: ' + esc(state.labelText) : 'Ảnh tem mờ — chưa đọc rõ thông số' : 'Chưa có ảnh nhãn') + '</p>' +
     (state.label ? button('Xem ảnh nhãn giả lập', 'source', { value: 'label', className: 'text-button' }) : '') +
-    '<p>Người mua: ' + esc(state.key === 'K3' ? 'đo được 5L · phần đo: ' + (state.answer || 'chưa rõ') : 'phản ánh chưa được kiểm định') + '</p></div>' +
+    (state.overviewImages ? '<p>Đã có: ' + state.overviewImages + ' ảnh toàn cảnh, không cần gửi lại.</p>' : '') + '<p>Người mua: ' + esc(state.key === 'K3' ? 'đo được 5L · phần đo: ' + (state.answer || 'chưa rõ') : 'phản ánh chưa được kiểm định') + '</p></div>' +
     '<div class="evidence-group"><p class="eyebrow">ĐIỀU CHƯA XÁC MINH</p><p>' + esc(state.key === 'K3' ? 'Phần được đo và tình trạng thực tế của đúng mẫu hàng.' : 'Thành phần / tình trạng thực tế của hàng đã giao. Ảnh nhãn không phải kiểm định.') + '</p></div>' +
     '<p class="evidence-note">G11 · Căn cứ có phiên bản và thời điểm. Không có phần trăm độ chắc chưa hiệu chuẩn.</p>';
 }
@@ -40,7 +40,7 @@ function deadlines() {
   const sellerDue = state.askedAt === null ? null : state.askedAt + T4.SELLER_HOURS * T4.HOUR;
   const remaining = due => state.now >= due ? 'Đã hết hạn' : 'Còn ' + Math.ceil((due - state.now) / T4.HOUR) + ' giờ';
   return '<div class="deadline-row"><strong>Hạn gửi yêu cầu trả hàng</strong><span>' + date(T4.deadline(state)) + '</span><small>Quy tắc dựng ' + T4.RETURN_WINDOW_DAYS + ' ngày từ ngày nhận hàng. ' + remaining(T4.deadline(state)) + '.</small></div>' +
-    '<div class="deadline-row"><strong>Hạn phản hồi người bán</strong><span>' + (sellerDue === null ? 'Chưa bắt đầu — chưa gửi thành công' : date(sellerDue) + ' · ' + remaining(sellerDue)) + '</span><small>48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng.</small></div>' +
+    '<div class="deadline-row"><strong>Hạn phản hồi người bán</strong><span>' + (sellerDue === null ? 'Chưa bắt đầu — chưa gửi thành công' : date(sellerDue) + ' · ' + remaining(sellerDue)) + '</span><small>' + T4.SELLER_HOURS + ' giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng.</small></div>' +
     '<div class="deadline-row"><strong>Hạn bổ sung của người mua</strong><span>' + (state.buyerDue === null ? 'Chưa bắt đầu' : date(state.buyerDue) + ' · ' + remaining(state.buyerDue)) + '</span><small>48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.</small></div>' +
     (state.escalatedAt !== null ? '<div class="deadline-row"><strong>Nhân viên xử lý dự kiến</strong><span>' + date(state.escalatedAt + 24 * T4.HOUR) + '</span><small>Quá 24 giờ: báo quản lý ca, AI không quyết thay.</small></div>' : '') +
     (state.receipt ? '<div class="receipt"><strong>Biên nhận ' + esc(state.receipt.id) + '</strong><p>' + date(state.receipt.at) + ' · ' + (state.receipt.inTime ? 'Trong hạn gửi yêu cầu' : 'Sau hạn — cần nhân viên kiểm tra') + '</p></div>' : '<p class="support-note">Chưa có biên nhận. Tin chat và bản nháp chưa xác nhận việc gửi trong hạn.</p>');
@@ -49,10 +49,15 @@ function needed() {
   if (!state.chosen) return '<p>Chọn đúng đơn trước khi yêu cầu bằng chứng.</p>';
   let text = '';
   if (!T4.source(state)) text += '<p>Thiếu bản mô tả lúc đặt — cần nhân viên kiểm tra nguồn. Bạn vẫn có thể gửi yêu cầu.</p>';
-  if (state.key === 'K3' && !state.answer) {
+  if (state.key === 'K3' && !state.labelReadable && !state.noEvidence) {
+    text += '<p>Ảnh tem hiện chưa đọc rõ. Cần ảnh rõ phần dung tích để đối chiếu, không trích số từ ảnh mờ.</p>' + button('＋ Bổ sung ảnh tem rõ mẫu', 'evidence');
+  } else if (state.key === 'K7') {
+    text += '<p>Trao đổi qua kênh chat chính thức, không cần chia sẻ liên hệ riêng. ' + esc(T4.responseTime(state)) + '</p>';
+  } else if (state.key === 'K3' && !state.answer && !state.noEvidence) {
     text += '<p>Bạn đo phần giỏ chiên hay toàn bộ khoang nồi?</p><div class="button-row">' + ['Giỏ chiên', 'Toàn bộ khoang', 'Không rõ'].map(value => button(esc(value), 'answer', { value: value })).join('') + '</div><p class="small muted">Không yêu cầu đổ nước vào thiết bị hay thực hiện phép thử nguy hiểm.</p>';
   } else {
-    text += '<p>' + (state.label ? 'Đã có ảnh nhãn. Không cần gửi lại ảnh đã đọc được.' : state.noEvidence ? 'Đã ghi nhận bạn không có ảnh nhãn; có thể chuyển nhân viên.' : 'Còn thiếu: ' + (state.key === 'K4' ? 'ảnh cận nhãn thành phần của áo, giúp đối chiếu chất liệu ghi trên hàng.' : 'ảnh nhãn size/màu của hàng đã giao, giúp đối chiếu đúng đơn.')) + '</p>';
+    if (state.overviewImages) text += '<p>Đã có: ' + state.overviewImages + ' ảnh toàn cảnh. Giữ nguyên, không gửi lại.</p>';
+    text += '<p>' + (state.label ? 'Đã có ảnh nhãn. Không cần gửi lại ảnh đã đọc được.' : state.noEvidence ? 'Đã ghi nhận bạn không có ảnh nhãn; có thể chuyển nhân viên.' : 'Còn thiếu: ' + (state.key === 'K4' || state.key === 'K5' ? 'ảnh cận nhãn thành phần của áo, giúp đối chiếu chất liệu ghi trên hàng.' : 'ảnh nhãn size/màu của hàng đã giao, giúp đối chiếu đúng đơn.')) + '</p>';
     if (!state.label && !state.noEvidence) text += button('＋ Bổ sung ảnh nhãn mẫu', 'evidence');
   }
   if (!state.noEvidence) text += button('Tôi không có bằng chứng này', 'none', { className: 'text-button' });
@@ -102,7 +107,7 @@ function staff() {
 }
 function render() {
   $('case-id').textContent = state.fixture.id;
-  $('demo-clock').textContent = 'Đồng hồ demo: ' + date(state.now) + ' (Việt Nam) · hạn trả hàng 7 ngày, người bán 48h, trưởng nhóm 24h — chính sách dựng.';
+  $('demo-clock').textContent = 'Đồng hồ demo: ' + date(state.now) + ' (Việt Nam) · hạn trả hàng 7 ngày, người bán 24h, người mua bổ sung 48h, trưởng nhóm 24h — chính sách dựng.';
   $('fail-next').checked = state.failNext;
   $('missing-source').disabled = state.key !== 'K4';
   $('with-threat').disabled = state.key !== 'K3';
@@ -112,13 +117,13 @@ function render() {
   const box = $('messages'); if (box) box.scrollTop = box.scrollHeight;
 }
 function reset() {
-  state = T4.create($('scenario').value, { missingSource: $('missing-source').checked && $('scenario').value === 'K4', threat: $('with-threat').checked });
+  state = T4.create($('scenario').value, { missingSource: $('missing-source').checked && $('scenario').value === 'K4', threat: $('with-threat').checked, variant: $('variant').value });
   pending = null; view = 'buyer'; staffRole = 'seller'; render();
 }
 function openSource(which) {
   const f = state.fixture;
   $('source-title').textContent = which === 'original' ? 'Bản lưu tại thời điểm đặt · ' + f.ordered : which === 'current' ? 'Trang hiện tại · ' + f.updated : 'Ảnh nhãn giả lập · người mua cung cấp';
-  $('source-content').textContent = which === 'original' ? T4.source(state) ? f.original : 'Không có bản lưu.' : which === 'current' ? f.current : state.labelText + '\n[Ảnh được mô phỏng bằng chữ; chưa kiểm định sản phẩm thực tế.]';
+  $('source-content').textContent = which === 'original' ? T4.source(state) ? f.original : 'Không có bản lưu.' : which === 'current' ? f.current : (state.labelReadable ? state.labelText : 'Ảnh tem mờ: chưa đọc rõ thông số') + '\n[Ảnh được mô phỏng bằng chữ; chưa kiểm định sản phẩm thực tế.]';
   $('source-dialog').showModal();
 }
 function confirm(type, actor) {
@@ -136,6 +141,7 @@ function perform(action, value) {
   const draftBox = $('draft-text'); if (draftBox && state.draft && !state.stale) state.draft = draftBox.value;
   switch (action) {
     case 'reset': reset(); return;
+    case 'no-order': $('scenario').value = 'K1'; configureVariants(); reset(); T4.route(state, 'hàng sai rồi, xử lý đi'); break;
     case 'choose': T4.choose(state); break;
     case 'answer': T4.answer(state, value); break;
     case 'evidence': T4.evidence(state, false); break;
@@ -162,6 +168,7 @@ function perform(action, value) {
       if (!state.error) return;
       const retry = state.error.retry;
       if (retry === 'submit') T4.submit(state);
+      else if (retry === 'buyerEvidence') T4.requestBuyerEvidence(state);
       else if (retry === 'askSeller') T4.askSeller(state);
       else if (retry === 'transfer') T4.transfer(state);
       else if (retry === 'sellerReply') { staffRole = 'seller'; view = 'staff'; notify('Kiểm tra nội dung rồi bấm gửi phản hồi lại.'); }
@@ -183,8 +190,16 @@ document.addEventListener('submit', event => {
   if (event.target.id === 'correction-form') { event.preventDefault(); const text = $('correction-input').value.trim(); if (!text) return; T4.correct(state, text); $('correction-dialog').close(); render(); }
   if (event.target.id === 'confirm-form') { event.preventDefault(); if (!pending || !$('confirm-review').checked) return; const ok = T4.decide(state, pending.type, pending.actor, pending.reason, true); $('confirm-dialog').close(); if (ok) { pending = null; notify('Quyết định mô phỏng đã được ghi log với mã người duyệt.'); } render(); }
 });
-$('scenario').onchange = reset;
+function configureVariants() {
+  const variants = { K3: [['default', 'tem đọc rõ'], ['anh_tem_mo', 'anh_tem_mo · chưa đọc được']], K4: [['default', 'chưa có nhãn'], ['co_anh_nhan', 'co_anh_nhan · đã có ảnh'], ['thieu_ban_luc_dat', 'thieu_ban_luc_dat']], K9: [['co_bien_nhan', 'có biên nhận · người bán quá hạn'], ['chua_co_bien_nhan', 'chua_co_bien_nhan · mới nhắn chat']] };
+  const items = variants[$('scenario').value] || [['default', 'mặc định theo spec']];
+  $('variant').innerHTML = items.map(item => '<option value="' + esc(item[0]) + '">' + esc(item[1]) + '</option>').join('');
+  $('variant').value = items[0][0];
+}
+$('scenario').onchange = () => { $('missing-source').checked = false; configureVariants(); reset(); };
+$('variant').onchange = reset;
 $('missing-source').onchange = reset;
 $('with-threat').onchange = reset;
 $('fail-next').onchange = () => { state.failNext = $('fail-next').checked; };
+configureVariants();
 reset();
