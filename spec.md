@@ -450,6 +450,49 @@ Một trợ lý được tự hoàn tiền sẽ hứa: **"AI giải quyết khi�
 
 ---
 
+## §5 · Prototype — triển khai TV4
+
+### 5.1 File, công cụ và phạm vi mô phỏng
+
+- Mở **[prototype/index.html](prototype/index.html)** trực tiếp bằng trình duyệt. Hướng dẫn: [prototype/README.md](prototype/README.md).
+- HTML/CSS/JavaScript thuần, không cần cài đặt; logic fixture và quyền duyệt nằm ở prototype/model.js.
+- Bản cập nhật theo spec commit 52d8c1b: K3 (dung tích tổng/giỏ), K4 (chất liệu sửa sau đặt), K1 (size), thêm K9 để thử biên nhận và hạn gửi.
+- Nhãn sản phẩm nền theo §1 là **Trò chuyện với Shopee**, thay nhãn LazResolve/Lazada của bản khung ban đầu. Đây là concept độc lập.
+- Hai màn chính: **Người mua** và **Xử lý hồ sơ**; màn xử lý đổi vai **Người bán / Trưởng nhóm**.
+- Toàn bộ dữ liệu, ảnh (mô tả bằng chữ), log và hành động là dựng; không có AI thật, backend, upload ảnh thật hoặc chuyển tiền. Đổi vai không phải cơ chế xác thực.
+
+### 5.2 Đối chiếu nhãn, nguyên tắc và quyền
+
+| Nhãn | Vị trí bấm/xem | Nguyên tắc hoặc mức |
+|---|---|---|
+| [1] | Đầu chat, giới thiệu AI và giới hạn | Làm rõ AI hỗ trợ đối chiếu/chuẩn bị; người có thẩm quyền quyết |
+| [2] | Trạng thái hồ sơ phía trên hội thoại | G10: phân biệt chưa đủ căn cứ, thiếu nguồn, nháp, gửi, chuyển, lỗi và kết quả |
+| [3] | Nguồn đối chiếu, mở bản lúc đặt/trang hiện tại/ảnh nhãn | G11: thời điểm và phiên bản cụ thể; tách nguồn, lời một bên, điều chưa xác minh |
+| [4] | Thẻ bước tiếp theo | G10: K3 hỏi giỏ/toàn khoang/không rõ; K4 xin đúng nhãn còn thiếu, có lựa chọn không có |
+| [5] | Sửa thông tin AI đọc sai | G9: sửa tại chỗ, lưu đính chính; nháp cũ cần kiểm tra lại |
+| [6] | Nhờ nhân viên xem xét | Tự chuyển hồ sơ, chỉ báo thành công sau khi thao tác mô phỏng thành công |
+| [7] | Thời hạn & biên nhận | Hạn gửi 7 ngày tách hạn người bán 48 giờ; chat/nháp không có giá trị biên nhận |
+| [8] | Xử lý hồ sơ / Trưởng nhóm | Cần người duyệt; khóa theo §4.3, có lý do khóa, nhập căn cứ và xác nhận cuối |
+
+### 5.3 Quyết định giao diện
+
+- Chọn **thẻ nguồn theo ba nhóm** thay thanh độ chắc: người dùng tự kiểm được vì sao, không bịa tỷ lệ tin cậy.
+- Chọn **nháp riêng, biên nhận riêng** thay một nút “AI xử lý”: phân biệt chuẩn bị hồ sơ với việc người mua thực sự gửi, và gửi với hoàn tiền.
+- Chọn **vai người bán và trưởng nhóm trong cùng màn xử lý** để thấy hai đường duyệt. Người bán không có nút từ chối; AI/người mua không có quyền gọi tool tài chính.
+- Nút trưởng nhóm **khóa kèm lý do**, không ẩn: người demo biết đang thiếu phản hồi hoặc bằng chứng nào.
+- Có đồng hồ demo **+48h / +24h**, mô phỏng thiếu nguồn và lỗi thao tác để kiểm tra cả đường khó; không tự quyết khi ai đó im lặng.
+- Quy tắc thời gian triển khai theo phần TV3 chốt ở §4.3: người bán **48 giờ**, trưởng nhóm **24 giờ**, hạn trả hàng **7 ngày** (§4.7). Một số đoạn §1.7/§3 còn 24 giờ cần nhóm sửa cho nhất quán; TV4 không sửa thay các phần này.
+
+### 5.4 Kiểm tra và bằng chứng còn thiếu
+
+- Chạy node prototype/model.test.cjs: **17/17 kiểm thử đạt** tại thời điểm triển khai, bao gồm quyền duyệt, lời doạ không đổi nhánh, điều kiện hai bên, lỗi gửi/chuyển, đính chính và hạn K9.
+- Kiểm tra cú pháp JavaScript và git diff --check.
+- Có render smoke trong DOM giả; **chưa kiểm tra trực quan trên trình duyệt** vì công cụ browser không khả dụng.
+- **Ảnh 1–2 đánh số và kiểm tra desktop/mobile còn cần bổ sung**. Các nhãn [1]–[8] đã hiển thị trong giao diện, không coi ảnh chưa chụp là bằng chứng đã có.
+- Quy trình khôi phục nguồn lúc đặt hoặc điều tra sau đóng dừng ở chuyển hồ sơ; không hứa AI tự lấy lại tiền hay mở lại quyết định.
+
+---
+
 ## §6 · Tốt là gì
 
 ### 6.1 Ba tiêu chí Pass/Fail

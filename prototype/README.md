@@ -1,36 +1,69 @@
-# LazResolve — khung prototype Track 4
+# Resolve / T4 — prototype A90 theo spec
 
-Mở `index.html` bằng trình duyệt. Không cần cài thư viện hoặc API key. Font trực tuyến có fallback khi offline.
+Mở **index.html** trực tiếp bằng trình duyệt. Không cần cài thư viện hoặc API key. Font có fallback khi offline.
 
-Concept học tập độc lập lấy cảm hứng từ Lazada, không liên kết với Lazada. Tất cả đơn hàng, shop, bằng chứng và hành động đều là giả lập. Không có AI thật, backend, upload tệp hoặc giao dịch tài chính. Dữ liệu chỉ tồn tại trong bộ nhớ và được đặt lại khi tải trang.
+Bản này theo spec A90 commit **52d8c1b** (§1–§4, §6). Sản phẩm nền trong spec là **Trò chuyện với Shopee**, nên nhãn LazResolve/Lazada của bản khung trước đã đổi thành Resolve / T4. Đây là concept độc lập, không liên kết với Shopee. Toàn bộ hồ sơ, shop, ảnh, thao tác và thời gian là dựng.
 
-## Luồng demo
+## Bố cục
 
-1. Chọn K4 (mô tả bị sửa), K5 (tem đúng, cách đo khác nhau) hoặc K1 (giao sai size).
-2. Tại màn hình người mua: xem bằng chứng, bổ sung bằng chứng mẫu, thử sửa thông tin bằng chat.
-3. Bấm **Chuyển hồ sơ cho nhân viên**.
-4. Mở **Bàn xử lý nhân viên**, xem hai phiên bản mô tả, lời hai bên và lịch sử.
-5. Có thể yêu cầu bổ sung. Để quyết định, tích xác nhận đã xem bằng chứng và nhập lý do tối thiểu 12 ký tự.
-6. Chọn hoàn tiền hoặc từ chối, xem hộp xác nhận. Hủy để quay lại; xác nhận để cập nhật kết quả mô phỏng.
-7. Quay về người mua để thấy kết quả; **Bắt đầu lại** để chạy lại ca.
+- Màn người mua: chat, chọn đơn, [1] giới hạn AI, [2] trạng thái, [3] nguồn, [4] thông tin thiếu, [5] sửa, [6] chuyển người, [7] thời hạn.
+- Màn xử lý hồ sơ: đổi vai **Người bán / Trưởng nhóm [8]**. Hai vai cùng làm việc trên một hồ sơ.
+- Dữ liệu ở bộ nhớ; tải lại trang hoặc Bắt đầu lại sẽ xóa phiên demo. Không backend, không AI thật, không tiền thật, không upload ảnh thực. Ảnh nhãn được mô phỏng bằng chữ.
 
-## Nguyên tắc và mức tự chủ
+## Kịch bản demo
 
-| Vị trí | Nguyên tắc | Thể hiện |
-|---|---|---|
-| ① Căn cứ đang có | G2 | Phân biệt dữ kiện có nguồn và phần chưa xác minh |
-| ② Bổ sung bằng chứng / sửa thông tin | G9 | Người dùng có đường bổ sung, sửa sai |
-| Bàn xử lý, khối cảnh báo | G10 | Mâu thuẫn hoặc thiếu nguồn thì thu hẹp kết luận |
-| ③ Quyết định của nhân viên | Cần duyệt | Chỉ mở thao tác sau khi chuyển hồ sơ, xác nhận kiểm tra và ghi lý do; có hộp xác nhận lần cuối |
-| Chuyển hồ sơ / ghi nhận thông tin | Tự làm | AI mô phỏng tiếp nhận và chuyển hồ sơ, không tự quyết định tài chính |
-| Phạt shop / tiết lộ thông tin riêng | Cấm | Không có nút thực hiện |
+### K3 — dung tích tổng / giỏ, người bán có thể đúng
 
-Tin đã gửi không thể thu hồi: người dùng sửa bằng một nội dung bổ sung và lịch sử giữ dấu vết, không hứa hoàn tác việc đã thông báo.
+1. Chọn K3, bấm **Chọn đơn**.
+2. Xem bản lúc đặt 03/11 “Dung tích tổng 6L”, ảnh tem “Tổng 6.0L · Giỏ chiên 5.0L”.
+3. Chọn **Giỏ chiên**: AI giải thích khác đại lượng; không gửi yêu cầu bằng chứng cho shop chỉ vì lời doạ.
+4. Chạy lại với **Toàn bộ khoang** hoặc **Không rõ**; chuẩn bị nháp và tự gửi.
+5. Xem biên nhận, hạn người bán 48 giờ và nhật ký. Lời doạ chỉ nằm trong ngữ cảnh của màn xử lý.
+6. So sánh khi tắt “K3: có lời doạ”: cùng câu trả lời về phép đo dẫn tới cùng nhánh tool và không có giao dịch tài chính tự động.
 
-## Phần thành viên khác cần chốt
+### K4 — mô tả chất liệu đổi sau khi đặt
 
-- Đối chiếu chính sách tự chủ với `spec.md` §4; cơ chế phản hồi của người bán, thời hạn, người nhận và quá hạn chưa được triển khai.
-- Fixture mô tả lúc đặt là giả định thiết kế; cần mô tả nguồn và trường hợp không có bản lưu trong spec.
-- Quyết định nhân viên hiện là mô phỏng điều kiện UI, chưa có kiểm định tính đầy đủ của bằng chứng hoặc phân quyền thật.
-- Chat ghi nhận văn bản bằng phản hồi cố định, không phân loại ý định hay trả lời ca lạ bằng AI.
-- Thêm 1–2 ảnh chụp đánh số để hoàn thành bằng chứng bài nộp; repo công khai và việc đổi sản phẩm nền cần nhóm chốt riêng.
+1. Chọn K4, chọn đơn.
+2. Xem hai nguồn: 02/11 “100% cotton”; 07/11 “cotton pha polyester 65/35”.
+3. Bổ sung ảnh nhãn mẫu hoặc **Tôi không có bằng chứng này**. Không yêu cầu thử đốt vải.
+4. Chuẩn bị nháp; sửa nội dung và bấm gửi để nhận biên nhận. Nháp/chat không giữ hạn thay cho biên nhận.
+5. Nhờ nhân viên xem xét. Trong Xử lý hồ sơ / Trưởng nhóm, nút bị khóa kèm lý do khi người bán chưa phản hồi.
+6. Đổi sang Người bán, gửi phản hồi mẫu. Trưởng nhóm có thể duyệt hoàn; từ chối còn cần điều kiện người mua đã trả lời/không có/hết hạn.
+7. Điền lý do; bấm quyết định; tích xác nhận xem nguồn tại hộp cuối. Nhật ký lưu tool, người duyệt, thời điểm, căn cứ.
+
+Nhánh phụ:
+- Bật **K4: thiếu bản lúc đặt** trước khi chọn đơn: không kết luận từ trang hiện tại, chuyển nhân viên; trưởng nhóm chưa quyết được khi chưa xác minh nguồn.
+- **Demo AI dùng sai nguồn**: giữ câu sai với nhãn đã đính chính, nhận lỗi chọn phiên bản, chuyển người.
+- **Sửa thông tin AI đọc sai [5]**: lưu thay đổi; nháp cũ bị khóa gửi cho tới khi chuẩn bị lại. Đã gửi thì gửi đính chính, không giả vờ thu hồi tin.
+- Sau quyết định, yêu cầu kiểm tra lại chỉ chuyển đề nghị, không tự mở khiếu nại hoặc lấy lại tiền.
+
+### K1 — đường nhanh không cần trưởng nhóm
+
+Chọn đơn → thêm ảnh size mẫu → chuẩn bị và gửi → màn Người bán → Đồng ý trả hàng–hoàn tiền → xác nhận. Không tin lời người mua nói “shop đã nhận” thay cho nút xác nhận chính thức.
+
+### K9 — ngày cuối gửi yêu cầu
+
+Đồng hồ khởi tạo 15:00 ngày 13/11/2026, nhận hàng 06/11. Hạn 7 ngày đến hết 13/11. Chỉ gửi thành công mới có biên nhận trong hạn; gửi sau hạn có nhãn cần nhân viên kiểm tra, không hứa chắc được hoàn.
+
+## Thử lỗi và quá hạn
+
+- Bật **Thao tác gửi/chuyển kế tiếp bị lỗi** rồi gửi yêu cầu / chuyển hồ sơ / gửi phản hồi / xác nhận quyết định. Không hiện thành công; có thử lại.
+- **+48h**: hết hạn người bán thì chuyển trưởng nhóm; hết hạn bổ sung người mua không tự đóng. Im lặng không tự là bằng chứng bên nào sai.
+- **+24h** sau khi chuyển trưởng nhóm: báo quản lý ca và hiển thị chậm dự kiến; AI không quyết thay.
+- Các thời hạn 7 ngày / 48 giờ / 24 giờ là quy tắc dựng. §1.7 và §3 vẫn có chỗ ghi người bán 24 giờ, nhưng bản này ưu tiên kết luận TV3 tại §4.3 là **48 giờ**.
+- Chat có bộ quy tắc minh họa C1–C6 cho xin liên hệ, nghi hàng giả, lời doạ và yêu cầu ngoài luồng. Không phải bộ phân loại AI đầy đủ.
+
+## Kiểm thử
+
+Chạy từ gốc repo:
+
+    node prototype/model.test.cjs
+
+17 kiểm thử: cổng chọn đơn, nháp/biên nhận, đường người bán duyệt, cấm AI/người mua quyết, câu hỏi K3, lời doạ, thiếu nguồn K4, khóa hai bên, hết hạn, lỗi thao tác, đính chính, K9 và render smoke. Đây là kiểm thử model và dựng HTML trong DOM giả, chưa thay thế kiểm tra trình duyệt.
+
+## Còn cần nhóm xác minh
+
+- Chụp 1–2 ảnh giao diện có nhãn [1]–[8] và kiểm tra trực quan desktop/mobile; công cụ trình duyệt không khả dụng trong phiên triển khai.
+- Spec vẫn có một số mốc 24/48 giờ mâu thuẫn; nhóm cần thống nhất phần văn bản trước khi nộp.
+- Quy trình nhân viên khôi phục nguồn lúc đặt, khiếu nại lại sau đóng và xử lý sự cố đúng ngày cuối chỉ được thể hiện bằng chuyển hồ sơ; chưa có hệ thống vận hành thật.
+- Quyền theo vai chỉ để demo, không phải xác thực hoặc kiểm soát truy cập trên server.
