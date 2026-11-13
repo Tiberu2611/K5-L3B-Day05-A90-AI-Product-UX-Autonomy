@@ -26,7 +26,7 @@
 
 ## §1 · Lát cắt & phạm vi
 
-### 1.1 Lát cắt (nguyên văn track, nhóm không chọn lại)
+### 1.1 Lát cắt 
 
 > Trong **Trò chuyện với Shopee**, khi **người mua** đang báo "hàng nhận không đúng mô tả", **AI tự hướng dẫn gửi yêu cầu trả hàng hoàn tiền, xin thêm bằng chứng, hay chuyển nhân viên**, để **người mua biết đúng bước tiếp theo, và người bán không bị xử thua khi họ đúng**.
 
