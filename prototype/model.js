@@ -2,7 +2,7 @@
 (function (root) {
   'use strict';
   const RETURN_WINDOW_DAYS = 7;
-  const SELLER_HOURS = 24;
+  const SELLER_HOURS = 48;
   const BUYER_HOURS = 48;
   const MANAGER_HOURS = 24;
   const HOUR = 3600000;
@@ -48,7 +48,7 @@
     if (s.key === 'K4' && s.label && s.labelReadable) return 'Bản mô tả lúc đặt (' + s.fixture.ordered + ') ghi “100% cotton”, trang hiện tại đổi thành “cotton pha polyester 65/35” ngày 07/11/2026. Đã có ảnh nhãn đọc được “' + s.labelText + '”, không cần gửi lại. Ảnh chưa là kết quả kiểm định. Bạn có thể chọn chuẩn bị nháp để kiểm tra; nháp chưa gửi và chưa có quyết định hoàn tiền.';
     if (s.key === 'K4') return 'Bản mô tả lúc bạn đặt (' + s.fixture.ordered + ') ghi “100% cotton”, còn trang hiện tại ghi “cotton pha polyester 65/35” và được cập nhật ngày 07/11/2026, sau thời điểm đặt hàng. Mình sẽ dùng bản mô tả lúc đặt để đối chiếu khiếu nại này.\n\nMình chưa xác minh được thành phần của chiếc áo bạn nhận chỉ từ cảm giác khi mặc. Bạn có ảnh nhãn thành phần trên áo không? Nếu không có hoặc nhãn không đọc được, bạn vẫn có thể nhờ nhân viên xem xét. Mình có thể soạn nháp yêu cầu để bạn kiểm tra; việc này chưa gửi yêu cầu và chưa quyết định hoàn tiền.';
     if (s.key === 'K5') return 'Đã có: 2 ảnh toàn cảnh bạn đã gửi, không cần gửi lại. Còn thiếu: một ảnh cận nhãn chất liệu của áo nhận được, để đối chiếu với bản lúc đặt (' + s.fixture.ordered + ') ghi “100% cotton”. Bạn có thể bổ sung ảnh nhãn hoặc chọn Tôi không có bằng chứng này; mình chưa kết luận hoặc quyết định hoàn tiền.';
-    if (s.key === 'K9' && s.receipt) return 'Đã tra cứu biên nhận ' + s.receipt.id + ', hệ thống ghi nhận lúc ' + localTime(s.receipt.at) + '. Hạn gửi theo chính sách dựng 7 ngày là hết 13/11/2026. Yêu cầu đã được ghi nhận trong hạn; việc chờ người bán không thay đổi thời điểm đã ghi nhận, nhưng chưa bảo đảm kết quả hoàn tiền. Người bán đã hết hạn phản hồi 24 giờ, hồ sơ cần chuyển nhân viên.';
+    if (s.key === 'K9' && s.receipt) return 'Đã tra cứu biên nhận ' + s.receipt.id + ', hệ thống ghi nhận lúc ' + localTime(s.receipt.at) + '. Hạn gửi theo chính sách dựng 7 ngày là hết 13/11/2026. Yêu cầu đã được ghi nhận trong hạn; việc chờ người bán không thay đổi thời điểm đã ghi nhận, nhưng chưa bảo đảm kết quả hoàn tiền. Người bán đã hết hạn phản hồi ' + SELLER_HOURS + ' giờ, hồ sơ cần chuyển nhân viên.';
     if (s.key === 'K9') return 'Trang đơn ghi nhận ngày nhận hàng 06/11/2026. Theo chính sách dựng 7 ngày, hạn gửi yêu cầu là hết 13/11/2026. Hiện hệ thống chưa có biên nhận; câu “mình gửi rồi”, chat và bản nháp không xác nhận việc gửi yêu cầu trả hàng. Bạn có thể chuẩn bị và gửi ngay. Mình chưa thể hứa bảo lưu quyền nếu chưa có biên nhận.';
     return 'Bản mô tả lúc đặt (' + s.fixture.ordered + ') ghi size L. Mình chưa có xác nhận chính thức của shop trong luồng này, dù bạn cho biết shop đã nhận lỗi qua chat. Bạn có thể bổ sung một ảnh nhãn size, chuẩn bị nháp rồi tự gửi yêu cầu. Chưa có thao tác hoàn tiền.';
   }
@@ -66,7 +66,7 @@
     log(s, 'chon_don', 'BUYER-DEMO', s.fixture.id);
     log(s, 'xem_mo_ta_luc_dat', 'AI', source(s) ? 'Bản lúc đặt: ' + s.fixture.ordered : 'Không có bản lúc đặt');
     if (s.existingReceipt) {
-      const at = Date.parse('2026-11-12T14:00:00+07:00');
+      const at = Date.parse('2026-11-11T14:00:00+07:00');
       s.receipt = { id: 'BN-' + s.fixture.id, at: at, inTime: at <= deadline(s) };
       s.askedAt = at;
     }
@@ -143,9 +143,9 @@
     op(s, 'buyerEvidence', 'yeu_cau_bang_chung', 'AI', s.key === 'K3' ? 'Người mua: ảnh tem mờ, chỉ xin ảnh rõ phần dung tích; không trích thông số chưa đọc được. Hạn bổ sung 48 giờ.' : 'Người mua: đã có 2 ảnh toàn cảnh; chỉ xin ảnh cận nhãn chất liệu còn thiếu, để đối chiếu bản lúc đặt. Hạn bổ sung 48 giờ.', function () { s.buyerEvidenceAsked = true; });
   }
   function responseTime(s) {
-    if (s.escalatedAt !== null) return s.now >= s.escalatedAt + MANAGER_HOURS * HOUR ? 'Thời gian phản hồi của nhân viên đã chậm hơn dự kiến; có thể nhờ quản lý ca hỗ trợ qua kênh chính thức.' : 'Thời gian phản hồi dự kiến của nhân viên: trước ' + localTime(s.escalatedAt + MANAGER_HOURS * HOUR) + ' (24 giờ từ lúc nhận hồ sơ).';
-    if (s.askedAt !== null) return s.now >= s.askedAt + SELLER_HOURS * HOUR ? 'Người bán đã hết thời gian phản hồi 24 giờ; bạn có thể nhờ nhân viên xem xét.' : 'Thời gian phản hồi của người bán: trước ' + localTime(s.askedAt + SELLER_HOURS * HOUR) + ' (24 giờ từ lúc gửi thành công).';
-    return 'Thời gian phản hồi dự kiến của người bán là 24 giờ sau khi hệ thống xác nhận gửi yêu cầu thành công; hiện chưa bắt đầu tính hạn.';
+    if (s.escalatedAt !== null) return s.now >= s.escalatedAt + MANAGER_HOURS * HOUR ? 'Thời gian phản hồi của nhân viên đã chậm hơn dự kiến; có thể nhờ quản lý ca hỗ trợ qua kênh chính thức.' : 'Thời gian phản hồi dự kiến của nhân viên: trước ' + localTime(s.escalatedAt + MANAGER_HOURS * HOUR) + ' (' + MANAGER_HOURS + ' giờ từ lúc nhận hồ sơ).';
+    if (s.askedAt !== null) return s.now >= s.askedAt + SELLER_HOURS * HOUR ? 'Người bán đã hết thời gian phản hồi ' + SELLER_HOURS + ' giờ; bạn có thể nhờ nhân viên xem xét.' : 'Thời gian phản hồi của người bán: trước ' + localTime(s.askedAt + SELLER_HOURS * HOUR) + ' (' + SELLER_HOURS + ' giờ từ lúc gửi thành công).';
+    return 'Thời gian phản hồi dự kiến của người bán là ' + SELLER_HOURS + ' giờ sau khi hệ thống xác nhận gửi yêu cầu thành công; hiện chưa bắt đầu tính hạn.';
   }
   function complaintNext(s) {
     if (!source(s)) return 'Thiếu bản mô tả lúc đặt: có thể bổ sung nguồn xác nhận mua hàng hoặc nhờ nhân viên kiểm tra.';

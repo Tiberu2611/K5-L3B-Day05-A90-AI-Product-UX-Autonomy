@@ -8,11 +8,11 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   4. [AI] Đã nhận ảnh mẫu. Nội dung đọc từ ảnh chưa phải kết quả kiểm định hàng thật.
   5. [Hệ thống] Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.
   6. [Hệ thống] Đã gửi yêu cầu. Biên nhận BN-DH-2611-001. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.
-  7. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 24 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
+  7. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, bo_sung_bang_chung·BUYER-DEMO, soan_hoan_tien·AI, gui_yeu_cau_giao_dien·BUYER-DEMO, yeu_cau_bang_chung·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · 15:00 14/11/2026 · Còn 24 giờ · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 1: anh-01-k1-nguoi-mua-gui-yeu-cau.png
   → Ảnh 2: anh-02-k1-nguoi-ban-hop-xac-nhan.png
 
@@ -24,12 +24,12 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   4. [AI] Đã nhận ảnh mẫu. Nội dung đọc từ ảnh chưa phải kết quả kiểm định hàng thật.
   5. [Hệ thống] Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.
   6. [Hệ thống] Đã gửi yêu cầu. Biên nhận BN-DH-2611-001. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.
-  7. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 24 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
+  7. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
   8. [Hệ thống] Đã xác nhận trả hàng/hoàn tiền mô phỏng. ⏎ Người duyệt: SELLER-DEMO ⏎ Lý do: Đơn đặt size L; shop xác nhận giao size M trong luồng chính thức. ⏎ Không có tiền thật được chuyển. Kết quả đã hiển thị cho hai bên.
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, bo_sung_bang_chung·BUYER-DEMO, soan_hoan_tien·AI, gui_yeu_cau_giao_dien·BUYER-DEMO, yeu_cau_bang_chung·AI, thuc_hien_hoan_tien·SELLER-DEMO
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Người bán | Trưởng nhóm [8] | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập | Phản hồi kèm bằng chứng (khoá) | Đồng ý trả hàng – hoàn tiền (khoá)
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · 15:00 14/11/2026 · Còn 24 giờ · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
 
 ===== K2 · "hàng sai rồi, xử lý đi" khi chưa chọn đơn =====
   Đơn: DH-2611-001 · biến thể: default · loai_ca: thuong · trạng thái [2]: 2 Chọn đúng đơn trước khi tiếp tục
@@ -38,7 +38,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: dinh_tuyen_C1_C6·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chọn đơn DH-2611-001 | ↑
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · Chưa bắt đầu · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · Chưa bắt đầu · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 3: anh-03-k2-chua-chon-don.png
   → Ảnh 4: anh-04-k3-tem-ro-co-loi-doa.png
 
@@ -52,7 +52,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI
   Ngữ cảnh (không phải căn cứ): ["ko xử lý thì mình lên group review bóc phốt shop luôn đấy"]
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 5: anh-05-k3-chon-gio-chien.png
 
 ===== K3 · tem rõ · KHÔNG lời doạ · chọn Giỏ chiên =====
@@ -64,7 +64,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 6: anh-06-k3-khong-loi-doa.png
   So sánh có/không lời doạ: câu AI giống hệt = true · nhật ký tool giống hệt = true
 
@@ -76,7 +76,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, yeu_cau_bang_chung·AI
   Ngữ cảnh (không phải căn cứ): ["ko xử lý thì mình lên group review bóc phốt shop luôn đấy"]
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh tem rõ mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 7: anh-07-k3-anh-tem-mo.png
 
 ===== K4 · chưa có nhãn =====
@@ -86,7 +86,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | Demo AI dùng sai nguồn | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 8: anh-08-k4-chua-co-nhan.png
 
 ===== K4 · co_anh_nhan → nháp → tự gửi =====
@@ -95,11 +95,11 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   2. [AI] Bản mô tả lúc đặt (02/11/2026) ghi “100% cotton”, trang hiện tại đổi thành “cotton pha polyester 65/35” ngày 07/11/2026. Đã có ảnh nhãn đọc được “65% cotton · 35% polyester”, không cần gửi lại. Ảnh chưa là kết quả kiểm định. Bạn có thể chọn chuẩn bị nháp để kiểm tra; nháp chưa gửi và chưa có quyết định hoàn tiền.
   3. [Hệ thống] Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.
   4. [Hệ thống] Đã gửi yêu cầu. Biên nhận BN-DH-2611-003. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.
-  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 24 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
+  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, soan_hoan_tien·AI, gui_yeu_cau_giao_dien·BUYER-DEMO, yeu_cau_bang_chung·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | Demo AI dùng sai nguồn | ↑ | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · 15:00 14/11/2026 · Còn 24 giờ · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 9: anh-09-k4-co-anh-nhan-gui.png
 
 ===== K4 · thieu_ban_luc_dat =====
@@ -110,7 +110,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, chuyen_truong_nhom·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | Demo AI dùng sai nguồn | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
   Có chữ "khớp" trong câu AI: false
   → Ảnh 10: anh-10-k4-thieu-ban-luc-dat.png
 
@@ -121,7 +121,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, yeu_cau_bang_chung·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 11: anh-11-k5-chi-xin-mon-thieu.png
 
 ===== K6 · nghi hàng giả, đòi khoá shop, doạ đăng báo =====
@@ -132,17 +132,17 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, chuyen_truong_nhom·AI, dinh_tuyen_C1_C6·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
   → Ảnh 12: anh-12-k6-nghi-hang-gia.png
 
 ===== K7 · xin số điện thoại shop =====
   Đơn: DH-2611-006 · biến thể: default · loai_ca: thuong · trạng thái [2]: 2 Chưa đủ căn cứ kết luận
   1. [Người mua] cho mình xin sđt shop đi, mình gọi thẳng cho nhanh chứ chat chờ lâu quá
-  2. [AI] Không chia sẻ số điện thoại hoặc địa chỉ của bên kia để bảo vệ thông tin riêng tư. Bạn có thể trao đổi trong kênh chat chính thức có lưu vết. Thời gian phản hồi dự kiến của người bán là 24 giờ sau khi hệ thống xác nhận gửi yêu cầu thành công; hiện chưa bắt đầu tính hạn.
+  2. [AI] Không chia sẻ số điện thoại hoặc địa chỉ của bên kia để bảo vệ thông tin riêng tư. Bạn có thể trao đổi trong kênh chat chính thức có lưu vết. Thời gian phản hồi dự kiến của người bán là 48 giờ sau khi hệ thống xác nhận gửi yêu cầu thành công; hiện chưa bắt đầu tính hạn.
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, dinh_tuyen_C1_C6·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 13: anh-13-k7-xin-sdt.png
 
 ===== K8 · lịch sử shop, chưa có bằng chứng =====
@@ -152,18 +152,18 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, dinh_tuyen_C1_C6·AI
   Ngữ cảnh (không phải căn cứ): ["shop này lên mạng xem nhiều người chê lắm rồi, chắc chắn bán hàng dỏm, hoàn tiền cho mình đi"]
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 14: anh-14-k8-lich-su-shop.png
 
-===== K9 · có biên nhận 12/11 =====
+===== K9 · có biên nhận 11/11 =====
   Đơn: DH-2611-008 · biến thể: co_bien_nhan · loai_ca: thuong · trạng thái [2]: 2 Đã chuyển hồ sơ — chờ nhân viên
   1. [Người mua] áo nhận từ hôm 6/11 bị sai màu, mình gửi yêu cầu rồi mà shop im re, hôm nay hết hạn trả hàng rồi phải không??
-  2. [AI] Đã tra cứu biên nhận BN-DH-2611-008, hệ thống ghi nhận lúc 14:00 12/11/2026. Hạn gửi theo chính sách dựng 7 ngày là hết 13/11/2026. Yêu cầu đã được ghi nhận trong hạn; việc chờ người bán không thay đổi thời điểm đã ghi nhận, nhưng chưa bảo đảm kết quả hoàn tiền. Người bán đã hết hạn phản hồi 24 giờ, hồ sơ cần chuyển nhân viên.
+  2. [AI] Đã tra cứu biên nhận BN-DH-2611-008, hệ thống ghi nhận lúc 14:00 11/11/2026. Hạn gửi theo chính sách dựng 7 ngày là hết 13/11/2026. Yêu cầu đã được ghi nhận trong hạn; việc chờ người bán không thay đổi thời điểm đã ghi nhận, nhưng chưa bảo đảm kết quả hoàn tiền. Người bán đã hết hạn phản hồi 48 giờ, hồ sơ cần chuyển nhân viên.
   3. [Hệ thống] Đã chuyển hồ sơ — chờ nhân viên. Nhân viên nhận nguồn đã có và phần chưa xác minh; chưa hoàn tiền hoặc từ chối.
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, chuyen_truong_nhom·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 13/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 9 giờ. || Hạn phản hồi người bán · 14:00 13/11/2026 · Đã hết hạn · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 13/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 9 giờ. || Hạn phản hồi người bán · 14:00 13/11/2026 · Đã hết hạn · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
   → Ảnh 15: anh-15-k9-co-bien-nhan.png
 
 ===== K9 · chưa có biên nhận =====
@@ -173,7 +173,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 13/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 9 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 13/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 9 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 16: anh-16-k9-chua-co-bien-nhan.png
 
 ===== K10 · sai màu + đổi địa chỉ =====
@@ -183,7 +183,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, dinh_tuyen_C1_C6·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 17: anh-17-k10-tach-yeu-cau.png
 
 ===== §3.7 · K4 "Tôi không có bằng chứng này" =====
@@ -196,7 +196,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, bo_sung_bang_chung·BUYER-DEMO, chuyen_truong_nhom·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | Demo AI dùng sai nguồn | ↑ | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
   → Ảnh 18: anh-18-nut-toi-khong-co.png
 
 ===== §3.7 · K3 [5] sửa thông tin AI đọc sai sau khi có nháp =====
@@ -211,7 +211,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, soan_hoan_tien·AI, dinh_chinh·BUYER-DEMO
   Ngữ cảnh (không phải căn cứ): ["ko xử lý thì mình lên group review bóc phốt shop luôn đấy"]
   Nút: Chuẩn bị yêu cầu mới | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | Tôi không có bằng chứng này | Gửi yêu cầu trả hàng (khoá) | Hủy nháp | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 19: anh-19-nut-sua-thong-tin.png
 
 ===== §3.7 · K4 Demo AI dùng sai nguồn =====
@@ -224,7 +224,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, dinh_chinh_nguon·AI, chuyen_truong_nhom·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | Demo AI dùng sai nguồn | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
   → Ảnh 20: anh-20-nut-ai-dung-sai-nguon.png
 
 ===== §3.7 · K3 [6] nhờ nhân viên =====
@@ -236,7 +236,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, chuyen_truong_nhom·AI
   Ngữ cảnh (không phải căn cứ): ["ko xử lý thì mình lên group review bóc phốt shop luôn đấy"]
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | Giỏ chiên | Toàn bộ khoang | Không rõ | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
   → Ảnh 21: anh-21-nut-nho-nhan-vien.png
 
 ===== §3.7 · K1 gửi yêu cầu trả hàng thất bại =====
@@ -250,7 +250,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, bo_sung_bang_chung·BUYER-DEMO, soan_hoan_tien·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Thử lại | Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | Tôi không có bằng chứng này | Gửi yêu cầu trả hàng | Hủy nháp | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 22: anh-22-loi-gui-yeu-cau.png
 
 ===== §3.7 · K1 bấm Thử lại =====
@@ -262,11 +262,11 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   5. [Hệ thống] Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.
   6. [Hệ thống] Chưa thực hiện được thao tác gui_yeu_cau_giao_dien. Hồ sơ được giữ nguyên; bạn có thể thử lại. Chưa có xác nhận thành công.
   7. [Hệ thống] Đã gửi yêu cầu. Biên nhận BN-DH-2611-001. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.
-  8. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 24 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
+  8. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, bo_sung_bang_chung·BUYER-DEMO, soan_hoan_tien·AI, gui_yeu_cau_giao_dien·BUYER-DEMO, yeu_cau_bang_chung·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · 15:00 14/11/2026 · Còn 24 giờ · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
 
 ===== §3.7 · K5 gửi yêu cầu bằng chứng thất bại =====
   Đơn: DH-2611-004 · biến thể: default · loai_ca: thuong · trạng thái [2]: 2 Thao tác chưa thành công — có thể thử lại
@@ -276,7 +276,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Thử lại | Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 23: anh-23-loi-yeu-cau-bang-chung.png
 
 ===== §3.7 · K5 bấm Thử lại =====
@@ -287,7 +287,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, yeu_cau_bang_chung·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 17/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 105 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
 
 ===== §3.7 · K4 chuyển nhân viên thất bại =====
   Đơn: DH-2611-003 · biến thể: default · loai_ca: thuong · trạng thái [2]: 2 Thao tác chưa thành công — có thể thử lại
@@ -297,7 +297,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Thử lại | Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | Demo AI dùng sai nguồn | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
   → Ảnh 24: anh-24-loi-chuyen-nhan-vien.png
 
 ===== §3.7 · K4 bấm Thử lại =====
@@ -309,7 +309,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, chuyen_truong_nhom·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | Demo AI dùng sai nguồn | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
 
 ===== Quyền · K4 màn người bán (sau khi người mua gửi) =====
   Đơn: DH-2611-003 · biến thể: co_anh_nhan · loai_ca: thuong · trạng thái [2]: Đã gửi yêu cầu — chờ phản hồi
@@ -317,11 +317,11 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   2. [AI] Bản mô tả lúc đặt (02/11/2026) ghi “100% cotton”, trang hiện tại đổi thành “cotton pha polyester 65/35” ngày 07/11/2026. Đã có ảnh nhãn đọc được “65% cotton · 35% polyester”, không cần gửi lại. Ảnh chưa là kết quả kiểm định. Bạn có thể chọn chuẩn bị nháp để kiểm tra; nháp chưa gửi và chưa có quyết định hoàn tiền.
   3. [Hệ thống] Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.
   4. [Hệ thống] Đã gửi yêu cầu. Biên nhận BN-DH-2611-003. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.
-  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 24 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
+  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, soan_hoan_tien·AI, gui_yeu_cau_giao_dien·BUYER-DEMO, yeu_cau_bang_chung·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Người bán | Trưởng nhóm [8] | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập | Phản hồi kèm bằng chứng | Đồng ý trả hàng – hoàn tiền
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · 15:00 14/11/2026 · Còn 24 giờ · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
 
 ===== Quyền · K4 trưởng nhóm, hồ sơ chưa chuyển =====
   Đơn: DH-2611-003 · biến thể: co_anh_nhan · loai_ca: thuong · trạng thái [2]: Đã gửi yêu cầu — chờ phản hồi
@@ -329,12 +329,12 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   2. [AI] Bản mô tả lúc đặt (02/11/2026) ghi “100% cotton”, trang hiện tại đổi thành “cotton pha polyester 65/35” ngày 07/11/2026. Đã có ảnh nhãn đọc được “65% cotton · 35% polyester”, không cần gửi lại. Ảnh chưa là kết quả kiểm định. Bạn có thể chọn chuẩn bị nháp để kiểm tra; nháp chưa gửi và chưa có quyết định hoàn tiền.
   3. [Hệ thống] Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.
   4. [Hệ thống] Đã gửi yêu cầu. Biên nhận BN-DH-2611-003. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.
-  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 24 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
+  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, soan_hoan_tien·AI, gui_yeu_cau_giao_dien·BUYER-DEMO, yeu_cau_bang_chung·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Người bán | Trưởng nhóm [8] | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập | Duyệt hoàn tiền mô phỏng (khoá) | Từ chối khiếu nại mô phỏng (khoá) | Yêu cầu người bán phản hồi (khoá)
   Lý do khoá [8]: Hồ sơ chưa được chuyển tới trưởng nhóm. / Hồ sơ chưa được chuyển tới trưởng nhóm.
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · 15:00 14/11/2026 · Còn 24 giờ · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
 
 ===== Quyền · K4 trưởng nhóm, đã chuyển, người bán chưa phản hồi =====
   Đơn: DH-2611-003 · biến thể: co_anh_nhan · loai_ca: thuong · trạng thái [2]: Đã chuyển hồ sơ — chờ nhân viên
@@ -342,13 +342,13 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   2. [AI] Bản mô tả lúc đặt (02/11/2026) ghi “100% cotton”, trang hiện tại đổi thành “cotton pha polyester 65/35” ngày 07/11/2026. Đã có ảnh nhãn đọc được “65% cotton · 35% polyester”, không cần gửi lại. Ảnh chưa là kết quả kiểm định. Bạn có thể chọn chuẩn bị nháp để kiểm tra; nháp chưa gửi và chưa có quyết định hoàn tiền.
   3. [Hệ thống] Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.
   4. [Hệ thống] Đã gửi yêu cầu. Biên nhận BN-DH-2611-003. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.
-  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 24 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
+  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
   6. [Hệ thống] Đã chuyển hồ sơ — chờ nhân viên. Nhân viên nhận nguồn đã có và phần chưa xác minh; chưa hoàn tiền hoặc từ chối.
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, soan_hoan_tien·AI, gui_yeu_cau_giao_dien·BUYER-DEMO, yeu_cau_bang_chung·AI, chuyen_truong_nhom·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Người bán | Trưởng nhóm [8] | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập | Duyệt hoàn tiền mô phỏng (khoá) | Từ chối khiếu nại mô phỏng (khoá) | Yêu cầu người bán phản hồi (khoá)
-  Lý do khoá [8]: Chờ người bán phản hồi hoặc hết 24 giờ. / Chờ người bán phản hồi hoặc hết 24 giờ.
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · 15:00 14/11/2026 · Còn 24 giờ · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
+  Lý do khoá [8]: Chờ người bán phản hồi hoặc hết 48 giờ. / Chờ người bán phản hồi hoặc hết 48 giờ.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
   → Ảnh 25: anh-25-quyen-truong-nhom-khoa.png
 
 ===== Quyền · K4 trưởng nhóm, người bán đã phản hồi =====
@@ -357,14 +357,14 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   2. [AI] Bản mô tả lúc đặt (02/11/2026) ghi “100% cotton”, trang hiện tại đổi thành “cotton pha polyester 65/35” ngày 07/11/2026. Đã có ảnh nhãn đọc được “65% cotton · 35% polyester”, không cần gửi lại. Ảnh chưa là kết quả kiểm định. Bạn có thể chọn chuẩn bị nháp để kiểm tra; nháp chưa gửi và chưa có quyết định hoàn tiền.
   3. [Hệ thống] Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.
   4. [Hệ thống] Đã gửi yêu cầu. Biên nhận BN-DH-2611-003. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.
-  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 24 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
+  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
   6. [Hệ thống] Đã chuyển hồ sơ — chờ nhân viên. Nhân viên nhận nguồn đã có và phần chưa xác minh; chưa hoàn tiền hoặc từ chối.
   7. [Hệ thống] Người bán đã phản hồi kèm bằng chứng trong hồ sơ. Đây chưa phải quyết định của sàn.
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, soan_hoan_tien·AI, gui_yeu_cau_giao_dien·BUYER-DEMO, yeu_cau_bang_chung·AI, chuyen_truong_nhom·AI, phan_hoi_nguoi_ban·SELLER-DEMO
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Người bán | Trưởng nhóm [8] | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập | Duyệt hoàn tiền mô phỏng | Từ chối khiếu nại mô phỏng | Yêu cầu người bán phản hồi (khoá)
   Lý do khoá [8]: Có thể duyệt — cần lý do và hộp xác nhận cuối. / Có thể từ chối — cần lý do và xác nhận đã xem bản lúc đặt.
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · 15:00 14/11/2026 · Còn 24 giờ · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
 
 ===== Quyền · K4 trưởng nhóm duyệt hoàn tiền =====
   Đơn: DH-2611-003 · biến thể: co_anh_nhan · loai_ca: thuong · trạng thái [2]: Đã có quyết định mô phỏng
@@ -372,7 +372,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   2. [AI] Bản mô tả lúc đặt (02/11/2026) ghi “100% cotton”, trang hiện tại đổi thành “cotton pha polyester 65/35” ngày 07/11/2026. Đã có ảnh nhãn đọc được “65% cotton · 35% polyester”, không cần gửi lại. Ảnh chưa là kết quả kiểm định. Bạn có thể chọn chuẩn bị nháp để kiểm tra; nháp chưa gửi và chưa có quyết định hoàn tiền.
   3. [Hệ thống] Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.
   4. [Hệ thống] Đã gửi yêu cầu. Biên nhận BN-DH-2611-003. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.
-  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 24 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
+  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
   6. [Hệ thống] Đã chuyển hồ sơ — chờ nhân viên. Nhân viên nhận nguồn đã có và phần chưa xác minh; chưa hoàn tiền hoặc từ chối.
   7. [Hệ thống] Người bán đã phản hồi kèm bằng chứng trong hồ sơ. Đây chưa phải quyết định của sàn.
   8. [Hệ thống] Đã xác nhận trả hàng/hoàn tiền mô phỏng. ⏎ Người duyệt: MANAGER-DEMO ⏎ Lý do: Bản lúc đặt 02/11 ghi 100% cotton; nhãn đọc được 65/35; người bán đã phản hồi. ⏎ Không có tiền thật được chuyển. Kết quả đã hiển thị cho hai bên.
@@ -380,23 +380,37 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Người bán | Trưởng nhóm [8] | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập | Duyệt hoàn tiền mô phỏng (khoá) | Từ chối khiếu nại mô phỏng (khoá) | Yêu cầu người bán phản hồi (khoá)
   Lý do khoá [8]: Hồ sơ đã có quyết định. / Hồ sơ đã có quyết định.
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · 15:00 14/11/2026 · Còn 24 giờ · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 81 giờ. || Hạn phản hồi người bán · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
   → Ảnh 26: anh-26-quyen-truong-nhom-duyet.png
 
-===== Quá hạn · K4 người bán im lặng, bấm +24h =====
+===== Quá hạn · K4 người bán im lặng, bấm +24h (người bán còn 24 giờ) =====
+  Đơn: DH-2611-003 · biến thể: co_anh_nhan · loai_ca: thuong · trạng thái [2]: Đã gửi yêu cầu — chờ phản hồi
+  1. [Người mua] áo ghi 100% cotton mà mặc vô nóng hầm, sờ là biết vải pha, k đúng mô tả gì hết
+  2. [AI] Bản mô tả lúc đặt (02/11/2026) ghi “100% cotton”, trang hiện tại đổi thành “cotton pha polyester 65/35” ngày 07/11/2026. Đã có ảnh nhãn đọc được “65% cotton · 35% polyester”, không cần gửi lại. Ảnh chưa là kết quả kiểm định. Bạn có thể chọn chuẩn bị nháp để kiểm tra; nháp chưa gửi và chưa có quyết định hoàn tiền.
+  3. [Hệ thống] Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.
+  4. [Hệ thống] Đã gửi yêu cầu. Biên nhận BN-DH-2611-003. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.
+  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
+  Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, soan_hoan_tien·AI, gui_yeu_cau_giao_dien·BUYER-DEMO, yeu_cau_bang_chung·AI, dong_ho_demo·SYSTEM
+  Ngữ cảnh (không phải căn cứ): (trống)
+  Nút: Người bán | Trưởng nhóm [8] | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập | Duyệt hoàn tiền mô phỏng (khoá) | Từ chối khiếu nại mô phỏng (khoá) | Yêu cầu người bán phản hồi (khoá)
+  Lý do khoá [8]: Hồ sơ chưa được chuyển tới trưởng nhóm. / Hồ sơ chưa được chuyển tới trưởng nhóm.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 57 giờ. || Hạn phản hồi người bán · 15:00 15/11/2026 · Còn 24 giờ · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 24 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  → Ảnh 27: anh-27-qua-han-24h-con-khoa.png
+
+===== Quá hạn · K4 người bán im lặng, bấm +24h lần hai (đủ 48 giờ) =====
   Đơn: DH-2611-003 · biến thể: co_anh_nhan · loai_ca: thuong · trạng thái [2]: Đã chuyển hồ sơ — chờ nhân viên
   1. [Người mua] áo ghi 100% cotton mà mặc vô nóng hầm, sờ là biết vải pha, k đúng mô tả gì hết
   2. [AI] Bản mô tả lúc đặt (02/11/2026) ghi “100% cotton”, trang hiện tại đổi thành “cotton pha polyester 65/35” ngày 07/11/2026. Đã có ảnh nhãn đọc được “65% cotton · 35% polyester”, không cần gửi lại. Ảnh chưa là kết quả kiểm định. Bạn có thể chọn chuẩn bị nháp để kiểm tra; nháp chưa gửi và chưa có quyết định hoàn tiền.
   3. [Hệ thống] Đã soạn nháp — chưa gửi. Bạn kiểm tra hoặc sửa nội dung trước khi bấm Gửi yêu cầu. Nháp chưa bảo lưu hạn trả hàng.
   4. [Hệ thống] Đã gửi yêu cầu. Biên nhận BN-DH-2611-003. Hệ thống đã ghi nhận trong hạn chính sách dựng. Chưa có quyết định hoàn tiền.
-  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 24 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
+  5. [Hệ thống] Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: 48 giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.
   6. [Hệ thống] Đã chuyển hồ sơ — chờ nhân viên. Nhân viên nhận nguồn đã có và phần chưa xác minh; chưa hoàn tiền hoặc từ chối.
-  Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, soan_hoan_tien·AI, gui_yeu_cau_giao_dien·BUYER-DEMO, yeu_cau_bang_chung·AI, dong_ho_demo·SYSTEM, chuyen_truong_nhom·AI
+  Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, soan_hoan_tien·AI, gui_yeu_cau_giao_dien·BUYER-DEMO, yeu_cau_bang_chung·AI, dong_ho_demo·SYSTEM, dong_ho_demo·SYSTEM, chuyen_truong_nhom·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Người bán | Trưởng nhóm [8] | Xem bản lưu | Xem trang hiện tại | Xem ảnh nhãn giả lập | Duyệt hoàn tiền mô phỏng | Từ chối khiếu nại mô phỏng | Yêu cầu người bán phản hồi (khoá)
   Lý do khoá [8]: Có thể duyệt — cần lý do và hộp xác nhận cuối. / Có thể từ chối — cần lý do và xác nhận đã xem bản lúc đặt.
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 57 giờ. || Hạn phản hồi người bán · 15:00 14/11/2026 · Đã hết hạn · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 24 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 15/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
-  → Ảnh 27: anh-27-qua-han-24h-mo-nut.png
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 16/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 33 giờ. || Hạn phản hồi người bán · 15:00 15/11/2026 · Đã hết hạn · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Đã hết hạn · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 16/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
+  → Ảnh 28: anh-28-qua-han-48h-mo-nut.png
 
 ===== Ca lạ · "ko xử là mình đăng lên báo" =====
   Đơn: DH-2611-001 · biến thể: default · loai_ca: thuong · trạng thái [2]: 2 Chưa đủ căn cứ kết luận
@@ -407,7 +421,7 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, dinh_tuyen_C1_C6·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
 
 ===== Ca lạ · gõ tin nghi hàng giả vào chat =====
   Đơn: DH-2611-001 · biến thể: default · loai_ca: nghi_hang_gia · trạng thái [2]: 2 Đã chuyển hồ sơ — chờ nhân viên
@@ -419,31 +433,31 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, chuyen_truong_nhom·AI, dinh_tuyen_C1_C6·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
-  → Ảnh 28: anh-28-ca-la-thu-tu-tin.png
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai. || Nhân viên xử lý dự kiến · 15:00 14/11/2026 · Quá 24 giờ: báo quản lý ca, AI không quyết thay.
+  → Ảnh 29: anh-29-ca-la-thu-tu-tin.png
 
 ===== Ca lạ · đổi số điện thoại nhận hàng của chính mình =====
   Đơn: DH-2611-001 · biến thể: default · loai_ca: thuong · trạng thái [2]: 2 Chưa đủ căn cứ kết luận
   1. [Người mua] Mình đặt áo size L mà nhận được size M, mặc không vừa. Shop cũng nhắn nhận là gửi nhầm rồi. Mình muốn trả hàng hoàn tiền thì làm sao?
   2. [AI] Bản mô tả lúc đặt (08/11/2026) ghi size L. Mình chưa có xác nhận chính thức của shop trong luồng này, dù bạn cho biết shop đã nhận lỗi qua chat. Bạn có thể bổ sung một ảnh nhãn size, chuẩn bị nháp rồi tự gửi yêu cầu. Chưa có thao tác hoàn tiền.
   3. [Người mua] tiện đổi giúp mình số điện thoại nhận hàng luôn nha
-  4. [AI] Không chia sẻ số điện thoại hoặc địa chỉ của bên kia để bảo vệ thông tin riêng tư. Bạn có thể trao đổi trong kênh chat chính thức có lưu vết. Thời gian phản hồi dự kiến của người bán là 24 giờ sau khi hệ thống xác nhận gửi yêu cầu thành công; hiện chưa bắt đầu tính hạn.
+  4. [AI] Không chia sẻ số điện thoại hoặc địa chỉ của bên kia để bảo vệ thông tin riêng tư. Bạn có thể trao đổi trong kênh chat chính thức có lưu vết. Thời gian phản hồi dự kiến của người bán là 48 giờ sau khi hệ thống xác nhận gửi yêu cầu thành công; hiện chưa bắt đầu tính hạn.
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, dinh_tuyen_C1_C6·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
-  → Ảnh 29: anh-29-ca-la-sdt-cua-minh.png
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  → Ảnh 30: anh-30-ca-la-sdt-cua-minh.png
 
 ===== Ca lạ · xin địa chỉ kho để gửi trả =====
   Đơn: DH-2611-001 · biến thể: default · loai_ca: thuong · trạng thái [2]: 2 Chưa đủ căn cứ kết luận
   1. [Người mua] Mình đặt áo size L mà nhận được size M, mặc không vừa. Shop cũng nhắn nhận là gửi nhầm rồi. Mình muốn trả hàng hoàn tiền thì làm sao?
   2. [AI] Bản mô tả lúc đặt (08/11/2026) ghi size L. Mình chưa có xác nhận chính thức của shop trong luồng này, dù bạn cho biết shop đã nhận lỗi qua chat. Bạn có thể bổ sung một ảnh nhãn size, chuẩn bị nháp rồi tự gửi yêu cầu. Chưa có thao tác hoàn tiền.
   3. [Người mua] cho mình địa chỉ kho của shop để gửi trả hàng
-  4. [AI] Không chia sẻ số điện thoại hoặc địa chỉ của bên kia để bảo vệ thông tin riêng tư. Bạn có thể trao đổi trong kênh chat chính thức có lưu vết. Thời gian phản hồi dự kiến của người bán là 24 giờ sau khi hệ thống xác nhận gửi yêu cầu thành công; hiện chưa bắt đầu tính hạn.
+  4. [AI] Không chia sẻ số điện thoại hoặc địa chỉ của bên kia để bảo vệ thông tin riêng tư. Bạn có thể trao đổi trong kênh chat chính thức có lưu vết. Thời gian phản hồi dự kiến của người bán là 48 giờ sau khi hệ thống xác nhận gửi yêu cầu thành công; hiện chưa bắt đầu tính hạn.
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, dinh_tuyen_C1_C6·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
 
 ===== Ca lạ · chưa nhận hàng =====
   Đơn: DH-2611-001 · biến thể: default · loai_ca: thuong · trạng thái [2]: 2 Chưa đủ căn cứ kết luận
@@ -454,10 +468,10 @@ Prototype: prototype/index.html · đồng hồ demo bắt đầu 15:00 13/11/20
   Nhật ký tool: chon_don·BUYER-DEMO, xem_mo_ta_luc_dat·AI, xem_trang_thai_yeu_cau·AI, dinh_tuyen_C1_C6·AI
   Ngữ cảnh (không phải căn cứ): (trống)
   Nút: Chuẩn bị yêu cầu | Sửa thông tin AI đọc sai [5] | Nhờ nhân viên xem xét [6] | ↑ | ＋ Bổ sung ảnh nhãn mẫu | Tôi không có bằng chứng này | Xem bản lưu | Xem trang hiện tại
-  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 24 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
+  [7]: Hạn gửi yêu cầu trả hàng · 23:59 18/11/2026 · Quy tắc dựng 7 ngày từ ngày nhận hàng. Còn 129 giờ. || Hạn phản hồi người bán · Chưa bắt đầu — chưa gửi thành công · 48 giờ kể từ xác nhận gửi thành công. Không phải hạn trả hàng. || Hạn bổ sung của người mua · 15:00 15/11/2026 · Còn 48 giờ · 48 giờ giả định theo §4.3. Im lặng không tự thành bằng chứng sai.
 
 ===== Mobile 390px · K3 =====
   scrollWidth=390 · clientWidth=390 · tràn ngang: false
-  → Ảnh 30: anh-30-mobile-390-k3.png
+  → Ảnh 31: anh-31-mobile-390-k3.png
 
 Lỗi JavaScript: không có

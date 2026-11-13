@@ -99,7 +99,7 @@ let n = 0;
   await start('K6'); await act('choose'); await dump('K6 · nghi hàng giả, đòi khoá shop, doạ đăng báo'); await shot('k6-nghi-hang-gia');
   await start('K7'); await act('choose'); await dump('K7 · xin số điện thoại shop'); await shot('k7-xin-sdt');
   await start('K8'); await act('choose'); await dump('K8 · lịch sử shop, chưa có bằng chứng'); await shot('k8-lich-su-shop');
-  await start('K9', 'co_bien_nhan'); await act('choose'); await dump('K9 · có biên nhận 12/11'); await shot('k9-co-bien-nhan');
+  await start('K9', 'co_bien_nhan'); await act('choose'); await dump('K9 · có biên nhận 11/11'); await shot('k9-co-bien-nhan');
   await start('K9', 'chua_co_bien_nhan'); await act('choose'); await dump('K9 · chưa có biên nhận'); await shot('k9-chua-co-bien-nhan');
   await start('K10'); await act('choose'); await dump('K10 · sai màu + đổi địa chỉ'); await shot('k10-tach-yeu-cau');
 
@@ -132,7 +132,9 @@ let n = 0;
   await view('buyer');
   await start('K4', 'co_anh_nhan'); await act('choose'); await act('prepare'); await act('submit'); await act('advance24');
   await view('staff'); await act('role', 'manager');
-  await dump('Quá hạn · K4 người bán im lặng, bấm +24h'); await shot('qua-han-24h-mo-nut');
+  await dump('Quá hạn · K4 người bán im lặng, bấm +24h (người bán còn 24 giờ)'); await shot('qua-han-24h-con-khoa');
+  await view('buyer'); await act('advance24'); await view('staff'); await act('role', 'manager');
+  await dump('Quá hạn · K4 người bán im lặng, bấm +24h lần hai (đủ 48 giờ)'); await shot('qua-han-48h-mo-nut');
   await view('buyer');
 
   // ---------- 7.2 · ca lạ ----------

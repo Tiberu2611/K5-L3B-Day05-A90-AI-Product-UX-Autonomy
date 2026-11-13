@@ -107,7 +107,7 @@ function staff() {
 }
 function render() {
   $('case-id').textContent = state.fixture.id;
-  $('demo-clock').textContent = 'Đồng hồ demo: ' + date(state.now) + ' (Việt Nam) · hạn trả hàng 7 ngày, người bán 24h, người mua bổ sung 48h, trưởng nhóm 24h — chính sách dựng.';
+  $('demo-clock').textContent = 'Đồng hồ demo: ' + date(state.now) + ' (Việt Nam) · hạn trả hàng ' + T4.RETURN_WINDOW_DAYS + ' ngày, người bán ' + T4.SELLER_HOURS + 'h, người mua bổ sung 48h, trưởng nhóm 24h — chính sách dựng.';
   $('fail-next').checked = state.failNext;
   $('missing-source').disabled = state.key !== 'K4';
   $('with-threat').disabled = state.key !== 'K3';

@@ -83,14 +83,14 @@ test('K4: refund waits for seller response; rejection also waits for buyer evide
   assert.equal(T.gate(s, 'reject', 'MANAGER-DEMO'), '');
   assert.equal(T.decide(s, 'reject', 'MANAGER-DEMO', reason, true), true);
 });
-test('24-hour seller expiry escalates; buyer still has 48 hours; manager alerts after 24', () => {
+test('48-hour seller expiry escalates without a decision; manager alerts after 24 more hours', () => {
   const s = sent();
-  T.advance(s, 23);
-  assert.notEqual(T.gate(s, 'reject', 'MANAGER-DEMO'), '');
+  T.advance(s, 47);
+  assert.equal(s.escalatedAt, null);
+  assert.notEqual(T.gate(s, 'refund', 'MANAGER-DEMO'), '');
   T.advance(s, 1);
   assert.equal(s.escalatedAt, s.now);
   assert.equal(T.gate(s, 'refund', 'MANAGER-DEMO'), '');
-  assert.match(T.gate(s, 'reject', 'MANAGER-DEMO'), /Chờ người mua/);
   assert.equal(s.decision, null);
   T.advance(s, 24);
   assert.equal(T.gate(s, 'reject', 'MANAGER-DEMO'), '');
@@ -211,12 +211,16 @@ test('render smoke: buyer, seller, manager, all fixtures and untrusted text', ()
   assert.equal(ids.get('source-dialog').open, true);
 });
 
-test('seller expiry is 24 hours exactly, not 48; no premature or automatic financial decision', () => {
-  assert.equal(T.SELLER_HOURS, 24);
-  const s = sent('K4');
-  T.advance(s, 23.99); assert.equal(s.escalatedAt, null);
-  T.advance(s, 0.01); assert.equal(s.escalatedAt, s.now);
-  assert.equal(T.sellerDone(s), true); assert.equal(s.decision, null);
+test('seller expiry is 48 hours exactly, not 24; manager stays locked while seller is within deadline', () => {
+  assert.equal(T.SELLER_HOURS, 48);
+  const s = sent('K4', { variant: 'co_anh_nhan' });
+  T.advance(s, 24); assert.equal(s.escalatedAt, null); assert.equal(T.sellerDone(s), false);
+  T.transfer(s);
+  assert.match(T.gate(s, 'refund', 'MANAGER-DEMO'), /Chờ người bán phản hồi hoặc hết 48 giờ/);
+  assert.match(T.gate(s, 'reject', 'MANAGER-DEMO'), /Chờ người bán phản hồi hoặc hết 48 giờ/);
+  T.advance(s, 23.99); assert.equal(T.sellerDone(s), false);
+  T.advance(s, 0.01); assert.equal(T.sellerDone(s), true);
+  assert.equal(T.gate(s, 'refund', 'MANAGER-DEMO'), ''); assert.equal(s.decision, null);
 });
 test('K5 retains 2 overview images and asks only once for the missing material label', () => {
   const s = opened('K5');
@@ -246,10 +250,10 @@ test('K4 co_anh_nhan does not ask to upload a label that already exists', () => 
 test('K9 has a verified, in-time pre-existing receipt and overdue seller, then transfers', () => {
   const s = opened('K9', { variant: 'co_bien_nhan' });
   assert.equal(s.receipt.id, 'BN-DH-2611-008'); assert.equal(s.receipt.inTime, true);
-  assert.equal(new Date(s.receipt.at).toISOString(), '2026-11-12T07:00:00.000Z');
+  assert.equal(new Date(s.receipt.at).toISOString(), '2026-11-11T07:00:00.000Z');
   assert.equal(s.escalatedAt, s.now); assert.equal(s.sellerReply, null); assert.equal(s.decision, null);
   assert.ok(s.log.some(e => e.tool === 'xem_trang_thai_yeu_cau' && e.note.includes(s.receipt.id)));
-  assert.ok(s.messages.some(m => m.text.includes('ghi nhận trong hạn') && m.text.includes('12/11/2026')));
+  assert.ok(s.messages.some(m => m.text.includes('ghi nhận trong hạn') && m.text.includes('11/11/2026') && m.text.includes('48 giờ')));
   assert.equal(s.log.some(e => e.tool === 'gui_yeu_cau_giao_dien'), false);
 });
 test('K9 without a receipt does not claim registration, initiate seller deadline or auto-transfer', () => {
@@ -274,15 +278,15 @@ test('contact disclosure remains blocked, including when mixed with address chan
     T.route(s, text); assert.ok(s.messages.at(-1).text.includes('Không chia sẻ'));
   }
 });
-test('K7 gives a conditional 24-hour response estimate, then an actual due time when sent', () => {
+test('K7 gives a conditional 48-hour response estimate, then an actual due time when sent', () => {
   const s = opened('K7');
   let answer = s.messages.at(-1).text;
   assert.ok(answer.includes('Không chia sẻ')); assert.ok(answer.includes('kênh chat chính thức'));
-  assert.ok(answer.includes('Thời gian phản hồi')); assert.ok(answer.includes('24 giờ'));
+  assert.ok(answer.includes('Thời gian phản hồi')); assert.ok(answer.includes('48 giờ'));
   assert.ok(answer.includes('chưa bắt đầu')); assert.equal(s.askedAt, null);
   T.prepare(s); T.submit(s); T.route(s, 'cho mình xin số điện thoại shop');
   answer = s.messages.at(-1).text;
-  assert.ok(answer.includes('14/11/2026')); assert.ok(answer.includes('Thời gian phản hồi'));
+  assert.ok(answer.includes('15/11/2026')); assert.ok(answer.includes('Thời gian phản hồi'));
   T.transfer(s); T.advance(s, 24); T.route(s, 'cho mình xin sđt shop');
   assert.ok(s.messages.at(-1).text.includes('chậm hơn dự kiến'));
 });
