@@ -415,7 +415,7 @@ Mỗi tool được xếp theo ba câu: **sai thì ai chịu gì · đảo lại
 | Ai im lặng | Quá mốc nào | Hệ thống làm gì | Không làm gì |
 |---|---|---|---|
 | Người bán | 48 giờ kể từ khi `yeu_cau_bang_chung` gửi thành công | `chuyen_truong_nhom(loai_ca=thuong)` tại mốc hết hạn; báo người mua "Hồ sơ đã chuyển nhân viên" | Không mặc định người bán thua, không tự hoàn |
-| Người mua | Hạn bổ sung 48 giờ *(đề xuất của TV3, cần nhóm chốt)* | Giữ "Chờ bổ sung"; hết hạn thì chuyển trưởng nhóm với ghi chú "người mua chưa bổ sung" | Không tự đóng khiếu nại: im lặng không có nghĩa là người mua sai |
+| Người mua | Hạn bổ sung 48 giờ (nhóm đã chốt; prototype `BUYER_HOURS = 48`) | Giữ "Chờ bổ sung"; hết hạn thì chuyển trưởng nhóm với ghi chú "người mua chưa bổ sung" | Không tự đóng khiếu nại: im lặng không có nghĩa là người mua sai |
 | Trưởng nhóm | 24 giờ kể từ khi nhận hồ sơ (§1.7) | Đưa hồ sơ lên đầu hàng, báo quản lý ca; người mua thấy "Đang chờ nhân viên, chậm hơn dự kiến" | AI không thay trưởng nhóm quyết |
 
 ### 4.4 Tool khó xếp nhất: `tu_choi_khieu_nai`
@@ -425,14 +425,14 @@ Mức nào cũng có bên thua. Cái giá của hai phía nằm ngay trong cặp
 - **Xếp lỏng** (AI được đề xuất hoặc tự đóng): **K4** người mua bị từ chối oan vì AI so với mô tả hiện tại. Trưởng nhóm thấy sẵn dòng "AI đề xuất từ chối" thì dễ bấm theo.
 - **Xếp chặt** (cấm hẳn, không ai đóng được trong luồng này): **K3** người bán đúng nhưng tiền treo mãi, không có đường nào để kết thúc vụ việc theo hướng có lợi cho họ. Người bán thua theo cách khác, đúng câu "*bên tôi đúng cũng chẳng ai nghe*" (track dòng 24).
 
-| Thành viên | Chọn | Lý do và cái giá *(ghi lại đúng điều mỗi người đã chọn, **[CẦN XÁC NHẬN]**)* |
+| Thành viên | Chọn | Lý do và cái giá |
 |---|---|---|
-| [TV1] | Cấm với AI, chỉ trưởng nhóm tự mở hồ sơ và đóng | Chặn chắc K4. Giá: K3 chậm, trưởng nhóm làm lại hồ sơ từ đầu |
-| [TV2] | Cần trưởng nhóm duyệt, AI soạn sẵn đề xuất | Nhanh cho K3. Giá: K4, đề xuất của AI thành neo |
-| [TV3] | Cần trưởng nhóm duyệt, AI **không** soạn đề xuất, nút khoá tới khi hai bên được nghe | Giữ đường đóng cho K3, bỏ cái neo ở K4 |
-| [TV4] | Tự làm khi người mua quá hạn bổ sung | Đỡ tải nhân viên. Giá: người mua bận 48 giờ là mất tiền dù đúng (K4) |
+| Nguyễn Lê Trọng Mạnh | Cấm với AI, chỉ trưởng nhóm tự mở hồ sơ và đóng | Chặn chắc K4. Giá: K3 chậm, trưởng nhóm làm lại hồ sơ từ đầu |
+| Vũ Văn Chủ | Cần trưởng nhóm duyệt, AI soạn sẵn đề xuất | Nhanh cho K3. Giá: K4, đề xuất của AI thành neo |
+| Vũ Duy Khánh | Cần trưởng nhóm duyệt, AI **không** soạn đề xuất, nút khoá tới khi hai bên được nghe | Giữ đường đóng cho K3, bỏ cái neo ở K4 |
+| Chu Quang Linh | Tự làm khi người mua quá hạn bổ sung | Đỡ tải nhân viên. Giá: người mua bận 48 giờ là mất tiền dù đúng (K4) |
 
-**Nhóm chốt: cần người duyệt, chỉ trưởng nhóm, kèm ba điều kiện.** (1) AI không soạn đề xuất từ chối. Tóm tắt ở [8] chỉ liệt kê căn cứ hai phía song song. (2) Nút khoá theo 4.3. (3) Trưởng nhóm phải xem bản mô tả lúc đặt trước khi xác nhận. Lý do: cấm hẳn làm K3 thua theo cách khác; tự làm khi quá hạn biến sự im lặng thành bằng chứng. Ba điều kiện chặn đúng đường lọt của K4 (so sai phiên bản, bị neo) mà không chặn người bán đúng ở K3.
+**Nhóm chốt: cần người duyệt, chỉ trưởng nhóm, kèm ba điều kiện** (phương án của Vũ Duy Khánh). (1) AI không soạn đề xuất từ chối. Tóm tắt ở [8] chỉ liệt kê căn cứ hai phía song song. (2) Nút khoá theo 4.3. (3) Trưởng nhóm phải xem bản mô tả lúc đặt trước khi xác nhận. Lý do: cấm hẳn làm K3 thua theo cách khác; tự làm khi quá hạn biến sự im lặng thành bằng chứng. Ba điều kiện chặn đúng đường lọt của K4 (so sai phiên bản, bị neo) mà không chặn người bán đúng ở K3.
 
 ### 4.5 Thử mức đã đặt trên K3, K4 (đắt nhất) và K1 (bình thường)
 
@@ -479,13 +479,25 @@ Một trợ lý được tự hoàn tiền sẽ hứa: **"AI giải quyết khi�
 - **Người mua được:** biết chính xác còn thiếu gì, ai quyết, khi nào.
 - **Người bán được:** một lời hứa mới, "bạn được nghe trước khi có quyết định bất lợi". Lời hứa này chỉ giữ được vì AI không có nút chuyển tiền.
 
-### 4.9 Kiểm quyền duyệt trên prototype (bàn giao TV4)
+### 4.9 Kiểm quyền duyệt trên prototype
 
-- [ ] Màn người mua **không có** nút hoàn tiền, từ chối, phạt shop. Chỉ có Chuẩn bị nháp · Gửi yêu cầu (người mua bấm) · Nhờ nhân viên [6].
-- [ ] Màn người bán: có "Đồng ý trả hàng hoàn tiền" kèm hộp xác nhận, "Phản hồi kèm bằng chứng". **Không** có nút từ chối khiếu nại (người bán là bên được lợi).
-- [ ] [8] trưởng nhóm: hai nút Duyệt hoàn / Từ chối có hộp xác nhận; khoá kèm lý do theo 4.3; tóm tắt căn cứ hai phía, không có dòng "AI đề xuất"; lời doạ nằm riêng ở mục ngữ cảnh.
-- [ ] Không màn nào có nút phạt / khoá shop. [8] ghi "Xử phạt thuộc bộ phận chuyên trách".
-- [ ] Có nút mô phỏng "hết 48 giờ" để bấm thử đường quá hạn của 4.3.
+TV3 kiểm ngày 13/11/2026, lần cuối trên commit `467c1ab`: đọc `prototype/model.js` (hàm `gate`, `decide`, `askSeller`, `transfer`, `advance`) và `app.js`, chạy `node prototype/model.test.cjs` (**27/27 đạt**), rồi chạy thêm một script gọi thẳng model cho K1, K3, K4 để thử gọi tool tài chính bằng từng vai.
+
+| Điều §4 yêu cầu | Prototype làm | Kết quả |
+|---|---|---|
+| AI và người mua không gọi được `thuc_hien_hoan_tien`, `tu_choi_khieu_nai` (C6) | `gate()` chặn mọi vai trừ `SELLER-DEMO` (chỉ hoàn) và `MANAGER-DEMO`. Script gọi `decide` bằng vai `AI`, `BUYER-DEMO`: đều bị từ chối | ☑ Đạt |
+| Người bán chỉ có "Đồng ý hoàn", không có nút từ chối | Màn người bán chỉ có `seller-refund` và phản hồi; ghi "Không có nút từ chối hoặc phạt shop". Gọi `decide('reject', 'SELLER-DEMO')` bị chặn | ☑ Đạt |
+| Đường nhanh: người bán đồng ý là hoàn, không qua trưởng nhóm (K1) | K1: người mua gửi, người bán đồng ý → `thuc_hien_hoan_tien·SELLER-DEMO` | ☑ Đạt |
+| Nút trưởng nhóm khoá tới khi người bán phản hồi hoặc hết hạn; từ chối còn chờ người mua bổ sung (4.3) | `gate()` trả lý do khoá: chưa chuyển hồ sơ / chờ người bán / chờ người mua bổ sung. Nút hiện kèm lý do, không ẩn | ☑ Đạt |
+| Hộp xác nhận, bắt xem căn cứ và ghi lý do | `confirm-dialog`, ô "đã xem" và lý do bắt buộc trong `decide()` | ☑ Đạt |
+| AI không soạn đề xuất từ chối; lời doạ nằm ở ngữ cảnh | Màn trưởng nhóm ghi "AI không soạn đề xuất từ chối"; lời doạ K3 vào `context`, không vào căn cứ | ☑ Đạt |
+| Không có nút phạt / khoá shop; ghi "Xử phạt thuộc bộ phận chuyên trách" | Không có action nào gọi `phat_shop`; K6 chuyển `nghi_hang_gia` | ☑ Đạt |
+| `yeu_cau_bang_chung` gửi người bán chỉ sau biên nhận; K3 hỏi người mua trước (C5) | `askSeller()` cần biên nhận; K3 chỉ gửi khi người mua chọn "Toàn bộ khoang" / "Không rõ" | ☑ Đạt |
+| Quá hạn không tự quyết, chỉ chuyển trưởng nhóm; trưởng nhóm quá 24 giờ thì báo quản lý ca | `advance()` chỉ gọi `transfer` và báo quản lý ca; không có lệnh tài chính nào do hệ thống tự chạy | ☑ Đạt |
+| Hạn người bán **48 giờ** (§1.7, 4.3) | `SELLER_HOURS = 48`; biên nhận có sẵn của K9 dời về 11/11 14:00 để K9 vẫn là ca người bán quá hạn | ☑ Đạt (đã sửa ở `467c1ab`) |
+| `chuyen_truong_nhom` đảo được (trưởng nhóm trả lại) | Không có thao tác trả lại hoặc rút lại sau khi chuyển | ☒ Thiếu · TV4, không chặn được lỗi nào nhưng mất điểm "tự làm có hoàn tác" ở R5 |
+
+**Ghi nhận thêm:** ca thiếu bản lưu (K4 `thieu_ban_luc_dat`) khoá nút trưởng nhóm với lý do "cần nhân viên xác minh nguồn", nhưng prototype chưa có thao tác "đã xác minh nguồn". Đây là hướng an toàn (không ai quyết khi thiếu nguồn), đúng tinh thần C4. Hồ sơ dừng ở bước này là giới hạn đã biết của prototype, không phải lỗi quyền.
 
 ---
 
@@ -561,12 +573,16 @@ Mỗi tiêu chí chấm bằng cách nhìn log hoặc câu trả lời, không c
 
 ### 6.2 Chấm thử trên K3 và K4
 
-Chấm trên **thiết kế ở §3–§4**. Khi TV4 dựng xong prototype, cả nhóm chấm lại theo ảnh đánh số (phút 200–210).
+**Lần 1, trên thiết kế §3–§4:** cả sáu ô Pass.
 
-| | T1 | T2 | T3 |
+**Lần 2, trên prototype** (commit `467c1ab`, TV3 chấm ngày 13/11/2026). Cách chấm: chạy thẳng `prototype/model.js` theo từng ca, đọc `state.log` và tin nhắn AI, cùng 27 kiểm thử của TV4. Ảnh minh chứng giao diện lấy ở §7.
+
+| | T1 · tiền chỉ đổi chủ khi có người bấm | T2 · kết luận dựa trên bản lúc đặt | T3 · lời doạ không đổi nhánh, luôn có bước tiếp |
 |---|---|---|---|
-| **K3** | Pass: C6, AI không có quyền gọi; người bán hoặc trưởng nhóm bấm | Pass: câu ở §3.2 trích "dung tích tổng 6L" của bản lúc đặt | Pass: C3 gỡ lời doạ; [4] hỏi "đo phần nào" có ba lựa chọn |
-| **K4** | Pass: từ chối chỉ trưởng nhóm, nút khoá | Pass: C4, câu ở §3.3 trích bản lúc đặt; nhánh thiếu nguồn không kết luận | Pass: [4] xin ảnh nhãn, có "Tôi không có nhãn", có [6] |
+| **K3** | **Pass.** Gọi `decide` bằng vai AI, người mua: bị chặn. Trước khi người bán phản hồi hoặc hết hạn: khoá kèm lý do. Lệnh duy nhất trong log: `tu_choi_khieu_nai·MANAGER-DEMO` | **Pass.** Câu đầu trích "dung tích tổng 6L" kèm ngày 03/11/2026 và tem "Tổng 6.0L · Giỏ chiên 5.0L" | **Pass.** Chạy có và không có lời doạ: chuỗi tool trong log giống hệt; lời doạ chỉ vào `context`. Câu đầu hỏi "giỏ chiên hay toàn bộ khoang", có ba nút |
+| **K4** | **Pass.** Như K3; người bán gọi từ chối cũng bị chặn | **Pass.** Trích "100% cotton" kèm 02/11/2026 và ngày sửa 07/11/2026. Biến thể `thieu_ban_luc_dat`: không câu nào chứa "khớp", AI tự chuyển nhân viên, nút trưởng nhóm khoá | **Pass.** Nêu đúng món thiếu (ảnh nhãn thành phần), có "Tôi không có bằng chứng này" và nhờ nhân viên |
+
+**Kết quả: 6/6 Pass trên prototype**, với hạn người bán 48 giờ như spec.
 
 ### 6.3 Lỗi còn lại
 
