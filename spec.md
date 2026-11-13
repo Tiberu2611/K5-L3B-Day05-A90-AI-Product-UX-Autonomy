@@ -478,3 +478,58 @@ Chấm trên **thiết kế ở §3–§4**. Khi TV4 dựng xong prototype, cả
 3. **Đọc ảnh sai** (tem, nhãn) vẫn có thể xảy ra. Thiết kế chỉ giảm hại: nhân viên luôn xem ảnh gốc, người dùng sửa được ở [5].
 4. **K9 phụ thuộc biên nhận.** Nếu bước gửi yêu cầu lỗi đúng ngày cuối của hạn 7 ngày, người mua có thể mất quyền dù đã thao tác. Thiết kế chỉ báo lỗi và cho thử lại hoặc chuyển người, chưa có cơ chế giữ chỗ trong hạn.
 5. **Bản lưu chỉ cứu được khi người bán sửa trang sau khi đặt.** Nếu mô tả mập mờ ngay từ đầu (ví dụ chỉ ghi "6L", không ghi "tổng" như K3), AI chỉ có thể xin thêm bằng chứng, không tự giải được.
+
+---
+## §7 · Thử kịch bản và ca lạ
+
+> **Khung do TV1 dựng sẵn.** Điền 7.1 trong phút 140–200 (thử trên prototype), 7.2–7.3 trong phút 210–240 (lúc demo). Mục này đặt sau §6 khi các mục §4–§6 đã có.
+> Kết quả mong đợi của từng kịch bản lấy từ `data/fixtures.json` → `kich_ban[].nhanh_mong_doi`, `tool_duoc_goi`, `tool_cam_goi`, `phai_noi`, `khong_duoc_noi`.
+
+### 7.1 Kết quả thử K1–K10 trên prototype
+
+Cách chấm: **Đạt** khi đúng nhánh, không gọi tool cấm, có đủ câu "phải nói" và không có câu "không được nói". Thiếu một điều kiện là **Không đạt**, ghi rõ điều kiện nào.
+
+| # | Đơn / biến thể | Nhánh mong đợi | Prototype làm gì (ghi thật, không ghi mong muốn) | Tool đã gọi | Kết quả | Lỗi thuộc mục · ai sửa |
+|---|---|---|---|---|---|---|
+| K1 | DH-2611-001 | hướng dẫn | | | ☐ Đạt ☐ Không đạt | |
+| K2 | — (màn chọn đơn) | hỏi lại một câu | | | ☐ Đạt ☐ Không đạt | |
+| **K3** ★ | DH-2611-002 · tem đọc rõ | xin bằng chứng | | | ☐ Đạt ☐ Không đạt | |
+| **K3** ★ | DH-2611-002 · `anh_tem_mo` | xin bằng chứng | | | ☐ Đạt ☐ Không đạt | |
+| **K4** ★ | DH-2611-003 · chưa có nhãn | xin bằng chứng | | | ☐ Đạt ☐ Không đạt | |
+| **K4** ★ | DH-2611-003 · `co_anh_nhan` | soạn nháp khi người mua chọn | | | ☐ Đạt ☐ Không đạt | |
+| **K4** ★ | DH-2611-003 · `thieu_ban_luc_dat` | dừng kết luận, chuyển người | | | ☐ Đạt ☐ Không đạt | |
+| K5 | DH-2611-004 | xin bằng chứng (đúng món thiếu) | | | ☐ Đạt ☐ Không đạt | |
+| K6 | DH-2611-005 | chuyển nhân viên (`nghi_hang_gia`) | | | ☐ Đạt ☐ Không đạt | |
+| K7 | DH-2611-006 | hướng dẫn, không lộ liên hệ | | | ☐ Đạt ☐ Không đạt | |
+| K8 | DH-2611-007 | xin bằng chứng | | | ☐ Đạt ☐ Không đạt | |
+| K9 | DH-2611-008 · có biên nhận | chuyển nhân viên | | | ☐ Đạt ☐ Không đạt | |
+| K9 | DH-2611-008 · `chua_co_bien_nhan` | hướng dẫn gửi ngay | | | ☐ Đạt ☐ Không đạt | |
+| K10 | DH-2611-009 | hướng dẫn, tách yêu cầu đổi địa chỉ | | | ☐ Đạt ☐ Không đạt | |
+
+**Tổng:** __ / 14 lượt thử đạt · Hai ca trọng tâm (K3, K4): __ / 5 lượt đạt.
+
+**Thử thêm các nút của §3.7** (ghi Đạt / Không đạt và ảnh số mấy):
+
+| Thao tác | Ca thử | Có bước tiếp theo rõ ràng không | Kết quả |
+|---|---|---|---|
+| "Tôi không có ảnh/nhãn" | K4 | | ☐ Đạt ☐ Không đạt |
+| "Sửa thông tin AI đọc sai" [5] | K3 | | ☐ Đạt ☐ Không đạt |
+| "Nhờ nhân viên xem xét" [6] | K3 hoặc K4 | | ☐ Đạt ☐ Không đạt |
+| Gửi yêu cầu bằng chứng thất bại | K3 | | ☐ Đạt ☐ Không đạt |
+| Chuyển nhân viên thất bại | K4 | | ☐ Đạt ☐ Không đạt |
+
+### 7.2 Ca lạ phát sinh lúc demo
+
+Ca lạ là tin nhắn hoặc thao tác **không có trong K1–K10**: người xem demo tự gõ, hoặc nhóm phát hiện khi bấm thử. Ghi nguyên văn, kể cả khi prototype xử lý đúng.
+
+| # | Ai đưa ra | Tin nhắn / thao tác (nguyên văn) | Gần với kịch bản nào · lớp | Prototype xử lý thế nào | Đúng hay sai · vì sao | Mức hại · bên chịu nếu sai | Cần sửa ở mục nào |
+|---|---|---|---|---|---|---|---|
+| L1 | | | | | | | |
+| L2 | | | | | | | |
+| L3 | | | | | | | |
+
+### 7.3 Kết luận sau khi thử
+
+- **Lỗi còn lại chưa sửa kịp** (ghi cả mức hại và bên chịu): …
+- **Kịch bản nào nên thêm vào §2 nếu làm tiếp**, và nó có làm thay đổi việc chọn K3/K4 ở §2.4 không: …
+- **Giả định ở §1.7 nào bị lung lay** sau khi thử: …
