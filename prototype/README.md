@@ -50,7 +50,7 @@ Chọn đơn → thêm ảnh size mẫu → chuẩn bị và gửi → màn Ngư
 - Bật **Thao tác gửi/chuyển kế tiếp bị lỗi** rồi gửi yêu cầu / chuyển hồ sơ / gửi phản hồi / xác nhận quyết định. Không hiện thành công; có thử lại.
 - **+48h**: hết hạn người bán thì chuyển trưởng nhóm; hết hạn bổ sung người mua không tự đóng. Im lặng không tự là bằng chứng bên nào sai.
 - **+24h** sau khi chuyển trưởng nhóm: báo quản lý ca và hiển thị chậm dự kiến; AI không quyết thay.
-- Các thời hạn 7 ngày / 48 giờ / 24 giờ là quy tắc dựng. §1.7 và §3 vẫn có chỗ ghi người bán 24 giờ, nhưng bản này ưu tiên kết luận TV3 tại §4.3 là **48 giờ**.
+- Các thời hạn 7 ngày (trả hàng) / 48 giờ (người bán, hạn bổ sung người mua) / 24 giờ (trưởng nhóm) là quy tắc dựng, khớp `spec.md` §1.7, §3 và §4.3.
 - Chat có bộ quy tắc minh họa C1–C6 cho xin liên hệ, nghi hàng giả, lời doạ và yêu cầu ngoài luồng. Không phải bộ phân loại AI đầy đủ.
 
 ## Kiểm thử
@@ -64,6 +64,5 @@ Chạy từ gốc repo:
 ## Còn cần nhóm xác minh
 
 - Chụp 1–2 ảnh giao diện có nhãn [1]–[8] và kiểm tra trực quan desktop/mobile; công cụ trình duyệt không khả dụng trong phiên triển khai.
-- Spec vẫn có một số mốc 24/48 giờ mâu thuẫn; nhóm cần thống nhất phần văn bản trước khi nộp.
 - Quy trình nhân viên khôi phục nguồn lúc đặt, khiếu nại lại sau đóng và xử lý sự cố đúng ngày cuối chỉ được thể hiện bằng chuyển hồ sơ; chưa có hệ thống vận hành thật.
 - Quyền theo vai chỉ để demo, không phải xác thực hoặc kiểm soát truy cập trên server.
