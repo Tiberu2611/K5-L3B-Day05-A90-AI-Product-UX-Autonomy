@@ -233,7 +233,7 @@ Lời doạ không thay đổi nhánh xử lý và không được đánh dấu 
 - Người mua thấy câu hỏi và trạng thái ngay sau khi đối chiếu xong.
 - Gửi người bán mẫu xin bằng chứng qua `yeu_cau_bang_chung` khi đã xác định đúng đơn và đúng phần còn thiếu. Hạn phản hồi chỉ bắt đầu sau khi gửi thành công; gửi thất bại hiện “Chưa gửi được”, cho thử lại hoặc chuyển người.
 - Nếu người mua không rõ cách đo, không có thêm ảnh hoặc vẫn bất đồng, gọi `chuyen_truong_nhom(loai_ca=thuong)` ngay khi chọn hỗ trợ. Nhân viên nhận bản tóm tắt, nguồn đã có và câu hỏi chưa giải quyết; không bắt khách kể lại.
-- Hết 24 giờ mà người bán chưa trả lời thì chuyển trưởng nhóm tại mốc hết hạn, không mặc định người bán thua. Nếu chuyển lỗi, hiện “Chưa chuyển được”, giữ hồ sơ và nút thử lại.
+- Hết 48 giờ mà người bán chưa trả lời thì chuyển trưởng nhóm tại mốc hết hạn, không mặc định người bán thua. Nếu chuyển lỗi, hiện “Chưa chuyển được”, giữ hồ sơ và nút thử lại.
 - Nếu người mua không trả lời, giữ trạng thái chờ bổ sung, hiện mốc còn lại khi có dữ liệu hợp lệ; AI không tự đóng hoặc tự hoàn tiền. Nếu chưa có biên nhận yêu cầu, nhắc rõ bản chat chưa xác nhận việc gửi yêu cầu trả hàng.
 
 **Quyết định và phương án đã loại:**
@@ -360,7 +360,7 @@ Mỗi tool được xếp theo ba câu: **sai thì ai chịu gì · đảo lại
 
 ### 4.3 Ai duyệt, người duyệt thấy gì, quá hạn thì sao
 
-Đây là quy tắc dựng cho prototype, **không phải chính sách Shopee**. Mốc thời gian theo §1.7 và §3.1: **người bán 24 giờ** (tính từ khi `yeu_cau_bang_chung` gửi thành công), **trưởng nhóm 24 giờ** (tính từ khi nhận hồ sơ). §3.1 giao TV3 chốt cách xử lý quá hạn; bảng "Quá hạn" dưới đây là phần chốt đó.
+Đây là quy tắc dựng cho prototype, **không phải chính sách Shopee**. Mốc thời gian theo §1.7 và §3.1: **người bán 48 giờ** (tính từ khi `yeu_cau_bang_chung` gửi thành công), **trưởng nhóm 24 giờ** (tính từ khi nhận hồ sơ). §3.1 giao TV3 chốt cách xử lý quá hạn; bảng "Quá hạn" dưới đây là phần chốt đó.
 
 **`thuc_hien_hoan_tien`: hai đường duyệt.**
 
