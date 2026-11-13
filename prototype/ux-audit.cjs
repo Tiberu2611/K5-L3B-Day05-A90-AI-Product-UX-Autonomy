@@ -32,7 +32,7 @@ const fill = (selector, value) => evaluate('(() => {const e=document.querySelect
 const checked = (id, value) => evaluate('(() => {const e=document.getElementById(' + JSON.stringify(id) + ');if(e.checked!==' + value + '){e.checked=' + value + ';e.dispatchEvent(new Event("change",{bubbles:true}));}return true;})()');
 const snapshot = () => evaluate('({key:state.key,chosen:state.chosen,label:state.label,receipt:state.receipt,askedAt:state.askedAt,buyerDue:state.buyerDue,escalatedAt:state.escalatedAt,managerLate:state.managerLate,decision:state.decision,error:state.error,stale:state.stale,context:state.context,correction:state.correction,log:state.log,messages:state.messages,status:document.querySelector(".case-status")?.textContent,body:document.getElementById("workspace").innerText})');
 async function reset(key = 'K4', options = {}) {
-  await evaluate('document.getElementById("missing-source").checked=' + !!options.missing + ';document.getElementById("with-threat").checked=' + (options.threat !== false) + ';document.getElementById("unclear-label").checked=' + !!options.blurry + ';document.getElementById("scenario").value=' + JSON.stringify(key) + ';document.getElementById("scenario").dispatchEvent(new Event("change"));');
+  await evaluate('document.getElementById("scenario").value=' + JSON.stringify(key) + ';document.getElementById("scenario").dispatchEvent(new Event("change"));document.getElementById("with-threat").checked=' + (options.threat !== false) + ';document.getElementById("missing-source").checked=' + !!options.missing + ';document.getElementById("variant").value=' + JSON.stringify(options.variant || (options.blurry ? 'anh_tem_mo' : options.missing ? 'thieu_ban_luc_dat' : key === 'K9' ? 'chua_co_bien_nhan' : 'default')) + ';document.getElementById("variant").dispatchEvent(new Event("change"));');
 }
 async function open(key = 'K4', options) { await reset(key, options); assert.equal(await evaluate('document.getElementById("toast").hidden'), true, 'No stale success message after reset'); await action('choose'); }
 async function send() { await action('prepare'); await action('submit'); }
@@ -127,13 +127,13 @@ async function test(id, description, run) {
   await test('UX05', 'K3: tem mờ không trích số chưa đọc; có bổ sung/thay đường', async () => {
     await open('K3', { blurry: true }); let s = await snapshot();
     assert.match(s.messages.at(-1).text, /Ảnh tem hiện chưa đọc rõ/); assert.doesNotMatch(s.messages.at(-1).text, /Tổng 6\.0L|Giỏ chiên 5\.0L/);
-    assert.ok(s.body.includes('Bổ sung ảnh nhãn mẫu') && s.body.includes('Tôi không có bằng chứng này'));
+    assert.ok(s.body.includes('Bổ sung ảnh tem rõ mẫu') && s.body.includes('Tôi không có bằng chứng này'));
     await capture('02-k3-tem-mo.png'); await action('correction'); assert.equal(await evaluate('document.getElementById("correction-input").value'), ''); await action('cancel-correction'); await action('evidence'); assert.equal((await snapshot()).label, true);
   });
   await test('UX06', 'K4: bản 02/11 và 07/11; xin đúng nhãn, có lý do', async () => {
     await open(); const s = await snapshot();
     assert.match(s.body, /02\/11\/2026/); assert.match(s.body, /07\/11\/2026/);
-    assert.match(s.body, /ảnh cận nhãn thành phần.*giúp đối chiếu/);
+    assert.match(s.body, /ảnh.*nhãn thành phần.*đối chiếu/);
     assert.match(s.messages.at(-1).text, /chưa xác minh được thành phần/);
     await capture('03-k4-nguon-va-bang-chung.png');
   });
@@ -216,9 +216,9 @@ async function test(id, description, run) {
   });
   await test('UX19', 'K7: kênh chính thức + dự kiến khi chưa gửi và khi có hạn', async () => {
     await open(); await chat('cho mình xin sđt shop đi, mình gọi thẳng cho nhanh chứ chat chờ lâu quá');
-    let s = await snapshot(); assert.match(s.messages.at(-1).text, /chưa bắt đầu.*48 giờ/s); assert.match(s.messages.at(-1).text, /24 giờ/);
+    let s = await snapshot(); assert.match(s.messages.at(-1).text, /48 giờ.*chưa bắt đầu/s); assert.match(s.messages.at(-1).text, /24 giờ/);
     await send(); await chat('cho mình xin sđt shop'); s = await snapshot();
-    assert.match(s.messages.at(-1).text, /Hạn phản hồi người bán:/); assert.match(s.messages.at(-1).text, /kênh chat chính thức/);
+    assert.match(s.messages.at(-1).text, /Thời gian phản hồi của người bán:/); assert.match(s.messages.at(-1).text, /kênh chat chính thức/);
     await capture('09-k7-kenh-va-thoi-gian.png');
   });
   await test('UX20', 'K6: đúng thứ tự tin, vẫn xử lý đơn, lời doạ tách ngữ cảnh', async () => {
@@ -232,12 +232,12 @@ async function test(id, description, run) {
   await test('UX21', 'K8 xấp xỉ: tiếng xấu không thay bằng chứng riêng', async () => {
     await open(); await chat('shop này lên mạng xem nhiều người chê lắm rồi, chắc chắn bán hàng dỏm, hoàn tiền cho mình đi');
     const s = await snapshot(); assert.match(s.messages.at(-1).text, /không phải căn cứ/);
-    assert.match(s.messages.at(-1).text, /ảnh cận nhãn thành phần.*giúp đối chiếu/); assert.equal(s.decision, null);
+    assert.match(s.messages.at(-1).text, /ảnh.*nhãn thành phần.*đối chiếu/); assert.equal(s.decision, null);
   });
   await test('UX22', 'K10 xấp xỉ: đổi địa chỉ của mình không bị hiểu là xin liên hệ', async () => {
-    await open('K9'); await chat('áo bị sai màu so với hình, tiện đổi giúp mình địa chỉ nhận luôn nha, mình chuyển nhà rồi');
+    await open('K10'); await chat('áo bị sai màu so với hình, tiện đổi giúp mình địa chỉ nhận luôn nha, mình chuyển nhà rồi');
     const s = await snapshot(); assert.doesNotMatch(s.messages.at(-1).text, /không chia sẻ/i);
-    assert.match(s.messages.at(-1).text, /chưa được thực hiện/); assert.match(s.messages.at(-1).text, /ảnh nhãn size\/màu/);
+    assert.match(s.messages.at(-1).text, /chưa thực hiện thay đổi/); assert.match(s.messages.at(-1).text, /ảnh hàng nhận/);
   });
   await test('UX23', 'K9: nháp/chat không phải biên nhận trong hạn', async () => {
     await open('K9'); await action('prepare'); assert.equal((await snapshot()).receipt, null);
@@ -254,6 +254,21 @@ async function test(id, description, run) {
     await action('correction'); assert.equal(await evaluate('document.getElementById("correction-dialog").getBoundingClientRect().width<=innerWidth'), true);
     await capture('12-g9-mobile-390.png'); await action('cancel-correction');
     await cdp('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
+  });
+  await test('UX25', 'K5: giữ hai ảnh toàn cảnh, chỉ xin đúng nhãn thiếu một lần', async () => {
+    await open('K5'); await chat('mình gửi ảnh rồi, cần gì nữa'); await chat('còn thiếu gì');
+    const s = await snapshot(); assert.match(s.body, /2 ảnh toàn cảnh/);
+    assert.equal(s.log.filter(e => e.tool === 'yeu_cau_bang_chung').length, 1);
+    assert.match(s.messages.at(-1).text, /ảnh cận nhãn chất liệu/);
+    await capture('13-k5-khong-hoi-lap.png');
+  });
+  await test('UX26', 'K9: biên nhận có sẵn từ 11/11 và người bán quá hạn 48h', async () => {
+    await open('K9', { variant: 'co_bien_nhan' }); const s = await snapshot();
+    assert.equal(new Date(s.receipt.at).toISOString(), '2026-11-11T07:00:00.000Z');
+    assert.notEqual(s.escalatedAt, null); assert.equal(s.receipt.inTime, true);
+    assert.equal(s.log.some(e => e.tool === 'gui_yeu_cau_giao_dien'), false);
+    assert.match(s.messages.map(m => m.text).join(' '), /48 giờ/);
+    await capture('14-k9-bien-nhan-co-san.png');
   });
   assert.equal(exceptions.length, 0, 'No JavaScript runtime exceptions');
   const report = { recordedAt: new Date().toISOString(), browser: browser.product, protocol: browser.protocolVersion, platform: process.platform, viewports: ['1440x1000', '390x844'], method: 'Native Chrome headless + CDP; click DOM controls and submit real forms; no direct state mutation in test cases; fixture controls use change events. Remote font blocked to verify fallback.', sourceHashes: Object.fromEntries(['index.html', 'styles.css', 'app.js', 'model.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(base, file))).digest('hex')])), pass: results.filter(r => r.pass).length, fail: results.filter(r => !r.pass).length, runtimeExceptions: exceptions, results };

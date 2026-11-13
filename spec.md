@@ -223,7 +223,7 @@ Track cho phép nhóm thêm hoặc tách tool, miễn là ghi rõ lý do. Bộ t
 >
 > Bạn đo phần giỏ chiên hay toàn bộ khoang nồi? Bạn có thể chọn bên dưới, sửa thông tin mình đọc sai hoặc yêu cầu nhân viên xem xét. Mình chưa quyết định hoàn tiền hay từ chối khiếu nại.
 
-**Nhánh tem mờ đã kiểm:** bật “K3: ảnh tem mờ” trước khi chọn đơn. AI nói “Ảnh tem hiện chưa đọc rõ được thông số; mình chưa thể trích dung tích từ ảnh này”, không trích số từ ảnh mờ. [4] có bổ sung nhãn mẫu, “Tôi không có bằng chứng này” và [6]; ô sửa [5] để trống khi chưa đọc được. **UX05 Pass**, [ảnh tem mờ](prototype/ux-evidence/02-k3-tem-mo.png). Không có OCR/ảnh thật.
+**Nhánh tem mờ đã kiểm:** chọn K3 → Biến thể anh_tem_mo trước khi chọn đơn. AI nói “Ảnh tem hiện chưa đọc rõ được thông số” và không trích số từ ảnh, không trích số từ ảnh mờ. [4] có bổ sung nhãn mẫu, “Tôi không có bằng chứng này” và [6]; ô sửa [5] để trống khi chưa đọc được. **UX05 Pass**, [ảnh tem mờ](prototype/ux-evidence/02-k3-tem-mo.png). Không có OCR/ảnh thật.
 
 **Người mua thấy và làm tiếp:**
 
@@ -351,7 +351,7 @@ Lời doạ không thay đổi nhánh xử lý và không được đánh dấu 
 
 **Ngày 13/11/2026:** kiểm bằng **Chrome/157.0.8103.52**, desktop **1440×1000**, mobile **390×844**. Script bấm nút/form trên DOM thật, chọn fixture bằng điều khiển demo, đọc hội thoại/nút/log; không gán thẳng trạng thái nghiệp vụ để vượt bước. Font mạng bị chặn để kiểm font dự phòng. Đã xem ảnh các nhánh trọng tâm và mobile.
 
-**Kết quả: 24/24 lượt UX Pass; 0 lỗi JavaScript runtime. 22/22 kiểm thử model Pass** (17 có sẵn + 5 hồi quy UX). Báo cáo: [từng lượt](prototype/ux-evidence/README.md), [log, trạng thái, SHA-256 của mã đã kiểm](prototype/ux-evidence/results.json), [cách xem ảnh và chạy lại](prototype/ux-evidence/guide.md).
+**Kết quả: 26/26 lượt UX Pass; 0 lỗi JavaScript runtime. 27/27 kiểm thử model Pass** (bao gồm fixture, quyền, mốc 48 giờ và render smoke). Báo cáo: [từng lượt](prototype/ux-evidence/README.md), [log, trạng thái, SHA-256 của mã đã kiểm](prototype/ux-evidence/results.json), [cách xem ảnh và chạy lại](prototype/ux-evidence/guide.md).
 
 | Lượt | Thao tác kiểm | Kết quả / ảnh |
 |---|---|---|
@@ -370,7 +370,7 @@ Lời doạ không thay đổi nhánh xử lý và không được đánh dấu 
 - Chưa gửi thành công: nói rõ hạn người bán **chưa bắt đầu**; 48 giờ chỉ tính từ khi gửi thành công; nhân viên dự kiến 24 giờ sau khi nhận hồ sơ.
 - Đã gửi: nêu giờ hết hạn thực tế của phiên và số giờ còn lại; không đặt lại 48 giờ từ lúc người dùng hỏi. Các mốc đều dựng.
 
-**Giới hạn:** ảnh nhãn mô phỏng bằng chữ, không chứng minh chất lượng OCR/AI thật. K6–K8/K10 thử trên đơn dựng gần nhất; chưa có fixture riêng K5 với hai ảnh toàn cảnh hay K9 có sẵn biên nhận. [5] chỉ sửa chữ, chưa thay file ảnh/đổi đơn mà giữ nháp. Chưa kiểm điện thoại vật lý hoặc vận hành thật. Bộ ảnh cũ `prototype/anh-s7/` mà §7 dẫn không có trong checkout này; ảnh TV2 lưu riêng, không coi là đã khôi phục ảnh cũ. Không tính các ca chưa thử thành Pass.
+**Giới hạn:** ảnh nhãn mô phỏng bằng chữ, không chứng minh chất lượng OCR/AI thật. Một số lượt K6–K8 dùng tin nhắn trên đơn dựng gần nhất; K10 đã thử trên đơn riêng. K5 với hai ảnh toàn cảnh và K9 có biên nhận sẵn đã được kiểm thêm ở UX25–UX26. [5] chỉ sửa chữ, chưa thay file ảnh/đổi đơn mà giữ nháp. Chưa kiểm điện thoại vật lý hoặc vận hành thật. Bộ ảnh cũ `prototype/anh-s7/` mà §7 dẫn không có trong checkout này; ảnh TV2 lưu riêng, không coi là đã khôi phục ảnh cũ. Không tính các ca chưa thử thành Pass.
 
 ---
 
@@ -510,7 +510,7 @@ Một trợ lý được tự hoàn tiền sẽ hứa: **"AI giải quyết khi�
 | [4] | Thẻ bước tiếp theo | G10: K3 hỏi giỏ/toàn khoang/không rõ; K4 xin đúng nhãn còn thiếu, có lựa chọn không có |
 | [5] | Sửa thông tin AI đọc sai | G9: sửa tại chỗ, lưu đính chính; nháp cũ cần kiểm tra lại |
 | [6] | Nhờ nhân viên xem xét | Tự chuyển hồ sơ, chỉ báo thành công sau khi thao tác mô phỏng thành công |
-| [7] | Thời hạn & biên nhận | Hạn gửi 7 ngày tách hạn người bán 24 giờ, hạn bổ sung người mua 48 giờ; chat/nháp không có giá trị biên nhận |
+| [7] | Thời hạn & biên nhận | Hạn gửi 7 ngày tách hạn người bán 48 giờ, hạn bổ sung người mua 48 giờ; chat/nháp không có giá trị biên nhận |
 | [8] | Xử lý hồ sơ / Trưởng nhóm | Cần người duyệt; khóa theo §4.3, có lý do khóa, nhập căn cứ và xác nhận cuối |
 
 ### 5.3 Quyết định giao diện
@@ -521,20 +521,26 @@ Một trợ lý được tự hoàn tiền sẽ hứa: **"AI giải quyết khi�
 - Nút trưởng nhóm **khóa kèm lý do**, không ẩn: người demo biết đang thiếu phản hồi hoặc bằng chứng nào.
 - Có đồng hồ demo **+48h / +24h**, mô phỏng thiếu nguồn và lỗi thao tác để kiểm tra cả đường khó; không tự quyết khi ai đó im lặng.
 - Quy tắc thời gian triển khai theo phần TV3 chốt ở §4.3: người bán **48 giờ**, trưởng nhóm **24 giờ**, hạn trả hàng **7 ngày** (§4.7). §1.7, §3 và §4 dùng cùng các mốc này.
-- **Lệch cục bộ sau pull:** bản sửa TV4 chưa commit hiện vẫn dùng người bán **24 giờ** theo yêu cầu trước đó; code và kiểm thử 27 ca đã được giữ nguyên. Spec remote mới chốt **48 giờ**; chưa tự đổi lại logic trong thao tác pull này.
+- **Đã đồng bộ:** code, nhãn demo, fixture K9 và kiểm thử dùng người bán 48 giờ theo §4.3; người mua bổ sung 48 giờ, trưởng nhóm 24 giờ.
 
 ### 5.4 Kiểm tra và bằng chứng đã bổ sung (TV2)
 
-- Chạy node prototype/model.test.cjs: **27/27 kiểm thử đạt** tại thời điểm triển khai, bao gồm quyền duyệt, lời doạ không đổi nhánh, điều kiện hai bên, lỗi gửi/chuyển, đính chính, hạn K9, dữ liệu ảnh mờ, K5 không hỏi lặp, K7 có thời gian phản hồi và K10 tách yêu cầu.
-- Kiểm tra cú pháp JavaScript và git diff --check.
-- Có render smoke trong DOM giả; **chưa kiểm tra trực quan trên trình duyệt** vì công cụ browser không khả dụng.
-- **Ảnh 1–2 đánh số và kiểm tra desktop/mobile còn cần bổ sung**. Các nhãn [1]–[8] đã hiển thị trong giao diện, không coi ảnh chưa chụp là bằng chứng đã có.
-- Quy trình khôi phục nguồn lúc đặt hoặc điều tra sau đóng dừng ở chuyển hồ sơ; không hứa AI tự lấy lại tiền hay mở lại quyết định.
+Bản sau sửa lỗi merge đã chạy **27/27 kiểm thử model**, **26/26 lượt UX trên Chrome**, **0 lỗi JavaScript runtime**. Desktop 1440×1000 và mobile 390×844; ảnh và SHA-256 của bản được kiểm ở [báo cáo UX](prototype/ux-evidence/README.md), [log](prototype/ux-evidence/results.json).
+
+Hai ảnh chính có chú thích [1]–[7]: [3] nguồn/G11, [4] hỏi phần đo/G10, [5] sửa tại chỗ/G9; nháp cũ khóa tới khi soạn lại.
+
+![UX-A1 — G10/G11, K3 hỏi phần đo và hiện căn cứ](prototype/ux-evidence/01-k3-g10-g11-desktop.png)
+
+![UX-A2 — G9, sửa tại chỗ và khóa nháp cũ](prototype/ux-evidence/05-g9-sua-tai-cho.png)
+
+Ảnh [8] khóa duyệt: [trưởng nhóm](prototype/ux-evidence/08-truong-nhom-khoa-duyet.png). Ảnh bổ sung: [mobile](prototype/ux-evidence/11-k3-mobile-390.png), [K5 không hỏi lặp](prototype/ux-evidence/13-k5-khong-hoi-lap.png), [K9 biên nhận có sẵn](prototype/ux-evidence/14-k9-bien-nhan-co-san.png).
+
+Ảnh nhãn vẫn mô phỏng bằng chữ, không OCR/upload thật; đổi vai không phải xác thực server. Thiếu nguồn hoặc điều tra sau đóng dừng ở chuyển nhân viên, không hứa tự mở lại hay lấy lại tiền.
 
 ### 5.5 Bốn lệch phục vụ §7 đã sửa
 
-- **24 giờ:** người bán hết hạn thì chuyển nhân viên, không tự hoàn hoặc từ chối; giữ riêng hạn bổ sung người mua 48 giờ.
-- **Fixture/biến thể:** K5 lưu 2 ảnh toàn cảnh và chỉ xin ảnh cận nhãn chất liệu; K3 anh_tem_mo không trích số chưa đọc; K9 có biên nhận hệ thống ngày 12/11 và người bán quá hạn, đối lập nhánh chưa có biên nhận.
+- **48 giờ:** người bán hết hạn thì chuyển nhân viên, không tự hoàn hoặc từ chối; giữ riêng hạn bổ sung người mua 48 giờ.
+- **Fixture/biến thể:** K5 lưu 2 ảnh toàn cảnh và chỉ xin ảnh cận nhãn chất liệu; K3 anh_tem_mo không trích số chưa đọc; K9 có biên nhận hệ thống ngày 11/11 và người bán quá hạn 48 giờ, đối lập nhánh chưa có biên nhận.
 - **K10:** đổi địa chỉ nhận của khách là yêu cầu ngoài luồng, không nhầm thành xin thông tin riêng của shop; vẫn xử lý phần khiếu nại màu.
 - **K7:** từ chối cung cấp liên hệ, nêu kênh chính thức và thời gian phản hồi dự kiến; chỉ hiển thị hạn cụ thể khi có timestamp gửi thành công.
 - Hướng dẫn từng lựa chọn ở prototype/README.md. TV1 vẫn cần bấm thử và điền §7 theo những gì thấy thực tế; kiểm thử model/DOM giả không tự thay kết quả demo.
@@ -670,4 +676,16 @@ Nhóm gọi là "ca lạ" những tin nhắn hoặc thao tác **không nằm tro
 | K8 chỉ ghi nhận, thiếu món cần bổ sung | Hỏi đúng ảnh nhãn và lý do cho đơn đang xét, không dựa tiếng xấu shop | **UX21 Pass, xấp xỉ trên K4** |
 | K10 nhầm đổi địa chỉ với xin liên hệ (L1) | Chỉ từ chối khi xin liên hệ bên kia; đổi địa chỉ được tách ra kênh khác, khiếu nại vẫn tiếp tục | **UX22 Pass, xấp xỉ trên K9** |
 
-Đây là **kết quả kiểm lại UX**, không phải bổ sung ca lạ nhận từ người xem trong demo. K5 với hai ảnh toàn cảnh, K9 có biên nhận sẵn từ trước, việc chốt giả định chính sách và bằng chứng demo thật vẫn cần người phụ trách tương ứng hoàn thiện. Checklist TV2 đã hoàn tất tại §3.7.
+Đây là **kết quả kiểm lại UX**, không phải bổ sung ca lạ nhận từ người xem trong demo. K5 với hai ảnh toàn cảnh và K9 có biên nhận sẵn đã được kiểm thêm ở UX25–UX26. Việc chốt giả định chính sách và bằng chứng demo thật vẫn thuộc người phụ trách tương ứng. Checklist TV2 đã hoàn tất tại §3.7.
+
+
+### 7.5 Kiểm lại bản sửa trước khi push
+
+Lượt mới: **27/27 model, 26/26 Chrome, 0 lỗi JavaScript**. §7.1–§7.3 giữ kết quả lịch sử trước bản sửa; kết quả hiện tại ở [báo cáo UX](prototype/ux-evidence/README.md).
+
+- Đã sửa lỗi ghép code làm toàn bộ phần khởi tạo nằm sai phạm vi; mỗi lần reset chỉ tạo một trạng thái, giữ biến thể được chọn.
+- **X1 đã sửa:** người bán 48 giờ; sau 24 giờ vẫn khóa, sau 48 giờ mới đạt điều kiện phản hồi. Biên nhận K9 có sẵn lùi về 14:00 11/11 để thật sự quá hạn 48 giờ vào 15:00 13/11.
+- Đã sửa K6 thiếu bước tiếp, tin chuyển xuất hiện trước tin người mua, và lời doạ “đăng lên báo” bị bỏ sót. Có đường khiếu nại cho chính đơn người mua, không phạt shop.
+- K7 có thời gian theo trạng thái gửi thực tế; K8 xin bằng chứng đơn đang xét; K10 tách đổi địa chỉ khỏi xin liên hệ.
+- K5 giữ hai ảnh toàn cảnh, chỉ xin nhãn thiếu một lần (**UX25**); K9 kiểm biên nhận có sẵn, không giả phát sinh lần gửi mới (**UX26**).
+- Chụp lại 14 ảnh và log trên đúng nguồn sau sửa; đây là kiểm tra cục bộ, không giả định đã demo trước lớp.

@@ -2,7 +2,7 @@
 (function (root) {
   'use strict';
   const RETURN_WINDOW_DAYS = 7;
-  const SELLER_HOURS = 24;
+  const SELLER_HOURS = 48;
   const BUYER_HOURS = 48;
   const MANAGER_HOURS = 24;
   const HOUR = 3600000;
@@ -17,7 +17,7 @@
     options = options || {};
     if (!FIXTURES[key]) throw new Error('Unknown scenario: ' + key);
     const variant = options.variant || 'default';
-    return { variant: variant, labelReadable: variant !== 'anh_tem_mo', existingReceipt: key === 'K9' && variant !== 'chua_co_bien_nhan', overviewImages: FIXTURES[key].overviewImages || 0, buyerEvidenceAsked: false, key: key, fixture: FIXTURES[key], now: Date.parse('2026-11-13T15:00:00+07:00'), chosen: false, label: key === 'K3' || key === 'K4' && variant === 'co_anh_nhan', labelText: FIXTURES[key].label, answer: '', noEvidence: false, missingSource: !!options.missingSource || variant === 'thieu_ban_luc_dat', threat: options.threat !== false, draft: null, stale: false, receipt: null, askedAt: null, sellerReply: null, escalatedAt: null, type: 'thuong', decision: null, buyerDue: null, managerLate: false, failNext: false, error: null, context: [], correction: [], messages: [], log: [] };
+    return { variant: variant, labelReadable: variant !== 'anh_tem_mo', existingReceipt: key === 'K9' && variant !== 'chua_co_bien_nhan', overviewImages: FIXTURES[key].overviewImages || 0, buyerEvidenceAsked: false, key: key, fixture: FIXTURES[key], now: Date.parse('2026-11-13T15:00:00+07:00'), chosen: false, label: key === 'K3' || key === 'K4' && variant === 'co_anh_nhan', labelText: FIXTURES[key].label, answer: '', noEvidence: false, missingSource: !!options.missingSource || variant === 'thieu_ban_luc_dat', threat: options.threat !== false, draft: null, stale: false, receipt: null, askedAt: null, sellerReply: null, sellerRequest: null, escalatedAt: null, type: 'thuong', decision: null, buyerDue: null, managerLate: false, failNext: false, error: null, context: [], correction: [], messages: [], log: [] };
   }
   function stamp(s) { return new Date(s.now).toISOString(); }
   function log(s, tool, actor, note) { s.log.push({ tool: tool, actor: actor, at: stamp(s), note: note }); }
@@ -48,13 +48,13 @@
     if (s.key === 'K4' && s.label && s.labelReadable) return 'Bản mô tả lúc đặt (' + s.fixture.ordered + ') ghi “100% cotton”, trang hiện tại đổi thành “cotton pha polyester 65/35” ngày 07/11/2026. Đã có ảnh nhãn đọc được “' + s.labelText + '”, không cần gửi lại. Ảnh chưa là kết quả kiểm định. Bạn có thể chọn chuẩn bị nháp để kiểm tra; nháp chưa gửi và chưa có quyết định hoàn tiền.';
     if (s.key === 'K4') return 'Bản mô tả lúc bạn đặt (' + s.fixture.ordered + ') ghi “100% cotton”, còn trang hiện tại ghi “cotton pha polyester 65/35” và được cập nhật ngày 07/11/2026, sau thời điểm đặt hàng. Mình sẽ dùng bản mô tả lúc đặt để đối chiếu khiếu nại này.\n\nMình chưa xác minh được thành phần của chiếc áo bạn nhận chỉ từ cảm giác khi mặc. Bạn có ảnh nhãn thành phần trên áo không? Nếu không có hoặc nhãn không đọc được, bạn vẫn có thể nhờ nhân viên xem xét. Mình có thể soạn nháp yêu cầu để bạn kiểm tra; việc này chưa gửi yêu cầu và chưa quyết định hoàn tiền.';
     if (s.key === 'K5') return 'Đã có: 2 ảnh toàn cảnh bạn đã gửi, không cần gửi lại. Còn thiếu: một ảnh cận nhãn chất liệu của áo nhận được, để đối chiếu với bản lúc đặt (' + s.fixture.ordered + ') ghi “100% cotton”. Bạn có thể bổ sung ảnh nhãn hoặc chọn Tôi không có bằng chứng này; mình chưa kết luận hoặc quyết định hoàn tiền.';
-    if (s.key === 'K9' && s.receipt) return 'Đã tra cứu biên nhận ' + s.receipt.id + ', hệ thống ghi nhận lúc ' + localTime(s.receipt.at) + '. Hạn gửi theo chính sách dựng 7 ngày là hết 13/11/2026. Yêu cầu đã được ghi nhận trong hạn; việc chờ người bán không thay đổi thời điểm đã ghi nhận, nhưng chưa bảo đảm kết quả hoàn tiền. Người bán đã hết hạn phản hồi 24 giờ, hồ sơ cần chuyển nhân viên.';
+    if (s.key === 'K9' && s.receipt) return 'Đã tra cứu biên nhận ' + s.receipt.id + ', hệ thống ghi nhận lúc ' + localTime(s.receipt.at) + '. Hạn gửi theo chính sách dựng 7 ngày là hết 13/11/2026. Yêu cầu đã được ghi nhận trong hạn; việc chờ người bán không thay đổi thời điểm đã ghi nhận, nhưng chưa bảo đảm kết quả hoàn tiền. Người bán đã hết hạn phản hồi ' + SELLER_HOURS + ' giờ, hồ sơ cần chuyển nhân viên.';
     if (s.key === 'K9') return 'Trang đơn ghi nhận ngày nhận hàng 06/11/2026. Theo chính sách dựng 7 ngày, hạn gửi yêu cầu là hết 13/11/2026. Hiện hệ thống chưa có biên nhận; câu “mình gửi rồi”, chat và bản nháp không xác nhận việc gửi yêu cầu trả hàng. Bạn có thể chuẩn bị và gửi ngay. Mình chưa thể hứa bảo lưu quyền nếu chưa có biên nhận.';
     return 'Bản mô tả lúc đặt (' + s.fixture.ordered + ') ghi size L. Mình chưa có xác nhận chính thức của shop trong luồng này, dù bạn cho biết shop đã nhận lỗi qua chat. Bạn có thể bổ sung một ảnh nhãn size, chuẩn bị nháp rồi tự gửi yêu cầu. Chưa có thao tác hoàn tiền.';
   }
   function askSeller(s) {
     if (!s.receipt || s.askedAt !== null || s.key === 'K3' && !s.answer) return;
-    op(s, 'askSeller', 'yeu_cau_bang_chung', 'AI', 'Gửi đúng đơn; cần phản hồi về ' + (s.key === 'K3' ? 'dung tích tổng và giỏ' : s.key === 'K4' ? 'nhãn thành phần và hai phiên bản mô tả' : 'hàng đã giao') + '. Hạn ' + SELLER_HOURS + ' giờ từ lúc gửi thành công.', function () { s.askedAt = s.now; say(s, 'Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: ' + SELLER_HOURS + ' giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.', 'system'); });
+    op(s, 'askSeller', 'yeu_cau_bang_chung', 'AI', 'Gửi đúng đơn; cần phản hồi về ' + (s.key === 'K3' ? 'dung tích tổng và giỏ' : s.key === 'K4' ? 'nhãn thành phần và hai phiên bản mô tả' : 'hàng đã giao') + '. Hạn ' + SELLER_HOURS + ' giờ từ lúc gửi thành công.', function () { s.askedAt = s.now; s.sellerRequest = (s.key === 'K3' ? 'Người mua phản ánh 6L tổng và 5L phần được đo. Vui lòng cung cấp thông số của đúng mẫu hàng đã giao để giải thích dung tích tổng và giỏ chiên.' : s.key === 'K4' || s.key === 'K5' ? 'Vui lòng đối chiếu bản lúc đặt và cung cấp nhãn hoặc tài liệu chất liệu của đúng hàng đã giao. Việc cập nhật mô tả chưa phải kết luận shop vi phạm.' : 'Vui lòng đối chiếu bản lúc đặt và cung cấp bằng chứng của đúng hàng đã giao.') + ' Hạn phản hồi: ' + SELLER_HOURS + ' giờ từ lúc gửi thành công. Chưa có quyết định hoàn tiền hay từ chối.'; say(s, 'Đã gửi yêu cầu phản hồi cho người bán. Hạn phản hồi: ' + SELLER_HOURS + ' giờ từ lúc hệ thống xác nhận gửi thành công. Chưa có quyết định.', 'system'); });
   }
   function transfer(s, type) {
     if (!s.chosen || s.escalatedAt !== null) return;
@@ -66,7 +66,7 @@
     log(s, 'chon_don', 'BUYER-DEMO', s.fixture.id);
     log(s, 'xem_mo_ta_luc_dat', 'AI', source(s) ? 'Bản lúc đặt: ' + s.fixture.ordered : 'Không có bản lúc đặt');
     if (s.existingReceipt) {
-      const at = Date.parse('2026-11-12T14:00:00+07:00');
+      const at = Date.parse('2026-11-11T14:00:00+07:00');
       s.receipt = { id: 'BN-' + s.fixture.id, at: at, inTime: at <= deadline(s) };
       s.askedAt = at;
     }
@@ -143,33 +143,40 @@
     op(s, 'buyerEvidence', 'yeu_cau_bang_chung', 'AI', s.key === 'K3' ? 'Người mua: ảnh tem mờ, chỉ xin ảnh rõ phần dung tích; không trích thông số chưa đọc được. Hạn bổ sung 48 giờ.' : 'Người mua: đã có 2 ảnh toàn cảnh; chỉ xin ảnh cận nhãn chất liệu còn thiếu, để đối chiếu bản lúc đặt. Hạn bổ sung 48 giờ.', function () { s.buyerEvidenceAsked = true; });
   }
   function responseTime(s) {
-    if (s.escalatedAt !== null) return s.now >= s.escalatedAt + MANAGER_HOURS * HOUR ? 'Thời gian phản hồi của nhân viên đã chậm hơn dự kiến; có thể nhờ quản lý ca hỗ trợ qua kênh chính thức.' : 'Thời gian phản hồi dự kiến của nhân viên: trước ' + localTime(s.escalatedAt + MANAGER_HOURS * HOUR) + ' (24 giờ từ lúc nhận hồ sơ).';
-    if (s.askedAt !== null) return s.now >= s.askedAt + SELLER_HOURS * HOUR ? 'Người bán đã hết thời gian phản hồi 24 giờ; bạn có thể nhờ nhân viên xem xét.' : 'Thời gian phản hồi của người bán: trước ' + localTime(s.askedAt + SELLER_HOURS * HOUR) + ' (24 giờ từ lúc gửi thành công).';
-    return 'Thời gian phản hồi dự kiến của người bán là 24 giờ sau khi hệ thống xác nhận gửi yêu cầu thành công; hiện chưa bắt đầu tính hạn.';
+    if (s.escalatedAt !== null) return s.now >= s.escalatedAt + MANAGER_HOURS * HOUR ? 'Thời gian phản hồi của nhân viên đã chậm hơn dự kiến; có thể nhờ quản lý ca hỗ trợ qua kênh chính thức.' : 'Thời gian phản hồi dự kiến của nhân viên: trước ' + localTime(s.escalatedAt + MANAGER_HOURS * HOUR) + ' (' + MANAGER_HOURS + ' giờ từ lúc nhận hồ sơ).';
+    if (s.askedAt !== null) return s.now >= s.askedAt + SELLER_HOURS * HOUR ? 'Người bán đã hết thời gian phản hồi ' + SELLER_HOURS + ' giờ; bạn có thể nhờ nhân viên xem xét.' : 'Thời gian phản hồi của người bán: trước ' + localTime(s.askedAt + SELLER_HOURS * HOUR) + ' (' + SELLER_HOURS + ' giờ từ lúc gửi thành công).';
+    return 'Thời gian phản hồi dự kiến của người bán là ' + SELLER_HOURS + ' giờ sau khi hệ thống xác nhận gửi yêu cầu thành công; hiện chưa bắt đầu tính hạn.';
   }
   function complaintNext(s) {
     if (!source(s)) return 'Thiếu bản mô tả lúc đặt: có thể bổ sung nguồn xác nhận mua hàng hoặc nhờ nhân viên kiểm tra.';
     if (s.key === 'K3' && !s.labelReadable) return 'Ảnh tem chưa đọc rõ: cần ảnh rõ phần dung tích hoặc nhờ nhân viên hỗ trợ; chưa trích thông số từ ảnh.';
     if (s.key === 'K3' && !s.answer) return 'Bạn đo giỏ chiên hay toàn bộ khoang? Chọn một câu trả lời bên dưới.';
     if (s.key === 'K5' && !s.label && !s.noEvidence) return 'Đã có 2 ảnh toàn cảnh, không cần gửi lại. Chỉ còn thiếu ảnh cận nhãn chất liệu để đối chiếu bản lúc đặt. Bạn có thể bổ sung hoặc chọn Tôi không có bằng chứng này.';
+    if ((s.key === 'K4' || s.key === 'K8') && !s.label && !s.noEvidence) return 'Cần ảnh nhãn thành phần của đúng hàng nhận để đối chiếu chất liệu với bản lúc đặt; bạn có thể bổ sung hoặc chọn Tôi không có bằng chứng này.';
     if (s.key === 'K10') return 'Về khiếu nại sai màu: bản mô tả lúc đặt (' + s.fixture.ordered + ') ghi “' + s.fixture.original + '”. Cần ảnh hàng nhận để đối chiếu màu, hoặc chọn Tôi không có bằng chứng này / nhờ nhân viên. Bạn vẫn có thể chuẩn bị và tự gửi yêu cầu.';
     return !buyerDone(s) ? 'Cần ảnh nhãn của đúng hàng nhận để đối chiếu bản lúc đặt; bạn có thể bổ sung, chọn Tôi không có bằng chứng này hoặc nhờ nhân viên.' : 'Bạn có thể chuẩn bị yêu cầu hoặc nhờ nhân viên xem xét; chưa có quyết định hoàn tiền/từ chối.';
   }
   function route(s, text, alreadySaid) {
     const result = [];
-    const contact = /sđt|sdt|số điện thoại|điện thoại.*shop|(?:xin|cho|gửi|đưa|cung cấp|lấy).{0,35}địa chỉ.{0,20}(?:shop|người bán|bên kia)|địa chỉ\s+(?:của\s+)?(?:shop|người bán|bên kia)/i.test(text);
+    const contactWord = /sđt|sdt|số điện thoại|địa chỉ/i.test(text);
+    const otherParty = /shop|người bán|bên kia/i.test(text);
+    const ownContact = /của mình|của tôi|sđt mình|số điện thoại mình/i.test(text);
+    const contact = contactWord && !ownContact && (otherParty || /(?:xin|cho|gửi|đưa|cung cấp|lấy).{0,25}(?:sđt|sdt|số điện thoại|địa chỉ)/i.test(text));
+    const returnAddress = /địa chỉ.{0,50}(?:gửi trả|trả hàng)|(?:gửi trả|trả hàng).{0,50}địa chỉ/i.test(text);
     const addressChange = /(?:đổi|sửa|cập nhật|thay đổi).{0,35}địa chỉ|chuyển nhà/i.test(text);
-    const outOfScope = addressChange || /huỷ đơn|hủy đơn|chưa nhận hàng/i.test(text);
-    const complaint = /sai màu|không đúng mô tả|k đúng mô tả|hàng sai|khiếu nại|sai size|chất liệu/i.test(text);
-    if (contact) result.push('Không chia sẻ số điện thoại hoặc địa chỉ của bên kia để bảo vệ thông tin riêng tư. Bạn có thể trao đổi trong kênh chat chính thức có lưu vết. ' + responseTime(s));
-    if (/fake|hàng giả|khóa shop|khoá shop|phạt shop/i.test(text)) { result.push('AI không giám định hàng giả, không phạt hoặc hứa khóa shop. Chuyển trưởng nhóm để đi tới bộ phận chuyên trách.'); s.type = 'nghi_hang_gia'; if (s.chosen) transfer(s, s.type); }
-    if (outOfScope) result.push(addressChange ? 'Về đổi địa chỉ nhận: AI không thể đổi địa chỉ trong luồng khiếu nại này và chưa thực hiện thay đổi nào. Hãy vào đơn hàng → Trợ giúp → hỗ trợ địa chỉ/giao nhận (đường dẫn concept) hoặc liên hệ nhân viên trước khi gửi hàng trả.' : 'Yêu cầu hủy đơn/chưa nhận hàng nằm ngoài luồng này. Hãy mở Trợ giúp của đơn hàng để chọn đúng mục; thao tác đó chưa được thực hiện tại đây.');
-    if (/bóc phốt|báo chí|nhiều người chê|lịch sử khiếu nại/i.test(text)) { s.context.push(text); result.push('Lời doạ và lịch sử một bên được giữ ở ngữ cảnh, không phải căn cứ để hoàn tiền hay từ chối.'); }
-    if (!s.chosen) result.push('Bạn đang nói đơn nào? Hãy chọn đơn trước khi gửi thông tin cho shop.');
-    else if (!result.length || complaint || s.key === 'K8') result.push(complaintNext(s));
-    if (s.key === 'K5') requestBuyerEvidence(s);
+    const outOfScope = addressChange || /huỷ đơn|hủy đơn|chưa nhận hàng(?! đúng| như)/i.test(text);
+    const special = /fake|hàng giả|khóa shop|khoá shop|phạt shop/i.test(text);
     if (!alreadySaid) say(s, text, 'user');
+    if (contact) result.push('Không chia sẻ số điện thoại hoặc địa chỉ của bên kia để bảo vệ thông tin riêng tư. Bạn có thể trao đổi trong kênh chat chính thức có lưu vết. ' + responseTime(s) + ' Bạn cũng có thể nhờ nhân viên xem xét; dự kiến xử lý trong 24 giờ sau khi nhận hồ sơ theo quy tắc dựng.');
+    if (returnAddress) result.push('Để gửi trả hàng, hãy mở đơn hàng → yêu cầu trả hàng/hoàn tiền → hướng dẫn gửi trả chính thức (đường dẫn concept). Chỉ gửi theo hướng dẫn của yêu cầu đã được duyệt; AI không tự cung cấp hoặc đoán địa chỉ kho.');
+    if (special) { result.push('AI không giám định hàng giả, không phạt hoặc hứa khóa shop. Hồ sơ cần trưởng nhóm để chuyển bộ phận chuyên trách. Bạn vẫn có thể chuẩn bị và gửi yêu cầu trả hàng/hoàn tiền cho chính đơn của bạn trong luồng này.'); s.type = 'nghi_hang_gia'; }
+    if (outOfScope) result.push(addressChange ? 'Về đổi địa chỉ nhận: AI không thể đổi địa chỉ trong luồng khiếu nại này và chưa thực hiện thay đổi nào. Hãy vào đơn hàng → Trợ giúp → hỗ trợ địa chỉ/giao nhận (đường dẫn concept) hoặc liên hệ nhân viên trước khi gửi hàng trả.' : 'Yêu cầu hủy đơn/chưa nhận hàng nằm ngoài luồng này. Hãy mở Trợ giúp của đơn hàng để chọn đúng mục; thao tác đó chưa được thực hiện tại đây.');
+    if (/bóc phốt|báo chí|đăng.{0,20}báo|lên báo|nhiều người chê|lịch sử khiếu nại/i.test(text)) { s.context.push(text); result.push('Lời doạ và lịch sử một bên được giữ ở ngữ cảnh, không phải căn cứ để hoàn tiền hay từ chối.'); }
+    if (!s.chosen) result.push('Bạn đang nói đơn nào? Hãy chọn đơn trước khi gửi thông tin cho shop.');
+    else result.push(complaintNext(s));
+    if (s.key === 'K5') requestBuyerEvidence(s);
     say(s, result.join('\n\n')); log(s, 'dinh_tuyen_C1_C6', 'AI', 'Chỉ hướng dẫn/thu thập/chuyển; không gọi tool tài chính');
+    if (special && s.chosen) transfer(s, s.type);
   }
   const api = { RETURN_WINDOW_DAYS: RETURN_WINDOW_DAYS, SELLER_HOURS: SELLER_HOURS, HOUR: HOUR, FIXTURES: FIXTURES, create: create, source: source, deadline: deadline, buyerDone: buyerDone, sellerDone: sellerDone, gate: gate, choose: choose, answer: answer, evidence: evidence, prepare: prepare, submit: submit, askSeller: askSeller, transfer: transfer, sellerReply: sellerReply, correct: correct, correctSource: correctSource, advance: advance, decide: decide, route: route, requestBuyerEvidence: requestBuyerEvidence, responseTime: responseTime };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.T4 = api;

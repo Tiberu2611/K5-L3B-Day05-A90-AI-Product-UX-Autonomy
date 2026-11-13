@@ -18,7 +18,7 @@ Bản này theo spec A90 và khung thử §7 trên main (nền commit **d6ddadc*
 2. Xem bản lúc đặt 03/11 “Dung tích tổng 6L”, ảnh tem “Tổng 6.0L · Giỏ chiên 5.0L”.
 3. Chọn **Giỏ chiên**: AI giải thích khác đại lượng; không gửi yêu cầu bằng chứng cho shop chỉ vì lời doạ.
 4. Chạy lại với **Toàn bộ khoang** hoặc **Không rõ**; chuẩn bị nháp và tự gửi.
-5. Xem biên nhận, hạn người bán 24 giờ và nhật ký. Lời doạ chỉ nằm trong ngữ cảnh của màn xử lý.
+5. Xem biên nhận, hạn người bán 48 giờ và nhật ký. Lời doạ chỉ nằm trong ngữ cảnh của màn xử lý.
 6. So sánh khi tắt “K3: có lời doạ”: cùng câu trả lời về phép đo dẫn tới cùng nhánh tool và không có giao dịch tài chính tự động.
 
 ### K4 — mô tả chất liệu đổi sau khi đặt
@@ -32,7 +32,6 @@ Bản này theo spec A90 và khung thử §7 trên main (nền commit **d6ddadc*
 7. Điền lý do; bấm quyết định; tích xác nhận xem nguồn tại hộp cuối. Nhật ký lưu tool, người duyệt, thời điểm, căn cứ.
 
 Nhánh phụ:
-- Bật **K3: ảnh tem mờ** trước khi chọn đơn: AI không trích số từ ảnh chưa đọc; có ảnh mẫu thay thế hoặc chuyển người. Ô sửa không điền sẵn chữ chưa đọc được.
 - Bật **K4: thiếu bản lúc đặt** trước khi chọn đơn: không kết luận từ trang hiện tại, chuyển nhân viên; trưởng nhóm chưa quyết được khi chưa xác minh nguồn.
 - **Demo AI dùng sai nguồn**: giữ câu sai với nhãn đã đính chính, nhận lỗi chọn phiên bản, chuyển người.
 - **Sửa thông tin AI đọc sai [5]**: lưu thay đổi; nháp cũ bị khóa gửi cho tới khi chuẩn bị lại. Đã gửi thì gửi đính chính, không giả vờ thu hồi tin.
@@ -44,15 +43,15 @@ Chọn đơn → thêm ảnh size mẫu → chuẩn bị và gửi → màn Ngư
 
 ### K9 — ngày cuối gửi yêu cầu
 
-Chọn biến thể **có biên nhận**: dữ liệu dựng ghi nhận BN-DH-2611-008 lúc 14:00 ngày 12/11/2026; người bán chưa phản hồi sau 24 giờ nên hồ sơ chuyển nhân viên. Chọn **chua_co_bien_nhan**: chat chưa phải biên nhận, AI nhắc gửi ngay trong ngày cuối 13/11. Gửi sau hạn có nhãn cần nhân viên kiểm tra, không hứa chắc được hoàn.
+Chọn biến thể **có biên nhận**: dữ liệu dựng ghi nhận BN-DH-2611-008 lúc 14:00 ngày 11/11/2026; người bán chưa phản hồi sau 48 giờ nên hồ sơ chuyển nhân viên. Chọn **chua_co_bien_nhan**: chat chưa phải biên nhận, AI nhắc gửi ngay trong ngày cuối 13/11. Gửi sau hạn có nhãn cần nhân viên kiểm tra, không hứa chắc được hoàn.
 
 ## Thử lỗi và quá hạn
 
 - Bật **Thao tác gửi/chuyển kế tiếp bị lỗi** rồi gửi yêu cầu / chuyển hồ sơ / gửi phản hồi / xác nhận quyết định. Không hiện thành công; có thử lại.
-- **+24h**: người bán hết hạn thì chuyển trưởng nhóm, không tự hoàn hoặc từ chối. **+48h** dùng riêng để thử hạn bổ sung người mua; im lặng không tự là bằng chứng bên nào sai.
+- **+48h**: người bán hết hạn 48 giờ thì chuyển trưởng nhóm, không tự hoàn hoặc từ chối; nút này cũng dùng để thử hạn bổ sung người mua. Sau **+24h** người bán vẫn còn hạn, nút quyết định của trưởng nhóm vẫn khoá; im lặng không tự là bằng chứng bên nào sai.
 - **+24h** sau khi chuyển trưởng nhóm: báo quản lý ca và hiển thị chậm dự kiến; AI không quyết thay.
 - Các thời hạn 7 ngày (trả hàng) / 48 giờ (người bán, hạn bổ sung người mua) / 24 giờ (trưởng nhóm) là quy tắc dựng, khớp `spec.md` §1.7, §3 và §4.3.
-- **Trạng thái bản làm việc:** code TV4 chưa commit vẫn dùng người bán **24 giờ** theo yêu cầu trước. Cần đồng bộ lại với quyết định **48 giờ** vừa pull; các sửa K5/ảnh mờ/K9/K10/K7 vẫn được giữ nguyên.
+- **Trạng thái bản làm việc:** đã đồng bộ hạn người bán **48 giờ** (`SELLER_HOURS = 48`) với quyết định của nhóm; các sửa K5/ảnh mờ/K9/K10/K7 vẫn được giữ nguyên.
 - Chat có bộ quy tắc minh họa C1–C6 cho xin liên hệ, nghi hàng giả, lời doạ và yêu cầu ngoài luồng. Không phải bộ phân loại AI đầy đủ.
 
 ## Kiểm thử
@@ -63,10 +62,10 @@ Chạy từ gốc repo:
 
 27 kiểm thử: cổng chọn đơn, nháp/biên nhận, đường người bán duyệt, cấm AI/người mua quyết, câu hỏi K3, lời doạ, thiếu nguồn K4, khóa hai bên, hết hạn, lỗi thao tác, đính chính, K9 và render smoke. Đây là kiểm thử model và dựng HTML trong DOM giả, chưa thay thế kiểm tra trình duyệt.
 
-## Bằng chứng TV2 và giới hạn cần nhóm biết
+## Còn cần nhóm xác minh
 
-- Chụp 1–2 ảnh giao diện có nhãn [1]–[8] và kiểm tra trực quan desktop/mobile; công cụ trình duyệt không khả dụng trong phiên triển khai.
-- Nhóm vẫn cần chốt giả định trả hàng 7 ngày và bổ sung người mua 48 giờ; code cục bộ đang dùng 24 giờ, khác spec remote mới chốt 48 giờ.
+- Kiểm tra Chrome và ảnh desktop/mobile: xem [báo cáo UX](ux-evidence/README.md). Chạy lại: node prototype/ux-audit.cjs từ gốc repo (Node.js 22+, Chrome; không cần npm).
+- Nhóm vẫn cần chốt giả định trả hàng 7 ngày và bổ sung người mua 48 giờ.
 - Quy trình nhân viên khôi phục nguồn lúc đặt, khiếu nại lại sau đóng và xử lý sự cố đúng ngày cuối chỉ được thể hiện bằng chuyển hồ sơ; chưa có hệ thống vận hành thật.
 - Quyền theo vai chỉ để demo, không phải xác thực hoặc kiểm soát truy cập trên server.
 
@@ -74,12 +73,12 @@ Chạy từ gốc repo:
 
 | Mục | Chọn trên UI | Kết quả cần quan sát |
 |---|---|---|
-| Hạn người bán | Gửi yêu cầu → +24h | Chuyển nhân viên sau 24 giờ; không tự chuyển tiền |
+| Hạn người bán | Gửi yêu cầu → +24h, rồi +24h lần nữa | Sau 24 giờ vẫn chờ người bán, trưởng nhóm bị khoá; sau 48 giờ mới chuyển nhân viên; không tự chuyển tiền |
 | K5 | DH-2611-004 | Giữ 2 ảnh toàn cảnh, chỉ xin ảnh cận nhãn chất liệu; không lặp yêu cầu đã gửi |
 | K3 ảnh mờ | DH-2611-002 → anh_tem_mo | Không trích thông số từ ảnh mờ; bổ sung tem rõ hoặc chuyển người |
 | K4 đã có ảnh | DH-2611-003 → co_anh_nhan | Không yêu cầu gửi lại nhãn; chỉ soạn nháp khi người mua chọn |
 | K9 | DH-2611-008 → có/chưa có biên nhận | Có biên nhận: tra timestamp rồi chuyển; chưa có: hướng dẫn gửi ngay |
 | K10 | DH-2611-009 | Tách đổi địa chỉ của khách khỏi xin liên hệ shop; vẫn xử lý khiếu nại sai màu |
-| K7 | DH-2611-006 | Không lộ liên hệ; có thời gian phản hồi 24 giờ, chỉ đếm hạn khi gửi thành công |
+| K7 | DH-2611-006 | Không lộ liên hệ; có thời gian phản hồi 48 giờ, chỉ đếm hạn khi gửi thành công |
 
 Các đơn K1, K3–K10 mang mã DH-2611-001…009 đúng khung §7. Nút **K2 · Thử hỏi khi chưa chọn đơn** kiểm tra cổng chọn đơn mà không gửi thông tin cho shop. Đây là đường dẫn thử, chưa phải kết quả quan sát trên trình duyệt hoặc ca lạ thực tế của TV1.

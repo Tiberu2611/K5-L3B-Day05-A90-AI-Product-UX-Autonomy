@@ -57,12 +57,7 @@ function needed() {
     text += '<p>Bạn đo phần giỏ chiên hay toàn bộ khoang nồi?</p><div class="button-row">' + ['Giỏ chiên', 'Toàn bộ khoang', 'Không rõ'].map(value => button(esc(value), 'answer', { value: value })).join('') + '</div><p class="small muted">Không yêu cầu đổ nước vào thiết bị hay thực hiện phép thử nguy hiểm.</p>';
   } else {
     if (state.overviewImages) text += '<p>Đã có: ' + state.overviewImages + ' ảnh toàn cảnh. Giữ nguyên, không gửi lại.</p>';
-    text += '<p>' + (state.label ? 'Đã có ảnh nhãn. Không cần gửi lại ảnh đã đọc được.' : state.noEvidence ? 'Đã ghi nhận bạn không có ảnh nhãn; có thể chuyển nhân viên.' : 'Còn thiếu: ' + (state.key === 'K4' || state.key === 'K5' ? 'ảnh cận nhãn thành phần của áo, giúp đối chiếu chất liệu ghi trên hàng.' : 'ảnh nhãn size/màu của hàng đã giao, giúp đối chiếu đúng đơn.')) + '</p>';
-  if (state.key === 'K3' && !state.answer) {
-    if (!state.label) text += '<p>Ảnh tem chưa đọc rõ: bổ sung ảnh rõ phần dung tích để đối chiếu đúng thông số.</p>' + button('＋ Bổ sung ảnh nhãn mẫu', 'evidence');
-    text += '<p>Bạn đo phần giỏ chiên hay toàn bộ khoang nồi?</p><div class="button-row">' + ['Giỏ chiên', 'Toàn bộ khoang', 'Không rõ'].map(value => button(esc(value), 'answer', { value: value })).join('') + '</div><p class="small muted">Không yêu cầu đổ nước vào thiết bị hay thực hiện phép thử nguy hiểm.</p>';
-  } else {
-    text += '<p>' + (state.label ? 'Đã có ảnh nhãn. Không cần gửi lại ảnh đã đọc được.' : state.noEvidence ? 'Đã ghi nhận bạn không có ảnh nhãn; có thể chuyển nhân viên.' : 'Còn thiếu: ' + (state.key === 'K4' ? 'ảnh cận nhãn thành phần của áo, giúp đối chiếu chất liệu ghi trên hàng.' : state.key === 'K3' ? 'ảnh rõ phần dung tích trên tem, giúp đối chiếu dung tích tổng và giỏ chiên.' : 'ảnh nhãn size/màu của hàng đã giao, giúp đối chiếu đúng đơn.')) + '</p>';
+    text += '<p>' + (state.label ? 'Đã có ảnh nhãn. Không cần gửi lại ảnh đã đọc được.' : state.noEvidence ? 'Đã ghi nhận bạn không có ảnh nhãn; có thể chuyển nhân viên.' : 'Còn thiếu: ' + (state.key === 'K4' || state.key === 'K5' || state.key === 'K8' ? 'ảnh cận nhãn thành phần của áo, giúp đối chiếu chất liệu ghi trên hàng.' : 'ảnh nhãn size/màu của hàng đã giao, giúp đối chiếu đúng đơn.')) + '</p>';
     if (!state.label && !state.noEvidence) text += button('＋ Bổ sung ảnh nhãn mẫu', 'evidence');
   }
   if (!state.noEvidence) text += button('Tôi không có bằng chứng này', 'none', { className: 'text-button' });
@@ -112,20 +107,18 @@ function staff() {
 }
 function render() {
   $('case-id').textContent = state.fixture.id;
-  $('demo-clock').textContent = 'Đồng hồ demo: ' + date(state.now) + ' (Việt Nam) · hạn trả hàng 7 ngày, người bán 24h, người mua bổ sung 48h, trưởng nhóm 24h — chính sách dựng.';
+  $('demo-clock').textContent = 'Đồng hồ demo: ' + date(state.now) + ' (Việt Nam) · hạn trả hàng ' + T4.RETURN_WINDOW_DAYS + ' ngày, người bán ' + T4.SELLER_HOURS + 'h, người mua bổ sung 48h, trưởng nhóm 24h — chính sách dựng.';
   $('fail-next').checked = state.failNext;
   $('missing-source').disabled = state.key !== 'K4';
   $('with-threat').disabled = state.key !== 'K3';
-  $('unclear-label').disabled = state.key !== 'K3';
   $('workspace').innerHTML = (state.error ? '<div class="error-banner" role="alert">Chưa thực hiện được: ' + esc(state.error.tool) + '. Hồ sơ chưa xác nhận thành công. ' + button('Thử lại', 'retry') + '</div>' : '') + (view === 'buyer' ? buyer() : staff());
   $('page-title').textContent = view === 'buyer' ? 'Cùng làm rõ vấn đề của bạn.' : 'Mỗi quyết định, một căn cứ rõ ràng.';
   document.querySelectorAll('[data-view]').forEach(b => b.classList.toggle('active', b.dataset.view === view));
   const box = $('messages'); if (box) box.scrollTop = box.scrollHeight;
 }
 function reset() {
-  state = T4.create($('scenario').value, { missingSource: $('missing-source').checked && $('scenario').value === 'K4', threat: $('with-threat').checked, variant: $('variant').value });
   clearTimeout(toastTimer); $('toast').hidden = true;
-  state = T4.create($('scenario').value, { missingSource: $('missing-source').checked && $('scenario').value === 'K4', threat: $('with-threat').checked, unclearLabel: $('unclear-label').checked && $('scenario').value === 'K3' });
+  state = T4.create($('scenario').value, { missingSource: $('missing-source').checked && $('scenario').value === 'K4', threat: $('with-threat').checked, variant: $('variant').value });
   pending = null; view = 'buyer'; staffRole = 'seller'; render();
 }
 function openSource(which) {
@@ -168,7 +161,7 @@ function perform(action, value) {
     case 'advance24': T4.advance(state, 24); break;
     case 'source': openSource(value); return;
     case 'wrong-source': T4.correctSource(state); break;
-    case 'correction': $('correction-input').value = state.label ? state.labelText : ''; $('correction-dialog').showModal(); return;
+    case 'correction': $('correction-input').value = state.label && state.labelReadable ? state.labelText : ''; $('correction-dialog').showModal(); return;
     case 'cancel-correction': $('correction-dialog').close(); return;
     case 'cancel-confirm': $('confirm-dialog').close(); pending = null; return;
     case 'reopen': T4.correct(state, 'Người mua yêu cầu kiểm tra lại quyết định.'); break;
@@ -208,7 +201,6 @@ $('scenario').onchange = () => { $('missing-source').checked = false; configureV
 $('variant').onchange = reset;
 $('missing-source').onchange = reset;
 $('with-threat').onchange = reset;
-$('unclear-label').onchange = reset;
 $('fail-next').onchange = () => { state.failNext = $('fail-next').checked; };
 configureVariants();
-reset();}
+reset();
