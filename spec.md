@@ -350,31 +350,32 @@ Mỗi tool được xếp theo ba câu: **sai thì ai chịu gì · đảo lại
 | Tool | Mức | Sai thì ai chịu gì | Đảo lại được không | Chờ người duyệt thì mất gì | Phương án đã loại, vì sao |
 |---|---|---|---|---|---|
 | `xem_mo_ta_luc_dat` *(thêm, §1.4)* | **Tự làm** | Chỉ đọc, không đổi gì. Rủi ro duy nhất là trả về sai phiên bản, đã chặn ở cổng C4 | Không có gì cần đảo | Mọi ca đứng lại chỉ để đọc một bản lưu: vô ích | *Cần duyệt:* không có hành động nào để duyệt |
+| `xem_trang_thai_yeu_cau` *(thêm, §1.4)* | **Tự làm** | Chỉ đọc. Đọc sai trạng thái thì AI có thể nói "đã ghi nhận trong hạn" khi chưa có biên nhận (K9). Chặn bằng luật 5 ở 4.7: chỉ nói "đã ghi nhận" khi tool trả về thời điểm ghi nhận | Không có gì cần đảo; câu nói sai sửa bằng đính chính (§3.4) | Người mua hỏi "mình gửi rồi chưa" phải chờ nhân viên tra hộ, đúng ngày cuối hạn thì có thể mất quyền (K9) | *Cần duyệt:* không có hành động nào để duyệt. *Không dùng tool, tin lời người mua "mình gửi rồi":* đúng lỗi (c) của K9 |
 | `yeu_cau_bang_chung` | **Tự làm có điều kiện** (C2, C5) | Gửi sai đơn: shop vô can bị làm phiền (K2). Gửi mẫu chung chung: người mua bực, bỏ cuộc (K5) | **Không**, tin đã tới. Chỉ sửa được bằng bản đính chính (§3.4) | Mỗi lần xin một tấm ảnh phải chờ nhân viên mở giờ hành chính, người mua bỏ cuộc thì mất tiền | *Cần duyệt:* chậm mọi ca để chặn một lỗi mà cổng C2 đã chặn rẻ hơn. *Cấm:* AI mất nhánh "xin bằng chứng" của lát cắt |
 | `chuyen_truong_nhom(loai_ca)` | **Tự làm** | Chuyển thừa: tốn giờ trưởng nhóm. Chọn nhầm `loai_ca`: hồ sơ đi sai bộ phận, chậm thêm | **Được**, trưởng nhóm trả lại hoặc chuyển tiếp | Ca cần người (K4 thiếu bản lưu, K6 nghi hàng giả) nằm lại trong chat | *Cần duyệt:* duyệt việc chuyển cho người duyệt là vòng lặp |
 | `soan_hoan_tien` *(chỉ soạn nháp, §1.4)* | **Tự làm**, chỉ khi người mua chọn "Chuẩn bị yêu cầu" | Nháp sai lý do hoặc sai đơn | **Được**, nháp chưa đi đâu, người mua sửa hoặc huỷ | Người mua phải tự điền form từ đầu | — |
-| `thuc_hien_hoan_tien` *(tách, §1.4)* | **Cần người duyệt.** AI **không có quyền gọi** | Người bán mất tiền và hàng (K3, K8) | **Khó**: tiền đã về người mua | Người mua đúng chờ thêm ≤ 48 giờ người bán + ≤ 24 giờ trưởng nhóm | *Tự làm khi "shop đã nhận lỗi":* AI không có tool đọc chat với shop (K1), chỉ có lời người mua. *Người mua tự xác nhận:* người bấm là bên được lợi |
+| `thuc_hien_hoan_tien` *(tách, §1.4)* | **Cần người duyệt.** AI **không có quyền gọi** | Người bán mất tiền và hàng (K3, K8) | **Khó**: tiền đã về người mua | Người mua đúng chờ thêm ≤ 24 giờ người bán + ≤ 24 giờ trưởng nhóm | *Tự làm khi "shop đã nhận lỗi":* AI không có tool đọc chat với shop (K1), chỉ có lời người mua. *Người mua tự xác nhận:* người bấm là bên được lợi |
 | `tu_choi_khieu_nai` | **Cần người duyệt.** Chỉ **trưởng nhóm**. AI **không có quyền gọi** và **không soạn đề xuất từ chối** | Người mua mất tiền, giữ hàng sai (K4) | **Khó**: tiền đã về người bán | Người bán đúng chờ thêm vài ngày mới nhận tiền (K3) | Xem 4.4 |
 | `phat_shop` | **Cấm** trong luồng này. Nghi hàng giả thì `chuyen_truong_nhom(loai_ca=nghi_hang_gia)` | Cả shop mất uy tín hoặc bị khoá, ảnh hưởng mọi đơn khác. Căn cứ là lời một phía (K6) | **Khó**, ảnh hưởng cả shop | — | *Cần duyệt:* xác minh hàng giả cần điều tra của bộ phận chuyên trách, không phải một cú bấm. Rubric riêng 5 |
 
 ### 4.3 Ai duyệt, người duyệt thấy gì, quá hạn thì sao
 
-Đây là quy tắc dựng cho prototype, **không phải chính sách Shopee**. Mốc thời gian theo §1.7: **người bán 48 giờ, trưởng nhóm 24 giờ**. §3.1 đề xuất người bán 24 giờ và giao TV3 chốt cách xử lý quá hạn; TV3 chốt theo §1.7 (48 giờ) để cả bài dùng một mốc. Các câu "24 giờ" gửi người bán ở §3.2, §3.3 cần đổi thành 48 giờ.
+Đây là quy tắc dựng cho prototype, **không phải chính sách Shopee**. Mốc thời gian theo §1.7 và §3.1: **người bán 24 giờ** (tính từ khi `yeu_cau_bang_chung` gửi thành công), **trưởng nhóm 24 giờ** (tính từ khi nhận hồ sơ). §3.1 giao TV3 chốt cách xử lý quá hạn; bảng "Quá hạn" dưới đây là phần chốt đó.
 
 **`thuc_hien_hoan_tien`: hai đường duyệt.**
 
 | Đường | Ai bấm | Thấy gì trước khi bấm | Điều kiện mở nút |
 |---|---|---|---|
 | Đường nhanh | **Người bán**, nút "Đồng ý trả hàng hoàn tiền" | Bản mô tả lúc đặt [3], bằng chứng của người mua, số tiền; hộp xác nhận ghi "tiền về người mua, khó đảo" | Mở ngay khi yêu cầu được ghi nhận |
-| Đường tranh chấp | **Trưởng nhóm**, vùng [8] | Hai phiên bản mô tả (nếu có), bằng chứng hai bên, câu hỏi còn bất đồng, ngữ cảnh hội thoại (lời doạ nằm riêng, gắn nhãn "không phải căn cứ"); hộp xác nhận | Người bán đã phản hồi **hoặc** đã hết 48 giờ |
+| Đường tranh chấp | **Trưởng nhóm**, vùng [8] | Hai phiên bản mô tả (nếu có), bằng chứng hai bên, câu hỏi còn bất đồng, ngữ cảnh hội thoại (lời doạ nằm riêng, gắn nhãn "không phải căn cứ"); hộp xác nhận | Người bán đã phản hồi **hoặc** đã hết 24 giờ |
 
-**`tu_choi_khieu_nai`: chỉ trưởng nhóm.** Nút ở [8] **khoá** cho tới khi đủ hai điều kiện: (1) người bán đã phản hồi hoặc đã hết 48 giờ; (2) người mua đã được xin đúng món còn thiếu và đã trả lời, bấm "Tôi không có bằng chứng này", hoặc đã hết hạn bổ sung. Khi khoá, nút ghi lý do (ví dụ "Chờ người bán phản hồi tới 15:00 15/11"), không ẩn. Hộp xác nhận ghi "tiền về người bán, khó đảo" và bắt trưởng nhóm tích "Đã xem bản mô tả lúc đặt".
+**`tu_choi_khieu_nai`: chỉ trưởng nhóm.** Nút ở [8] **khoá** cho tới khi đủ hai điều kiện: (1) người bán đã phản hồi hoặc đã hết 24 giờ; (2) người mua đã được xin đúng món còn thiếu và đã trả lời, bấm "Tôi không có bằng chứng này", hoặc đã hết hạn bổ sung. Khi khoá, nút ghi lý do (ví dụ "Chờ người bán phản hồi tới 15:00 15/11"), không ẩn. Hộp xác nhận ghi "tiền về người bán, khó đảo" và bắt trưởng nhóm tích "Đã xem bản mô tả lúc đặt".
 
 **Quá hạn, không ai thao tác:**
 
 | Ai im lặng | Quá mốc nào | Hệ thống làm gì | Không làm gì |
 |---|---|---|---|
-| Người bán | 48 giờ kể từ khi `yeu_cau_bang_chung` gửi thành công | `chuyen_truong_nhom(loai_ca=thuong)` tại mốc hết hạn; báo người mua "Hồ sơ đã chuyển nhân viên" | Không mặc định người bán thua, không tự hoàn |
+| Người bán | 24 giờ kể từ khi `yeu_cau_bang_chung` gửi thành công | `chuyen_truong_nhom(loai_ca=thuong)` tại mốc hết hạn; báo người mua "Hồ sơ đã chuyển nhân viên" | Không mặc định người bán thua, không tự hoàn |
 | Người mua | Hạn bổ sung 48 giờ *(đề xuất của TV3, cần nhóm chốt)* | Giữ "Chờ bổ sung"; hết hạn thì chuyển trưởng nhóm với ghi chú "người mua chưa bổ sung" | Không tự đóng khiếu nại: im lặng không có nghĩa là người mua sai |
 | Trưởng nhóm | 24 giờ kể từ khi nhận hồ sơ (§1.7) | Đưa hồ sơ lên đầu hàng, báo quản lý ca; người mua thấy "Đang chờ nhân viên, chậm hơn dự kiến" | AI không thay trưởng nhóm quyết |
 
@@ -400,7 +401,7 @@ Mức nào cũng có bên thua. Cái giá của hai phía nằm ngay trong cặp
 |---|---|---|---|
 | **Cái sai ở §2 có bị chặn không?** | **Có.** AI không có quyền gọi `thuc_hien_hoan_tien` (C6). Lời doạ bị gỡ khỏi căn cứ (C3), không đổi nhánh | **Có.** C4 buộc đọc `xem_mo_ta_luc_dat`. `tu_choi_khieu_nai` chỉ trưởng nhóm, nút khoá, trưởng nhóm thấy cả hai phiên bản | Không có cái sai cần chặn. AI không tin lời "shop đã nhận" vì không đọc được chat với shop |
 | **Còn việc nào AI làm khi lẽ ra phải hỏi?** | **Có, đã sửa.** Lúc đầu AI gửi `yeu_cau_bang_chung` cho người bán **cùng lúc** hỏi người mua "đo phần nào". Nếu người mua trả lời "giỏ chiên", mâu thuẫn tự hết mà shop đã bị làm phiền. Sửa: **hỏi người mua trước**, chỉ gửi người bán khi người mua chọn "Toàn bộ khoang" hoặc "Không rõ" (thêm vào C5) | Không. `soan_hoan_tien` chỉ chạy khi người mua chọn; AI xin đúng ảnh nhãn thành phần | Không. AI soạn nháp, người mua tự bấm gửi |
-| **Người dùng bình thường có phải chờ vô ích không?** | Người mua: không, câu hỏi một bước. Người bán đúng: có, phải chờ trưởng nhóm mới đóng được. Đây là **giá chấp nhận** để chặn K4 | Người mua chờ ≤ 48 giờ người bán + ≤ 24 giờ trưởng nhóm. Chấp nhận, vì người bán phải được nghe (rubric riêng 3) | **Không qua trưởng nhóm.** Người bán đồng ý ở đường nhanh là hoàn. Chờ tối đa 48 giờ người bán bấm, vì AI không đọc được chat |
+| **Người dùng bình thường có phải chờ vô ích không?** | Người mua: không, câu hỏi một bước. Người bán đúng: có, phải chờ trưởng nhóm mới đóng được. Đây là **giá chấp nhận** để chặn K4 | Người mua chờ ≤ 24 giờ người bán + ≤ 24 giờ trưởng nhóm. Chấp nhận, vì người bán phải được nghe (rubric riêng 3) | **Không qua trưởng nhóm.** Người bán đồng ý ở đường nhanh là hoàn. Chờ tối đa 24 giờ người bán bấm, vì AI không đọc được chat |
 
 ### 4.6 Cổng định tuyến C1–C6
 
@@ -419,9 +420,9 @@ Mọi tin của người mua đi qua các cổng theo thứ tự. Cổng nào ch
 
 §3.1 ghi bộ tool chưa có bước ghi nhận yêu cầu trong hạn. TV3 định nghĩa như sau:
 
-- **"Gửi yêu cầu trả hàng" là thao tác giao diện của người mua, không phải tool AI**, giống màn chọn đơn (§1.4). Người mua bấm gửi bản nháp. Hệ thống trả **biên nhận** có mã và thời điểm. Chỉ khi có biên nhận, AI mới được nói "đã ghi nhận trong hạn" (K9).
+- **"Gửi yêu cầu trả hàng" là thao tác giao diện của người mua, không phải tool AI**, giống màn chọn đơn (§1.4). Người mua bấm gửi bản nháp. Hệ thống trả **biên nhận** có mã và thời điểm. Chỉ khi `xem_trang_thai_yeu_cau` trả về biên nhận và thời điểm ghi nhận, AI mới được nói "đã ghi nhận trong hạn" (K9). Lời người mua "mình gửi rồi" không thay được biên nhận.
 - AI không gửi thay người mua: gửi yêu cầu là cam kết của người mua với người bán.
-- **Hạn gửi yêu cầu trả hàng** là hằng số dựng `RETURN_WINDOW_DAYS` = **7 ngày kể từ khi nhận hàng** (§1.7, N4). Biên nhận ghi rõ thời điểm gửi so với hạn này. Câu "Chưa xác định hạn trả hàng" ở §3.1 chỉ còn dùng khi đơn thiếu ngày nhận hàng.
+- **Hạn gửi yêu cầu trả hàng** là hằng số dựng `RETURN_WINDOW_DAYS`, hiện đặt **7 ngày kể từ khi nhận hàng** theo giả định ở §1.7 (vẫn **[CẦN XÁC NHẬN]** ở đó). Đổi con số chỉ cần sửa hằng số; luật ở mục này không đổi. Biên nhận ghi rõ thời điểm gửi so với hạn. Đơn thiếu ngày nhận hàng thì UI theo §3.1: "Chưa xác định hạn trả hàng — cần nhân viên kiểm tra".
 
 Luật áp mọi tool:
 
@@ -445,7 +446,7 @@ Một trợ lý được tự hoàn tiền sẽ hứa: **"AI giải quyết khi�
 - [ ] Màn người bán: có "Đồng ý trả hàng hoàn tiền" kèm hộp xác nhận, "Phản hồi kèm bằng chứng". **Không** có nút từ chối khiếu nại (người bán là bên được lợi).
 - [ ] [8] trưởng nhóm: hai nút Duyệt hoàn / Từ chối có hộp xác nhận; khoá kèm lý do theo 4.3; tóm tắt căn cứ hai phía, không có dòng "AI đề xuất"; lời doạ nằm riêng ở mục ngữ cảnh.
 - [ ] Không màn nào có nút phạt / khoá shop. [8] ghi "Xử phạt thuộc bộ phận chuyên trách".
-- [ ] Có nút mô phỏng "hết 48 giờ" để bấm thử đường quá hạn của 4.3.
+- [ ] Có nút mô phỏng "hết 24 giờ" để bấm thử đường quá hạn của 4.3.
 
 ---
 
@@ -472,7 +473,7 @@ Chấm trên **thiết kế ở §3–§4**. Khi TV4 dựng xong prototype, cả
 
 ### 6.3 Lỗi còn lại
 
-1. **K4:** người mua đúng vẫn chờ tới 48 + 24 giờ nếu người bán im lặng.
+1. **K4:** người mua đúng vẫn chờ tới 24 + 24 giờ nếu người bán im lặng.
 2. **K3:** người bán đúng muốn đóng khiếu nại phải chờ trưởng nhóm. Đây là giá của việc AI không được đề xuất từ chối.
 3. **Đọc ảnh sai** (tem, nhãn) vẫn có thể xảy ra. Thiết kế chỉ giảm hại: nhân viên luôn xem ảnh gốc, người dùng sửa được ở [5].
 4. **K9 phụ thuộc biên nhận.** Nếu bước gửi yêu cầu lỗi đúng ngày cuối của hạn 7 ngày, người mua có thể mất quyền dù đã thao tác. Thiết kế chỉ báo lỗi và cho thử lại hoặc chuyển người, chưa có cơ chế giữ chỗ trong hạn.
